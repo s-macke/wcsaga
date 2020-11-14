@@ -44,7 +44,9 @@
 #   include AUX778076_INCLUDE_STRING
 #   undef AUX778076_INCLUDE_STRING
 #else
+
 #   include BOOST_PP_STRINGIZE(boost/mpl/map/aux_/preprocessed/AUX778076_HEADER)
+
 #endif
 
 #   undef AUX778076_HEADER

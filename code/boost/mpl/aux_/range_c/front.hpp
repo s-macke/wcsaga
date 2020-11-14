@@ -17,17 +17,18 @@
 #include <boost/mpl/front_fwd.hpp>
 #include <boost/mpl/aux_/range_c/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct front_impl< aux::half_open_range_tag >
-{
-    template< typename Range > struct apply
-    {
-        typedef typename Range::start type;
-    };
-};
+        template<>
+        struct front_impl<aux::half_open_range_tag> {
+            template<typename Range>
+            struct apply {
+                typedef typename Range::start type;
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_AUX_RANGE_C_FRONT_HPP_INCLUDED

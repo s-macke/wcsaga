@@ -24,52 +24,52 @@
 #include <boost/mpl/identity.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
 // used by 's_iter_get'
-template< typename Set, typename Tail > struct s_iter;
+        template<typename Set, typename Tail>
+        struct s_iter;
 
-template< typename Set, typename Tail > struct s_iter_get
-    : eval_if< 
-          has_key< Set,typename Tail::item_type_ >
-        , identity< s_iter<Set,Tail> >
-        , next< s_iter<Set,Tail> >
-        >
-{
-};
+        template<typename Set, typename Tail> struct s_iter_get
+                : eval_if<
+                        has_key < Set, typename Tail::item_type_>,
+                  identity<s_iter<Set, Tail> >,
+                  next<s_iter<Set, Tail> >
+        > {
+    };
 
-template< typename Set, typename Tail > struct s_iter_impl
-{
-    typedef Tail                        tail_;
-    typedef forward_iterator_tag        category;
-    typedef typename Tail::item_type_   type;
+    template<typename Set, typename Tail>
+    struct s_iter_impl {
+        typedef Tail tail_;
+        typedef forward_iterator_tag category;
+        typedef typename Tail::item_type_ type;
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-    typedef typename s_iter_get< Set,typename Tail::base >::type next;
+        typedef typename s_iter_get< Set,typename Tail::base >::type next;
 #endif
-};
+    };
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 
-template< typename Set, typename Tail > 
-struct next< s_iter<Set,Tail> >
-    : s_iter_get< Set,typename Tail::base >
-{
+    template<typename Set, typename Tail>
+    struct next<s_iter < Set, Tail> >
+    : s_iter_get<Set, typename Tail::base> {
 };
 
-template< typename Set > 
-struct next< s_iter<Set,set0<> > >
+template<typename Set>
+struct next<s_iter < Set, set0<> > >
 {
-    typedef s_iter<Set,set0<> > type;
+typedef s_iter <Set, set0<>> type;
 };
 
-template< typename Set, typename Tail > struct s_iter
-    : s_iter_impl<Set,Tail>
-{
+template<typename Set, typename Tail>
+struct s_iter
+        : s_iter_impl<Set, Tail> {
 };
 
-template< typename Set > struct s_iter<Set, set0<> >
-{
+template<typename Set>
+struct s_iter<Set, set0<> > {
     typedef forward_iterator_tag category;
 };
 

@@ -18,7 +18,9 @@
 #define f1_0 65536
 
 fix fixmul(fix a, fix b);
+
 fix fixdiv(fix a, fix b);
+
 fix fixmuldiv(fix a, fix b, fix c);
 
 #define f2i(a) ((int)((a)>>16))

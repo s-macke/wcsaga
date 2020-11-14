@@ -21,11 +21,10 @@
 
 struct THEORAFILE;
 
-class OggReader
-{
-    FILE* f; //debug
+class OggReader {
+    FILE *f; //debug
 
-    CFILE* file;
+    CFILE *file;
     bool isOpen;
 
     bool working;
@@ -47,26 +46,33 @@ class OggReader
 
     bool buffering;
 
-    THEORAFILE* movie;
+    THEORAFILE *movie;
 
     long body_returned;
 
     // ctor and dtor
 public:
-    OggReader(CFILE* f, THEORAFILE* movie);
+    OggReader(CFILE *f, THEORAFILE *movie);
+
     ~OggReader();
 
     // public interface
-    int cfread(void* buf, int elsize, int nelem);
+    int cfread(void *buf, int elsize, int nelem);
+
     bool cfeof();
+
     int cfclose();
 
-    int popVideoPacket(ogg_packet* op);
-    int popAudioPacket(ogg_packet* op);
+    int popVideoPacket(ogg_packet *op);
+
+    int popAudioPacket(ogg_packet *op);
 
     void readerLock();
+
     void readerRelease();
+
     void start();
+
     void stop();
 
     void compact_if_needed();
@@ -79,18 +85,27 @@ protected:
     static void *run(void *ptr);
 #endif
 private:
-    int popOggPacket(ogg_stream_state* os, ogg_packet* op);
-    bool pushVideoPage(ogg_page* op);
-    bool pushAudioPage(ogg_page* op);
-    bool pushOggPage(ogg_stream_state* os, ogg_page* op);
+    int popOggPacket(ogg_stream_state *os, ogg_packet *op);
+
+    bool pushVideoPage(ogg_page *op);
+
+    bool pushAudioPage(ogg_page *op);
+
+    bool pushOggPage(ogg_stream_state *os, ogg_page *op);
+
     void writerLock();
+
     void writerRelease();
 
-    void compact_now(ogg_stream_state* os);
-    void compact_delay(ogg_stream_state* os) const;
-    void compact_save_state(ogg_stream_state* os);
-    void compact_restore_state(ogg_stream_state* os);
-    bool compact_eval_state(ogg_stream_state* os);
+    void compact_now(ogg_stream_state *os);
+
+    void compact_delay(ogg_stream_state *os) const;
+
+    void compact_save_state(ogg_stream_state *os);
+
+    void compact_restore_state(ogg_stream_state *os);
+
+    bool compact_eval_state(ogg_stream_state *os);
 };
 
 #endif

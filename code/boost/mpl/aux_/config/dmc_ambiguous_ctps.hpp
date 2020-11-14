@@ -17,8 +17,8 @@
 #include <boost/mpl/aux_/config/workaround.hpp>
 
 #if    !defined(BOOST_MPL_CFG_DMC_AMBIGUOUS_CTPS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840))
+ && !defined(BOOST_MPL_PREPROCESSING_MODE) \
+ && BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840))
 
 #   define BOOST_MPL_CFG_DMC_AMBIGUOUS_CTPS
 

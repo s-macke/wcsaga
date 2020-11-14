@@ -15,12 +15,14 @@
 // $Revision: 49267 $
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
+
 #   include <boost/mpl/lambda_fwd.hpp>
 #   include <boost/mpl/int.hpp>
 #   include <boost/mpl/bool.hpp>
 #   include <boost/mpl/aux_/na.hpp>
 #   include <boost/mpl/aux_/arity.hpp>
 #   include <boost/mpl/aux_/template_arity_fwd.hpp>
+
 #endif
 
 #include <boost/mpl/aux_/preprocessor/params.hpp>
@@ -111,8 +113,8 @@ struct lambda< \
 #endif
 
 #if defined(BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING) \
-    || defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT) \
-        && defined(BOOST_MPL_CFG_BROKEN_OVERLOAD_RESOLUTION)
+ || defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT) \
+ && defined(BOOST_MPL_CFG_BROKEN_OVERLOAD_RESOLUTION)
 #   define BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(i, j, name) \
 namespace aux { \
 template< BOOST_MPL_PP_PARAMS(j, typename T) > \

@@ -19,32 +19,32 @@
 #include <boost/mpl/next_prior.hpp>
 #include <boost/mpl/map/aux_/iterator.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct begin_impl< aux::map_tag >
-{
-    template< typename Map > struct apply
-    {
-        typedef typename next< typename Map::order >::type max_order_;
-        typedef m_iter<
-              Map
-            , next_order<Map,1,max_order_::value>::value
-            , max_order_::value
-            > type;
-    };
-};
+        template<>
+        struct begin_impl<aux::map_tag> {
+            template<typename Map>
+            struct apply {
+                typedef typename next<typename Map::order>::type max_order_;
+                typedef m_iter <
+                Map
+                , next_order<Map, 1, max_order_::value>::value
+                , max_order_::value
+                > type;
+            };
+        };
 
-template<>
-struct end_impl< aux::map_tag >
-{
-    template< typename Map > struct apply
-    {
-        typedef typename next< typename Map::order >::type max_order_;
-        typedef m_iter< Map,max_order_::value,max_order_::value > type;
-    };
-};
+        template<>
+        struct end_impl<aux::map_tag> {
+            template<typename Map>
+            struct apply {
+                typedef typename next<typename Map::order>::type max_order_;
+                typedef m_iter <Map, max_order_::value, max_order_::value> type;
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_MAP_AUX_BEGIN_END_IMPL_HPP_INCLUDED

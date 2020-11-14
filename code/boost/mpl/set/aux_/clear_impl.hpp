@@ -19,17 +19,18 @@
 #include <boost/mpl/set/aux_/set0.hpp>
 #include <boost/mpl/set/aux_/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct clear_impl< aux::set_tag >
-{
-    template< typename Set > struct apply
-    {
-        typedef set0<> type;
-    };
-};
+        template<>
+        struct clear_impl<aux::set_tag> {
+            template<typename Set>
+            struct apply {
+                typedef set0<> type;
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_SET_AUX_CLEAR_IMPL_HPP_INCLUDED

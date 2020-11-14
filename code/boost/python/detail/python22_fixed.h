@@ -54,12 +54,14 @@
 #endif
 
 #include <stdio.h>
+
 #ifndef NULL
 #   error "Python.h requires that stdio.h define NULL."
 #endif
 
 #include <string.h>
 #include <errno.h>
+
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
@@ -88,9 +90,13 @@
 #include "intobject.h"
 #include "longobject.h"
 #include "floatobject.h"
+
 #ifndef WITHOUT_COMPLEX
+
 #include "complexobject.h"
+
 #endif
+
 #include "rangeobject.h"
 #include "stringobject.h"
 #include "bufferobject.h"
@@ -106,6 +112,7 @@
 #include "traceback.h"
 #include "sliceobject.h"
 #include "cellobject.h"
+
 extern "C" { // Boost.Python modification: provide missing extern "C"
 #include "iterobject.h"
 #include "descrobject.h"

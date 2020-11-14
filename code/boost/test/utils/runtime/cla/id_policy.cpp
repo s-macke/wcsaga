@@ -13,4 +13,5 @@
 // ***************************************************************************
 
 #define BOOST_RT_PARAM_INLINE
+
 #include <boost/test/utils/runtime/cla/id_policy.ipp>

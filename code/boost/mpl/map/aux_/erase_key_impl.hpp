@@ -25,29 +25,26 @@
 
 #include <boost/type_traits/is_same.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct erase_key_impl< aux::map_tag >
-{
-    template< 
-          typename Map
-        , typename Key
-        > 
-    struct apply
-        : eval_if< 
-              has_key_impl<aux::map_tag>::apply<Map,Key>
-            , eval_if< 
-                  is_same< Key,typename Map::key_ > 
-                , base<Map>
-                , identity< m_mask<Key,Map> >
-                >
-            , identity<Map>
+        template<>
+        struct erase_key_impl<aux::map_tag> {
+            template<
+                    typename Map, typename Key
             >
-    {
-    };
-};
+            struct apply
+                    : eval_if<
+                            has_key_impl<aux::map_tag>::apply < Map, Key>, eval_if<
+                            is_same < Key, typename Map::key_>, base<Map>, identity<m_mask < Key, Map> >
+            >
+            , identity <Map>
+            >
+            {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_MAP_AUX_ERASE_KEY_IMPL_HPP_INCLUDED

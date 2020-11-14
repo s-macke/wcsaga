@@ -8,6 +8,8 @@
 //
 #if !defined(BOOST_TR1_REGEX_H_INCLUDED)
 #  define BOOST_TR1_REGEX_H_INCLUDED
+
 #  include <regex.>
+
 #endif
 

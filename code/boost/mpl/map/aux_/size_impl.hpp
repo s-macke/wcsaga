@@ -17,17 +17,18 @@
 #include <boost/mpl/size_fwd.hpp>
 #include <boost/mpl/map/aux_/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct size_impl< aux::map_tag >
-{
-    template< typename Map > struct apply
-        : Map::size
-    {
-    };
-};
+        template<>
+        struct size_impl<aux::map_tag> {
+            template<typename Map>
+            struct apply
+                    : Map::size {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_MAP_AUX_SIZE_IMPL_HPP_INCLUDED

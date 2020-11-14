@@ -19,23 +19,21 @@
 #include <boost/mpl/set/aux_/erase_key_impl.hpp>
 #include <boost/mpl/set/aux_/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct erase_impl< aux::set_tag >
-{
-    template< 
-          typename Set
-        , typename Pos
-        , typename unused_
-        > 
-    struct apply
-        : erase_key_impl<aux::set_tag>
-            ::apply<Set,typename Pos::type>
-    {
-    };
-};
+        template<>
+        struct erase_impl<aux::set_tag> {
+            template<
+                    typename Set, typename Pos, typename unused_
+            >
+            struct apply
+                    : erase_key_impl<aux::set_tag>
+                      ::apply<Set, typename Pos::type> {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_SET_AUX_ERASE_IMPL_HPP_INCLUDED

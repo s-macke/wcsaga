@@ -20,17 +20,17 @@
 #include <boost/mpl/map/aux_/tag.hpp>
 
 namespace boost {
-namespace mpl {
+    namespace mpl {
 
-template<>
-struct key_type_impl< aux::map_tag >
-{
-    template< typename Map, typename T > struct apply
-        : first<T>
-    {
-    };
-};
+        template<>
+        struct key_type_impl<aux::map_tag> {
+            template<typename Map, typename T>
+            struct apply
+                    : first<T> {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_MAP_AUX_KEY_TYPE_IMPL_HPP_INCLUDED

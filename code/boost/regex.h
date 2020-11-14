@@ -8,13 +8,13 @@
  * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org/libs/regex for documentation.
-  *   FILE         regex.h
-  *   VERSION      3.12
-  *   DESCRIPTION: Declares POSIX API functions
-  */
+
+/*
+ *   LOCATION:    see http://www.boost.org/libs/regex for documentation.
+ *   FILE         regex.h
+ *   VERSION      3.12
+ *   DESCRIPTION: Declares POSIX API functions
+ */
 
 #ifndef BOOST_RE_REGEX_H
 #define BOOST_RE_REGEX_H

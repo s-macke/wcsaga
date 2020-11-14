@@ -19,10 +19,11 @@
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
 
 // n.a. == not available
-struct na
-{
+struct na {
     typedef na type;
-    enum { value = 0 };
+    enum {
+        value = 0
+    };
 };
 
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE

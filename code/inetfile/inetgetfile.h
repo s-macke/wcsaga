@@ -17,36 +17,44 @@
 #include "inetfile/cftp.h"
 #include "inetfile/chttpget.h"
 
-#define INET_ERROR_NO_ERROR			0
-#define INET_ERROR_BADPARMS			1
-#define INET_ERROR_CANT_WRITE_FILE	2
-#define INET_ERROR_CANT_PARSE_URL	3
-#define INET_ERROR_BAD_FILE_OR_DIR	4
-#define INET_ERROR_HOST_NOT_FOUND	5
-#define INET_ERROR_UNKNOWN_ERROR		6
+#define INET_ERROR_NO_ERROR            0
+#define INET_ERROR_BADPARMS            1
+#define INET_ERROR_CANT_WRITE_FILE    2
+#define INET_ERROR_CANT_PARSE_URL    3
+#define INET_ERROR_BAD_FILE_OR_DIR    4
+#define INET_ERROR_HOST_NOT_FOUND    5
+#define INET_ERROR_UNKNOWN_ERROR        6
 #define INET_ERROR_NO_MEMORY        7
 
-class InetGetFile
-{
+class InetGetFile {
 public:
-	InetGetFile(char* URL, char* localfile);
-	~InetGetFile();
-	bool IsFileReceived();
-	bool IsFileError();
-	bool IsConnecting();
-	bool IsReceiving();
-	int GetErrorCode();
-	int GetBytesIn();
-	int GetTotalBytes();
-	void AbortGet();
+    InetGetFile(char *URL, char *localfile);
+
+    ~InetGetFile();
+
+    bool IsFileReceived();
+
+    bool IsFileError();
+
+    bool IsConnecting();
+
+    bool IsReceiving();
+
+    int GetErrorCode();
+
+    int GetBytesIn();
+
+    int GetTotalBytes();
+
+    void AbortGet();
 
 protected:
-	CFtpGet* ftp;
-	ChttpGet* http;
-	bool m_bUseHTTP;
-	int m_ErrorCode;
-	int m_State;
-	int m_HardError;
+    CFtpGet *ftp;
+    ChttpGet *http;
+    bool m_bUseHTTP;
+    int m_ErrorCode;
+    int m_State;
+    int m_HardError;
 
 };
 

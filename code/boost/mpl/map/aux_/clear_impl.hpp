@@ -19,17 +19,18 @@
 #include <boost/mpl/map/aux_/map0.hpp>
 #include <boost/mpl/map/aux_/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct clear_impl< aux::map_tag >
-{
-    template< typename Map > struct apply
-    {
-        typedef map0<> type;
-    };
-};
+        template<>
+        struct clear_impl<aux::map_tag> {
+            template<typename Map>
+            struct apply {
+                typedef map0<> type;
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_MAP_AUX_CLEAR_IMPL_HPP_INCLUDED

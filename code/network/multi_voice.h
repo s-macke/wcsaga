@@ -19,13 +19,13 @@
 struct header;
 
 // voice system status defines
-#define MULTI_VOICE_STATUS_IDLE					0			// nothing's happening, do nothing
-#define MULTI_VOICE_STATUS_DENIED				1			// have been denied the token (show a red icon or something)
-#define MULTI_VOICE_STATUS_RECORDING			2			// am currently recording (show a green icon or something)
-#define MULTI_VOICE_STATUS_PLAYING				3			// playing back a stream (show another icon)
+#define MULTI_VOICE_STATUS_IDLE                    0            // nothing's happening, do nothing
+#define MULTI_VOICE_STATUS_DENIED                1            // have been denied the token (show a red icon or something)
+#define MULTI_VOICE_STATUS_RECORDING            2            // am currently recording (show a green icon or something)
+#define MULTI_VOICE_STATUS_PLAYING                3            // playing back a stream (show another icon)
 
 // max recording time for one stream
-#define MULTI_VOICE_MAX_TIME						5000
+#define MULTI_VOICE_MAX_TIME                        5000
 
 // capabilities of this machine (make sure multi_voice_init() is called before referencing these)
 extern int Multi_voice_can_record;
@@ -80,7 +80,7 @@ void multi_voice_process_next_chunk();
 //
 
 // process an incoming voice packet of some kind or another
-void multi_voice_process_packet(unsigned char* data, header* hinfo);
+void multi_voice_process_packet(unsigned char *data, header *hinfo);
 
 
 // --------------------------------------------------------------------------------------------------

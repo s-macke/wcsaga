@@ -18,20 +18,20 @@
 #include <boost/mpl/minus.hpp>
 #include <boost/mpl/aux_/range_c/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct size_impl< aux::half_open_range_tag >
-{
-    template< typename Range > struct apply
-        : minus<
-              typename Range::finish
-            , typename Range::start
-            >
-    {
-    };
-};
+        template<>
+        struct size_impl<aux::half_open_range_tag> {
+            template<typename Range>
+            struct apply
+                    : minus<
+                            typename Range::finish, typename Range::start
+                    > {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_AUX_RANGE_C_SIZE_HPP_INCLUDED

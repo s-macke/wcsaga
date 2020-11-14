@@ -13,7 +13,9 @@
 #define __CREDITS_H__
 
 void credits_init();
+
 void credits_do_frame(float frametime);
+
 void credits_close();
 
 #endif /* __CREDITS_H__ */

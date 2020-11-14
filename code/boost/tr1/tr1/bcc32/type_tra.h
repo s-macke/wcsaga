@@ -8,6 +8,8 @@
 //
 #if !defined(BOOST_TR1_TYPE_TRAITS_H_INCLUDED)
 #  define BOOST_TR1_TYPE_TRAITS_H_INCLUDED
+
 #  include <type_traits.>
+
 #endif
 

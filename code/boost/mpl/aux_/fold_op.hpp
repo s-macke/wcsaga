@@ -16,22 +16,23 @@
 
 #include <boost/mpl/apply.hpp>
 
-namespace boost { namespace mpl { namespace aux {
+namespace boost {
+    namespace mpl {
+        namespace aux {
 
 // hand-written version is more efficient than bind/lambda expression
-template< typename Op >
-struct fold_op
-{
-    template< typename T1, typename T2 > struct apply
-    {
-        typedef typename apply2<
-              Op
-            , T1
-            , typename T2::type
-            >::type type;
-    };
-};
+            template<typename Op>
+            struct fold_op {
+                template<typename T1, typename T2>
+                struct apply {
+                    typedef typename apply2<
+                            Op, T1, typename T2::type
+                    >::type type;
+                };
+            };
 
-}}}
+        }
+    }
+}
 
 #endif // BOOST_MPL_AUX_FOLD_OP_HPP_INCLUDED

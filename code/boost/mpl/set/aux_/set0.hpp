@@ -25,7 +25,8 @@
 
 #include <boost/preprocessor/cat.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
 #if defined(BOOST_MPL_CFG_USE_OPERATORS_OVERLOADING)
 
@@ -50,20 +51,22 @@ namespace boost { namespace mpl {
 
 #endif
 
-template< typename Dummy = na > struct set0
-{
-    typedef set0<>          item_;
-    typedef item_           type;
-    typedef aux::set_tag    tag;
-    typedef void_           last_masked_;
-    typedef void_           item_type_;
-    typedef long_<0>        size;
-    typedef long_<1>        order;
+        template<typename Dummy = na>
+        struct set0 {
+            typedef set0<> item_;
+            typedef item_ type;
+            typedef aux::set_tag tag;
+            typedef void_ last_masked_;
+            typedef void_ item_type_;
+            typedef long_<0> size;
+            typedef long_<1> order;
 
-    BOOST_MPL_AUX_SET0_OVERLOAD( aux::no_tag, ORDER_BY_KEY, set0<>, void const volatile* );
-    BOOST_MPL_AUX_SET0_OVERLOAD( aux::yes_tag, IS_MASKED, set0<>, void const volatile* );
-};
+            BOOST_MPL_AUX_SET0_OVERLOAD(aux::no_tag, ORDER_BY_KEY, set0<>, void const volatile*);
 
-}}
+            BOOST_MPL_AUX_SET0_OVERLOAD(aux::yes_tag, IS_MASKED, set0<>, void const volatile*);
+        };
+
+    }
+}
 
 #endif // BOOST_MPL_SET_AUX_SET0_HPP_INCLUDED

@@ -20,7 +20,7 @@ extern "C" {
 #include "render/3d.h"
 #include "mission/missiongrid.h"
 
-#define	MAX_GRID_POINTS		1000
+#define    MAX_GRID_POINTS        1000
 
 void create_object(int objnum, vec3d *pos);
 
@@ -29,13 +29,15 @@ void create_object(int objnum, vec3d *pos);
 
 extern void test_form_wing(int x);
 
-extern int	select_object(int cx, int cy);
+extern int select_object(int cx, int cy);
+
 extern void game_init();
 
-extern matrix	Grid_gmatrix;
-extern vec3d	Grid_center;
+extern matrix Grid_gmatrix;
+extern vec3d Grid_center;
 
-extern int	Show_stars;
+extern int Show_stars;
+
 extern void rpd_line(vec3d *v0, vec3d *v1);
 
 

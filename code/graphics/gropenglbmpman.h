@@ -34,8 +34,8 @@ void gr_opengl_bm_create(int n);
 //			c_type		= output for an updated BM_TYPE_*
 //			mm_lvl		= number of mipmap levels for the image
 //			size		= size of the data contained in the image
-int gr_opengl_bm_load(ubyte type, int n, char* filename, CFILE* img_cfp = NULL, int* w = 0, int* h = 0, int* bpp = 0,
-					  ubyte* c_type = 0, int* mm_lvl = 0, int* size = 0);
+int gr_opengl_bm_load(ubyte type, int n, char *filename, CFILE *img_cfp = NULL, int *w = 0, int *h = 0, int *bpp = 0,
+                      ubyte *c_type = 0, int *mm_lvl = 0, int *size = 0);
 
 // API specific init instructions
 void gr_opengl_bm_init(int n);
@@ -44,10 +44,12 @@ void gr_opengl_bm_init(int n);
 void gr_opengl_bm_page_in_start();
 
 // Lock an image files data into memory
-int gr_opengl_bm_lock(char* filename, int handle, int bitmapnum, ubyte bpp, ubyte flags);
+int gr_opengl_bm_lock(char *filename, int handle, int bitmapnum, ubyte bpp, ubyte flags);
 
 void gr_opengl_bm_save_render_target(int slot);
-int gr_opengl_bm_make_render_target(int n, int* width, int* height, ubyte* bpp, int* mm_lvl, int flags);
+
+int gr_opengl_bm_make_render_target(int n, int *width, int *height, ubyte *bpp, int *mm_lvl, int flags);
+
 int gr_opengl_bm_set_render_target(int n, int face);
 
 #endif // _OGL_BMPMAN_H

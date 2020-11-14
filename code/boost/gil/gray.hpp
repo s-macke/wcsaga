@@ -27,19 +27,22 @@
 #include <boost/mpl/range_c.hpp>
 #include <boost/mpl/vector_c.hpp>
 
-namespace boost { namespace gil {
+namespace boost {
+    namespace gil {
 
 /// \ingroup ColorNameModel
 /// \brief Gray
-struct gray_color_t {};
+        struct gray_color_t {
+        };
 
 /// \ingroup ColorSpaceModel
-typedef mpl::vector1<gray_color_t> gray_t;
+        typedef mpl::vector1 <gray_color_t> gray_t;
 
 /// \ingroup LayoutModel
-typedef layout<gray_t> gray_layout_t;
+        typedef layout<gray_t> gray_layout_t;
 
-} }  // namespace boost::gil
+    }
+}  // namespace boost::gil
 
 #endif
 

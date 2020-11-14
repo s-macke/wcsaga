@@ -8,6 +8,8 @@
 //
 #if !defined(BOOST_TR1_RANDOM_H_INCLUDED)
 #  define BOOST_TR1_RANDOM_H_INCLUDED
+
 #  include <random.>
+
 #endif
 

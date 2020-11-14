@@ -20,21 +20,22 @@
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/void.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct at_impl< aux::set_tag >
-{
-    template< typename Set, typename T > struct apply
-    {
-        typedef typename if_< 
-              has_key_impl<aux::set_tag>::apply<Set,T>
-            , T
-            , void_
-            >::type type;            
-    };
-};
+        template<>
+        struct at_impl<aux::set_tag> {
+            template<typename Set, typename T>
+            struct apply {
+                typedef typename if_<
+                        has_key_impl<aux::set_tag>::apply < Set, T>
+                , T
+                , void_
+                >::type type;
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_SET_AUX_AT_IMPL_HPP_INCLUDED

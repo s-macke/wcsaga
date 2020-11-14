@@ -17,8 +17,10 @@
 #define PSNET2
 
 #ifdef PSNET2
-	#include "network/psnet2.h"
-#else 
+
+#include "network/psnet2.h"
+
+#else
 
 // use Berkeley reliable sockets if defined - otherwise use Volition reliable sockets
 #define PSNET_RELIABLE_OLD_SCHOOL
@@ -38,25 +40,25 @@
 #define DEFAULT_GAME_PORT 7802
 
 typedef struct net_addr	{
-	uint	type;			// See NET_ defines above
-	ubyte	net_id[4];	// used for IPX only
-	ubyte addr[6];		// address (first 4 used when IP, all 6 used when IPX)
-	short port;			
+    uint	type;			// See NET_ defines above
+    ubyte	net_id[4];	// used for IPX only
+    ubyte addr[6];		// address (first 4 used when IP, all 6 used when IPX)
+    short port;
 } net_addr;
 
 // define these in such a manner that a call to psnet_send_reliable is exactly the same and the new code in unobtrusive
 #ifdef PSNET_RELIABLE_OLD_SCHOOL
-	typedef uint PSNET_SOCKET;
-	typedef uint PSNET_SOCKET_RELIABLE;
+    typedef uint PSNET_SOCKET;
+    typedef uint PSNET_SOCKET_RELIABLE;
 
-	#undef INVALID_SOCKET
-	#define INVALID_SOCKET (PSNET_SOCKET)(~0)
+#undef INVALID_SOCKET
+#define INVALID_SOCKET (PSNET_SOCKET)(~0)
 #else
-	typedef net_addr* PSNET_SOCKET;
-	typedef net_addr* PSNET_SOCKET_RELIABLE
+    typedef net_addr* PSNET_SOCKET;
+    typedef net_addr* PSNET_SOCKET_RELIABLE
 
-	#undef INVALID_SOCKET
-	#define INVALID_SOCKET NULL
+#undef INVALID_SOCKET
+#define INVALID_SOCKET NULL
 
 #endif
 

@@ -27,12 +27,13 @@
 // warning: not a well-formed C++
 // workaround for MSVC 6.5's "dependent template typedef bug"
 
-template< typename F>
-struct AUX778076_MSVC_DTW_NAME
-{
-    template< bool > struct f_ : F {};
-    template<> struct f_<true>
-    {
+template<typename F>
+struct AUX778076_MSVC_DTW_NAME {
+    template<bool>
+    struct f_ : F {
+    };
+    template<>
+    struct f_<true> {
 #if AUX778076_MSVC_DTW_ARITY > 0
         template< AUX778076_DTW_PARAMS(typename P) > struct AUX778076_DTW_ORIGINAL_NAME
         {
@@ -46,16 +47,16 @@ struct AUX778076_MSVC_DTW_NAME
     {
     };
 #else
-        template< typename P = int > struct AUX778076_DTW_ORIGINAL_NAME
-        {
+        template<typename P = int>
+        struct AUX778076_DTW_ORIGINAL_NAME {
             typedef int type;
         };
     };
 
-    template< typename T = int > struct result_
-        : f_< aux::msvc_never_true<F>::value >
-            ::template AUX778076_DTW_ORIGINAL_NAME<>
-    {
+    template<typename T = int>
+    struct result_
+            : f_<aux::msvc_never_true<F>::value>
+              ::template AUX778076_DTW_ORIGINAL_NAME<> {
     };
 #endif
 };

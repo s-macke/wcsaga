@@ -22,8 +22,8 @@ struct header;
 // should be initialize to 0 inside of multi_vars_init
 extern int Multi_ts_inited;
 
-#define MULTI_TS_MAX_TVT_TEAMS							2						// 2 teams max for now
-#define MULTI_TS_NUM_SHIP_SLOTS							12						// # of ship slots in non team vs. team mode
+#define MULTI_TS_MAX_TVT_TEAMS                            2                        // 2 teams max for now
+#define MULTI_TS_NUM_SHIP_SLOTS                            12                        // # of ship slots in non team vs. team mode
 
 // deleted ship objnums
 extern int Multi_ts_deleted_objnums[MULTI_TS_MAX_TVT_TEAMS * MULTI_TS_NUM_SHIP_SLOTS];
@@ -70,13 +70,13 @@ void multi_ts_handle_player_drop();
 void multi_ts_commit_pressed();
 
 // get the team # of the given ship
-int multi_ts_get_team(char* ship_name);
+int multi_ts_get_team(char *ship_name);
 
 // function to get the team and slot of a particular ship
-void multi_ts_get_team_and_slot(char* ship_name, int* team_index, int* slot_index);
+void multi_ts_get_team_and_slot(char *ship_name, int *team_index, int *slot_index);
 
 // function to return the shipname of the ship belonging in slot N
-void multi_ts_get_shipname(char* ship_name, int team, int slot_index);
+void multi_ts_get_shipname(char *ship_name, int team, int slot_index);
 
 // blit the proper "locked" button - used for weapon select and briefing screens
 void multi_ts_blit_locked_button();
@@ -98,7 +98,7 @@ void multi_ts_maybe_host_only_popup();
 void send_pslot_update_packet(int team, int code, int sound = -1);
 
 // process a player slot position update
-void process_pslot_update_packet(ubyte* data, header* hinfo);
+void process_pslot_update_packet(ubyte *data, header *hinfo);
 
 
 

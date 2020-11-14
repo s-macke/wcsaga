@@ -13,8 +13,8 @@
 #define _PLAYER_SELECT_MENU_HEADER_FILE
 
 // general defines
-#define PLAYER_SELECT_MODE_SINGLE	0							// looking through single player pilots
-#define PLAYER_SELECT_MODE_MULTI    1							// looking through multi player pilots
+#define PLAYER_SELECT_MODE_SINGLE    0                            // looking through single player pilots
+#define PLAYER_SELECT_MODE_MULTI    1                            // looking through multi player pilots
 
 // flag indicating if this is the absolute first pilot created and selected. Used to determine
 // if the main hall should display the help overlay screen
@@ -22,7 +22,9 @@ extern int Player_select_very_first_pilot;
 
 // functions for selecting single/multiplayer pilots at the very beginning of FreeSpace
 void player_select_init();
+
 void player_select_do();
+
 void player_select_close();
 
 // function to check whether we found a "last pilot". loads this pilot in if possible and returns true, or false otherwise
@@ -30,8 +32,11 @@ int player_select_get_last_pilot();
 
 // tooltips
 void player_tips_init();
+
 void player_tips_close();
+
 void player_tips_popup();
+
 void player_tips_close();
 
 // quick check to make sure we always load default campaign savefile values when loading from the pilot

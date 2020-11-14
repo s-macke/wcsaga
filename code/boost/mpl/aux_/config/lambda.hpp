@@ -21,9 +21,9 @@
 // template template parameters _and_ partial specialization
 
 #if    !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT) \
-    && (   defined(BOOST_MPL_CFG_NO_TEMPLATE_TEMPLATE_PARAMETERS) \
-        || defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
-        )
+ && (defined(BOOST_MPL_CFG_NO_TEMPLATE_TEMPLATE_PARAMETERS) \
+ || defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
+)
 
 #   define BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT
 

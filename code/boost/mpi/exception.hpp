@@ -19,7 +19,8 @@
 #include <boost/config.hpp>
 #include <boost/throw_exception.hpp>
 
-namespace boost { namespace mpi {
+namespace boost {
+    namespace mpi {
 
 /** @brief Catch-all exception class for MPI errors.
  *
@@ -29,61 +30,63 @@ namespace boost { namespace mpi {
  * implementation. Consult the documentation for your MPI
  * implementation to determine the effect of MPI errors.
  */
-class BOOST_MPI_DECL exception : public std::exception
-{
- public:
-  /**
-   * Build a new @c exception exception.
-   *
-   *   @param routine The MPI routine in which the error
-   *   occurred. This should be a pointer to a string constant: it
-   *   will not be copied.
-   *
-   *   @param result_code The result code returned from the MPI
-   *   routine that aborted with an error.
-   */
-  exception(const char* routine, int result_code);
+        class BOOST_MPI_DECL exception
 
-  virtual ~exception() throw();
+        : public std::exception {
+        public:
 
-  /**
-   * A description of the error that occurred. 
-   */
-  virtual const char * what () const throw ()
-  {
-    return this->message.c_str();
-  }
+        /**
+         * Build a new @c exception exception.
+         *
+         *   @param routine The MPI routine in which the error
+         *   occurred. This should be a pointer to a string constant: it
+         *   will not be copied.
+         *
+         *   @param result_code The result code returned from the MPI
+         *   routine that aborted with an error.
+         */
+        exception(const char *routine, int result_code);
 
-  /** Retrieve the name of the MPI routine that reported the error. */
-  const char* routine() const { return routine_; }
+        virtual ~
 
-  /**
-   * @brief Retrieve the result code returned from the MPI routine
-   * that reported the error.
-   */
-  int result_code() const { return result_code_; }
+        exception() throw();
 
-  /**
-   * @brief Returns the MPI error class associated with the error that
-   * triggered this exception.
-   */
-  int error_class() const 
-  { 
-    int result;
-    MPI_Error_class(result_code_, &result);
-    return result;
-  }
+        /**
+         * A description of the error that occurred.
+         */
+        virtual const char *what() const throw() {
+            return this->message.c_str();
+        }
 
- protected:
-  /// The MPI routine that triggered the error
-  const char* routine_;
+        /** Retrieve the name of the MPI routine that reported the error. */
+        const char *routine() const { return routine_; }
 
-  /// The failed result code reported by the MPI implementation.
-  int result_code_;
+        /**
+         * @brief Retrieve the result code returned from the MPI routine
+         * that reported the error.
+         */
+        int result_code() const { return result_code_; }
 
-  /// The formatted error message
-  std::string message;
-};
+        /**
+         * @brief Returns the MPI error class associated with the error that
+         * triggered this exception.
+         */
+        int error_class() const {
+            int result;
+            MPI_Error_class(result_code_, &result);
+            return result;
+        }
+
+        protected:
+        /// The MPI routine that triggered the error
+        const char *routine_;
+
+        /// The failed result code reported by the MPI implementation.
+        int result_code_;
+
+        /// The formatted error message
+        std::string message;
+    };
 
 /**
  * Call the MPI routine MPIFunc with arguments Args (surrounded by
@@ -91,7 +94,7 @@ class BOOST_MPI_DECL exception : public std::exception
  * boost::throw_exception to throw an exception or abort, depending on
  * BOOST_NO_EXCEPTIONS.
  */
-#define BOOST_MPI_CHECK_RESULT( MPIFunc, Args )                         \
+#define BOOST_MPI_CHECK_RESULT(MPIFunc, Args)                         \
  {                                                                      \
    int _check_result = MPIFunc Args;                                    \
    if (_check_result != MPI_SUCCESS)                                    \
@@ -99,6 +102,7 @@ class BOOST_MPI_DECL exception : public std::exception
                                                              _check_result)); \
  }
 
-} } // end namespace boost::mpi
+}
+} // end namespace boost::mpi
 
 #endif // BOOST_MPI_EXCEPTION_HPP

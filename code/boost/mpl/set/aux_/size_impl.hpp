@@ -17,17 +17,18 @@
 #include <boost/mpl/size_fwd.hpp>
 #include <boost/mpl/set/aux_/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct size_impl< aux::set_tag >
-{
-    template< typename Set > struct apply
-        : Set::size
-    {
-    };
-};
+        template<>
+        struct size_impl<aux::set_tag> {
+            template<typename Set>
+            struct apply
+                    : Set::size {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_SET_AUX_SIZE_IMPL_HPP_INCLUDED

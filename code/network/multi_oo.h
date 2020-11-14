@@ -15,8 +15,10 @@
 #define OO_NEW
 
 #ifdef OO_NEW
-	#include "network/multi_obj.h"
-#else 
+
+#include "network/multi_obj.h"
+
+#else
 
 // ---------------------------------------------------------------------------------------------------
 // OBJECT UPDATE DEFINES/VARS
@@ -36,33 +38,33 @@ struct net_player;
 
 // interpolation info struct 
 typedef struct interp_info {
-	// position and timestamp
-	vec3d pos;
-	int pos_time;
+    // position and timestamp
+    vec3d pos;
+    int pos_time;
 
-	// velocity and timestamp
-	vec3d vel;
-	int vel_time;
+    // velocity and timestamp
+    vec3d vel;
+    int vel_time;
 
-	// desired velocity and timestamp
-	vec3d desired_vel;
-	int desired_vel_time;
+    // desired velocity and timestamp
+    vec3d desired_vel;
+    int desired_vel_time;
 
-	// orientation and timestamp
-	matrix orient;
-	int orient_time;
+    // orientation and timestamp
+    matrix orient;
+    int orient_time;
 
-	// rotvel and timestamp
-	vec3d rotvel;
-	int rotvel_time;
+    // rotvel and timestamp
+    vec3d rotvel;
+    int rotvel_time;
 
-	// desired rotvel and timestamp
-	vec3d desired_rotvel;
-	int desired_rotvel_time;
+    // desired rotvel and timestamp
+    vec3d desired_rotvel;
+    int desired_rotvel_time;
 
-	// ping info (in ms)
-	int lowest_ping;				// lowest ping (or -1, if not known)
-	int lowest_ping_avg;			// (lowest ping + average ping)/2   or -1 if not known
+    // ping info (in ms)
+    int lowest_ping;				// lowest ping (or -1, if not known)
+    int lowest_ping_avg;			// (lowest ping + average ping)/2   or -1 if not known
 } interp_info;
 
 

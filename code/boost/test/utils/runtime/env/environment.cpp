@@ -20,4 +20,5 @@
 #endif
 
 #define BOOST_RT_PARAM_INLINE
+
 #include <boost/test/utils/runtime/env/environment.ipp>

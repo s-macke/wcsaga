@@ -17,10 +17,13 @@ const int MAX_NUM_TIMERBARS = 20;
 
 // These functions should never be used directly, always use macros below
 void timerbar_start_frame();
+
 void timerbar_end_frame();
+
 void timerbar_set_draw_func(void (*new_draw_func_ptr)(int colour, float x, float y, float w, float h));
 
 void timerbar_push(int value);
+
 void timerbar_pop();
 
 // This function shouldnt not be used any more or it will break push and pop calls

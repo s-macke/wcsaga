@@ -13,7 +13,9 @@
 #define __FISHTANK_H__
 
 void fishtank_start();
+
 void fishtank_stop();
+
 void fishtank_process();
 
 #endif /* __CREDITS_H__ */

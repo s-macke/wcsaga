@@ -16,7 +16,9 @@
 #include <float.h>
 
 extern float frand();
+
 extern int rand_chance(float frametime, float chance = 1.0f);
+
 float frand_range(float min, float max);
 
 // determine if a floating point number is NaN (Not a Number)
@@ -36,10 +38,10 @@ float frand_range(float min, float max);
 #define fl_tan(fl) tanf(fl)
 
 // convert a measurement in degrees to radians
-#define fl_radian(fl)	((float)((fl * 3.14159f)/180.0f))
+#define fl_radian(fl)    ((float)((fl * 3.14159f)/180.0f))
 
 // convert a measurement in radians to degrees
-#define fl_degrees(fl)	((float)((fl * 180.0f)/3.14159))
+#define fl_degrees(fl)    ((float)((fl * 180.0f)/3.14159))
 
 // use this instead of:
 // for:  (int)floor(x+0.5f) use fl_round_2048(x)

@@ -17,7 +17,7 @@
 class UI_WINDOW;
 
 // called when the options screen is initialized, pass in the UI window
-void options_multi_init(UI_WINDOW* options_window);
+void options_multi_init(UI_WINDOW *options_window);
 
 // do frame for the multi options screen
 void options_multi_do(int key);
@@ -39,8 +39,8 @@ void options_multi_unselect();
 int options_multi_background_bitmap();
 
 // set voice sound buffer for display 
-void options_multi_set_voice_data(unsigned char* sound_buf, int buf_size, unsigned char* comp_buf, int comp_size,
-								  int uncomp_size, double gain);
+void options_multi_set_voice_data(unsigned char *sound_buf, int buf_size, unsigned char *comp_buf, int comp_size,
+                                  int uncomp_size, double gain);
 
 // process and blit any voice waveform if necessary
 void options_multi_vox_process_waveform();

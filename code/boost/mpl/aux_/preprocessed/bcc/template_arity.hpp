@@ -9,32 +9,33 @@
 // *Preprocessed* version of the main "template_arity.hpp" header
 // -- DO NOT modify by hand!
 
-namespace boost { namespace mpl { namespace aux {
+namespace boost {
+    namespace mpl {
+        namespace aux {
 
-template< bool >
-struct template_arity_impl
-{
-    template< typename F > struct result_
-        : mpl::int_< -1 >
-    {
-    };
-};
+            template<bool>
+            struct template_arity_impl {
+                template<typename F>
+                struct result_
+                        : mpl::int_<-1> {
+                };
+            };
 
-template<>
-struct template_arity_impl<true>
-{
-    template< typename F > struct result_
-        : F::arity
-    {
-    };
-};
+            template<>
+            struct template_arity_impl<true> {
+                template<typename F>
+                struct result_
+                        : F::arity {
+                };
+            };
 
-template< typename F >
-struct template_arity
-    : template_arity_impl< ::boost::mpl::aux::has_rebind<F>::value >
-        ::template result_<F>
-{
-};
+            template<typename F>
+            struct template_arity
+                    : template_arity_impl<::boost::mpl::aux::has_rebind<F>::value>
+                      ::template result_<F> {
+            };
 
-}}}
+        }
+    }
+}
 

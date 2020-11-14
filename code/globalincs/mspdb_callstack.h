@@ -32,11 +32,11 @@
 class SCP_IDumpHandler abstract
 {
 public:
-	virtual bool ResolveSymbols( ) PURE;
-	virtual void OnBegin( ) PURE;
-	virtual void OnEntry( void* address, const char* module, const char* symbol ) PURE;
-	virtual void OnError( const char* error ) PURE;
-	virtual void OnEnd( ) PURE;
+    virtual bool ResolveSymbols( ) PURE;
+    virtual void OnBegin( ) PURE;
+    virtual void OnEntry( void* address, const char* module, const char* symbol ) PURE;
+    virtual void OnError( const char* error ) PURE;
+    virtual void OnEnd( ) PURE;
 };
 
 extern HRESULT SCP_DumpStack( SCP_IDumpHandler* pISH );
@@ -48,17 +48,17 @@ extern HRESULT SCP_DumpStack( SCP_IDumpHandler* pISH );
 
 struct SCP_mspdbcs_SDumpStackThreadInfo
 {
-	HANDLE hThread;
-	HANDLE hProcess;
-	SCP_IDumpHandler* pIDS;
+    HANDLE hThread;
+    HANDLE hProcess;
+    SCP_IDumpHandler* pIDS;
 };
 
 struct SCP_mspdbcs_SDumpStackSymbolInfo
 {
-	ULONG_PTR dwAddress;
-	DWORD64 dwOffset; /* Will be truncated to DWORD under Win32 */
-	char szModule[ SCP_MSPDBCS_MAX_MODULE_LENGTH ];
-	char szSymbol[ SCP_MSPDBCS_MAX_SYMBOL_LENGTH ];
+    ULONG_PTR dwAddress;
+    DWORD64 dwOffset; /* Will be truncated to DWORD under Win32 */
+    char szModule[ SCP_MSPDBCS_MAX_MODULE_LENGTH ];
+    char szSymbol[ SCP_MSPDBCS_MAX_SYMBOL_LENGTH ];
 };
 
 /* INTERNAL FUNCTIONS */
@@ -71,6 +71,7 @@ extern DWORD WINAPI SCP_mspdbcs_DumpStackThread( LPVOID pv );
 
 /* Initialisation */
 extern void SCP_mspdbcs_Initialise();
+
 extern void SCP_mspdbcs_Cleanup();
 
 #endif // _MSPDB_CALLSTACK_H_INCLUDED_

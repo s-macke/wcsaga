@@ -16,8 +16,12 @@
 
 #include <boost/mpl/has_xxx.hpp>
 
-namespace boost { namespace mpl { namespace aux {
-BOOST_MPL_HAS_XXX_TRAIT_DEF(size)
-}}}
+namespace boost {
+    namespace mpl {
+        namespace aux {
+            BOOST_MPL_HAS_XXX_TRAIT_DEF(size)
+        }
+    }
+}
 
 #endif // BOOST_MPL_AUX_HAS_SIZE_HPP_INCLUDED

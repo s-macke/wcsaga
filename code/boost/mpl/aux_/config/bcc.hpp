@@ -17,8 +17,8 @@
 #include <boost/mpl/aux_/config/workaround.hpp>
 
 #if    !defined(BOOST_MPL_CFG_BCC590_WORKAROUNDS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && BOOST_WORKAROUND(__BORLANDC__, >= 0x590) \
+ && !defined(BOOST_MPL_PREPROCESSING_MODE) \
+ && BOOST_WORKAROUND(__BORLANDC__, >= 0x590) \
     && BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x610))
 
 #   define BOOST_MPL_CFG_BCC590_WORKAROUNDS

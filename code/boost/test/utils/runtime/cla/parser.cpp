@@ -15,4 +15,5 @@
 #include <boost/test/utils/runtime/config.hpp>
 
 #define BOOST_RT_PARAM_INLINE
+
 #include <boost/test/utils/runtime/cla/parser.ipp>

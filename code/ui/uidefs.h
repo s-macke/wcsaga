@@ -28,14 +28,23 @@
 #define BORDER_WIDTH 8
 
 void ui_hline(int x1, int x2, int y);
+
 void ui_vline(int y1, int y2, int x);
-void ui_string_centered(int x, int y, char* s);
+
+void ui_string_centered(int x, int y, char *s);
+
 void ui_draw_shad(int x1, int y1, int x2, int y2, int r1, int g1, int b1, int r2, int g2, int b2);
+
 void ui_draw_frame(int x1, int y1, int x2, int y2);
+
 void ui_rect(int x1, int y1, int x2, int y2);
+
 void ui_draw_box_out(int x1, int y1, int x2, int y2);
+
 void ui_draw_box_in(int x1, int y1, int x2, int y2);
+
 void ui_draw_line_in(int x1, int y1, int x2, int y2);
+
 void ui_draw_sunken_border(int x1, int y1, int x2, int y2);
 
 #define BUTTON_PRESSED          1
@@ -55,20 +64,20 @@ void ui_draw_sunken_border(int x1, int y1, int x2, int y2);
 #define B2_JUST_PRESSED     (ui_mouse.b2_status & BUTTON_JUST_PRESSED)
 #define B2_JUST_RELEASED    (ui_mouse.b2_status & BUTTON_JUST_RELEASED)
 
-typedef struct UI_MOUSE
-{
-	int x, y;
-	int dx, dy;
-	int b1_status;
-	int b1_last_status;
-	int b1_time_lastpressed;
-	int b2_status;
-	int b2_last_status;
-	int b2_time_lastpressed;
-	int timestamp;
+typedef struct UI_MOUSE {
+    int x, y;
+    int dx, dy;
+    int b1_status;
+    int b1_last_status;
+    int b1_time_lastpressed;
+    int b2_status;
+    int b2_last_status;
+    int b2_time_lastpressed;
+    int timestamp;
 } UI_MOUSE;
 
 extern UI_MOUSE ui_mouse;
+
 extern void ui_mouse_process();
 
 

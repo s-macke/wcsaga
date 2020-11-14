@@ -20,25 +20,25 @@
 typedef uint PSNET_SOCKET_RELIABLE;
 
 // status codes for transfers
-#define MULTI_XFER_NONE						-1							// nothing is happening - this is an invalid handle
-#define MULTI_XFER_SUCCESS					0							// the xfer has successfully transferred
-#define MULTI_XFER_FAIL						1							// the xfer has failed for one reason or another
-#define MULTI_XFER_UNKNOWN					2							// the xfer has finished but its unknown if it was successful - wait a while longer
-#define MULTI_XFER_TIMEDOUT				3							// the xfer has timed-out during some stage of the process
-#define MULTI_XFER_IN_PROGRESS			4							// the xfer is in progress
-#define MULTI_XFER_QUEUED					5							// queued up - hasn't started yet
+#define MULTI_XFER_NONE                        -1                            // nothing is happening - this is an invalid handle
+#define MULTI_XFER_SUCCESS                    0                            // the xfer has successfully transferred
+#define MULTI_XFER_FAIL                        1                            // the xfer has failed for one reason or another
+#define MULTI_XFER_UNKNOWN                    2                            // the xfer has finished but its unknown if it was successful - wait a while longer
+#define MULTI_XFER_TIMEDOUT                3                            // the xfer has timed-out during some stage of the process
+#define MULTI_XFER_IN_PROGRESS            4                            // the xfer is in progress
+#define MULTI_XFER_QUEUED                    5                            // queued up - hasn't started yet
 
-#define MULTI_XFER_FLAG_AUTODESTROY		(1<<15)					// automatically clear and free an xfer handle that is done
-#define MULTI_XFER_FLAG_REJECT			(1<<16)					// set by the receive callback function if we want to disallow xfer of this file
+#define MULTI_XFER_FLAG_AUTODESTROY        (1<<15)                    // automatically clear and free an xfer handle that is done
+#define MULTI_XFER_FLAG_REJECT            (1<<16)                    // set by the receive callback function if we want to disallow xfer of this file
 // if this flag is set, the system will only xfer one file at a time to a given destination. 
 // so, suppose you start sending 3 files to one target, all which have this flag set. Only the first file will send.
 // Once it is complete, the second one will go. Then the third. This is extremely useful for files where you don't 
 // _really_ care if it arrives or not (eg - sending multiple pilot pics or sounds or squad logos, etc). If you _do_
 // care about the file (eg - mission files), you probably shouldn't be using this flag
-#define MULTI_XFER_FLAG_QUEUE				(1<<17)
+#define MULTI_XFER_FLAG_QUEUE                (1<<17)
 
 // the xfer system is guaranteed never to spew data larger than this
-#define MULTI_XFER_MAX_SIZE				500
+#define MULTI_XFER_MAX_SIZE                500
 
 // ------------------------------------------------------------------------------------------
 // MULTI XFER FUNCTIONS
@@ -57,7 +57,7 @@ void multi_xfer_close();
 void multi_xfer_reset();
 
 // send a file to the specified player, return a handle
-int multi_xfer_send_file(PSNET_SOCKET_RELIABLE who, char* filename, int cfile_flags, int flags = 0);
+int multi_xfer_send_file(PSNET_SOCKET_RELIABLE who, char *filename, int cfile_flags, int flags = 0);
 
 // get the status of the current file xfer
 int multi_xfer_get_status(int handle);
@@ -69,7 +69,7 @@ void multi_xfer_abort(int handle);
 void multi_xfer_release_handle(int handle);
 
 // get the filename of the xfer for the given handle
-char* multi_xfer_get_filename(int handle);
+char *multi_xfer_get_filename(int handle);
 
 // lock the xfer system (don't accept incoming files, don't allow outgoing files)
 void multi_xfer_lock();
@@ -90,7 +90,7 @@ void multi_xfer_xor_flags(int handle, int flags);
 int multi_xfer_get_flags(int handle);
 
 // if the passed filename is being xferred, return the xfer handle, otherwise return -1
-int multi_xfer_lookup(char* filename);
+int multi_xfer_lookup(char *filename);
 
 // get the % of completion of the passed file handle, return < 0 if invalid
 float multi_xfer_pct_complete(int handle);
@@ -107,6 +107,6 @@ int multi_xfer_get_force_dir(int handle);
 
 // process an incoming file xfer data packet, return bytes processed, guaranteed to process the entire
 // packet regardless of error conditions
-int multi_xfer_process_packet(unsigned char* data, PSNET_SOCKET_RELIABLE who);
+int multi_xfer_process_packet(unsigned char *data, PSNET_SOCKET_RELIABLE who);
 
 #endif

@@ -16,7 +16,9 @@
 
 /// INTERNAL ONLY
 #define BOOST_MPI_COLLECTIVES_FORWARD_ONLY
+
 #include <boost/mpi/collectives.hpp>
+
 #undef BOOST_MPI_COLLECTIVES_FORWARD_ONLY
 
 #endif // BOOST_MPI_COLLECTIVES_FWD_HPP

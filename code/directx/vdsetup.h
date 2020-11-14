@@ -24,7 +24,7 @@ extern "C"
 {
 #endif
 
-	// DSETUP Error Codes, must remain compatible with previous setup.
+// DSETUP Error Codes, must remain compatible with previous setup.
 #define DSETUPERR_SUCCESS_RESTART        1
 #define DSETUPERR_SUCCESS                0
 #define DSETUPERR_BADWINDOWSVERSION     -1
@@ -41,16 +41,16 @@ extern "C"
 #define DSETUPERR_USERHITCANCEL         -12
 #define DSETUPERR_NOTPREINSTALLEDONNT   -13
 
-	// DSETUP flags. DirectX 5.0 apps should use these flags only.
+// DSETUP flags. DirectX 5.0 apps should use these flags only.
 #define DSETUP_DDRAWDRV         0x00000008      /* install DirectDraw Drivers           */
 #define DSETUP_DSOUNDDRV        0x00000010      /* install DirectSound Drivers          */
-#define DSETUP_DXCORE           0x00010000	/* install DirectX runtime              */
+#define DSETUP_DXCORE           0x00010000    /* install DirectX runtime              */
 #define DSETUP_DIRECTX  (DSETUP_DXCORE|DSETUP_DDRAWDRV|DSETUP_DSOUNDDRV)
 #define DSETUP_TESTINSTALL      0x00020000      /* just test install, don't do anything */
 
-	// These OBSOLETE flags are here for compatibility with pre-DX5 apps only.
-	// They are present to allow DX3 apps to be recompiled with DX5 and still work.
-	// DO NOT USE THEM for DX5. They will go away in future DX releases.
+// These OBSOLETE flags are here for compatibility with pre-DX5 apps only.
+// They are present to allow DX3 apps to be recompiled with DX5 and still work.
+// DO NOT USE THEM for DX5. They will go away in future DX releases.
 #define DSETUP_DDRAW            0x00000001      /* OBSOLETE. install DirectDraw           */
 #define DSETUP_DSOUND           0x00000002      /* OBSOLETE. install DirectSound          */
 #define DSETUP_DPLAY            0x00000004      /* OBSOLETE. install DirectPlay           */
@@ -65,11 +65,11 @@ extern "C"
 
 
 
-	//******************************************************************
-	// DirectX Setup Callback mechanism
-	//******************************************************************
+//******************************************************************
+// DirectX Setup Callback mechanism
+//******************************************************************
 
-	// DSETUP Message Info Codes, passed to callback as Reason parameter.
+// DSETUP Message Info Codes, passed to callback as Reason parameter.
 #define DSETUP_CB_MSG_NOMESSAGE                     0
 #define DSETUP_CB_MSG_CANTINSTALL_UNKNOWNOS         1
 #define DSETUP_CB_MSG_CANTINSTALL_NT                2
@@ -105,21 +105,19 @@ extern "C"
 #define DSETUP_CB_UPGRADE_DEVICE_MEDIA          0x2000
 
 
-	typedef struct _DSETUP_CB_UPGRADEINFO
-	{
-		DWORD UpgradeFlags;
-	} DSETUP_CB_UPGRADEINFO;
+typedef struct _DSETUP_CB_UPGRADEINFO {
+    DWORD UpgradeFlags;
+} DSETUP_CB_UPGRADEINFO;
 
-	typedef struct _DSETUP_CB_FILECOPYERROR
-	{
-		DWORD dwError;
-	} DSETUP_CB_FILECOPYERROR;
+typedef struct _DSETUP_CB_FILECOPYERROR {
+    DWORD dwError;
+} DSETUP_CB_FILECOPYERROR;
 
 
 #ifdef _WIN32
 //
-	// Data Structures
-	//
+    // Data Structures
+    //
 #ifndef UNICODE_ONLY
 typedef struct _DIRECTXREGISTERAPPA {
     DWORD    dwSize;
@@ -156,8 +154,8 @@ typedef LPDIRECTXREGISTERAPPA LPDIRECTXREGISTERAPP;
 
 
 //
-	// API
-	//
+    // API
+    //
 #ifndef UNICODE_ONLY
 INT
 WINAPI
@@ -238,8 +236,8 @@ DirectXUnRegisterApplication(
     );
 
 //
-	// Function Pointers
-	//
+    // Function Pointers
+    //
 #ifdef UNICODE
 typedef INT (WINAPI * LPDIRECTXSETUP)(HWND, LPWSTR, DWORD);
 typedef INT (WINAPI * LPDIRECTXDEVICEDRIVERSETUP)(HWND, LPWSTR, LPSTR, DWORD);

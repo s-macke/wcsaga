@@ -8,6 +8,8 @@
 //
 #if !defined(BOOST_TR1_TUPLE_H_INCLUDED)
 #  define BOOST_TR1_TUPLE_H_INCLUDED
+
 #  include <tuple.>
+
 #endif
 

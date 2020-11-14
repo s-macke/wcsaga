@@ -21,8 +21,7 @@
 
 #include <boost/type_traits/is_same.hpp>
 
-int main()
-{
+int main() {
     return boost::report_errors();
 }
 

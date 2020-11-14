@@ -15,11 +15,11 @@
 
 
 // type of audio stream
-#define ASF_SOUNDFX			0
-#define ASF_EVENTMUSIC		1
-#define ASF_MENUMUSIC		2
-#define ASF_VOICE			3
-#define ASF_NONE			4		// used to catch errors
+#define ASF_SOUNDFX            0
+#define ASF_EVENTMUSIC        1
+#define ASF_MENUMUSIC        2
+#define ASF_VOICE            3
+#define ASF_NONE            4        // used to catch errors
 // NOTE: the only difference between EVENTMUSIC and everything else is that EVENTMUSIC
 //       will always respect the file type, everything else will load first available type
 
@@ -35,15 +35,15 @@
 
 // audio stream file handle information
 typedef struct {
-	HMMIO cfp;		// handle for mmio
+    HMMIO cfp;		// handle for mmio
 
-	long true_offset;	// true offset of file into VP
-	uint size;			// total size of file being read
+    long true_offset;	// true offset of file into VP
+    uint size;			// total size of file being read
 
-	// for OGGs
-	OggVorbis_File vorbis_file;	// vorbis file info
+    // for OGGs
+    OggVorbis_File vorbis_file;	// vorbis file info
 } STRHDL;
-#endif	// NEED_STRHDL
+#endif    // NEED_STRHDL
 
 // Initializes the audio streaming library.  Called
 // automatically when the sound stuff is inited.
@@ -53,7 +53,7 @@ void audiostream_init();
 void audiostream_close();
 
 // Opens a wave file but doesn't play it.
-int audiostream_open(char* filename, int type);
+int audiostream_open(char *filename, int type);
 
 // Closes the opened wave file.  This doesn't have to be
 // called between songs, because when you open the next
@@ -92,10 +92,10 @@ int audiostream_done_reading(int i);
 // return if audiostream has initialized ok
 int audiostream_is_inited();
 
-void audiostream_pause(int i);	// pause a particular stream
-void audiostream_pause_all();	// pause all audio streams											
+void audiostream_pause(int i);    // pause a particular stream
+void audiostream_pause_all();    // pause all audio streams
 
-void audiostream_unpause(int i);	// unpause a particular stream
-void audiostream_unpause_all();	// unpause all audio streams
+void audiostream_unpause(int i);    // unpause a particular stream
+void audiostream_unpause_all();    // unpause all audio streams
 
 #endif // _AUDIOSTR_H

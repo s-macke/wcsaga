@@ -13,7 +13,7 @@
 #define _MAIN_HALL_MENU_HEADER_FILE
 
 // the # of main halls we're supporting
-#define MAIN_HALLS_MAX			10		// Goober5000 - bumped down to 10; don't go above 256 (size of ubyte)
+#define MAIN_HALLS_MAX            10        // Goober5000 - bumped down to 10; don't go above 256 (size of ubyte)
 
 // initialize the main hall proper 
 void main_hall_init(int main_hall_num);
@@ -41,7 +41,9 @@ int main_hall_is_vasudan();
 
 // start the ambient sounds playing in the main hall
 void main_hall_start_ambient();
+
 void main_hall_stop_ambient();
+
 void main_hall_reset_ambient_vol();
 
 void main_hall_do_multi_ready();
@@ -50,6 +52,7 @@ void main_hall_do_multi_ready();
 void main_hall_vasudan_funny();
 
 void main_hall_pause();
+
 void main_hall_unpause();
 
 #endif

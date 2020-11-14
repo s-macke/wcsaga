@@ -37,33 +37,33 @@
 //   the first version is 3.0 :-)
 //   Major.Minor.Bugfix
 
-#define FS_VERSION_MAJOR 3					// major version
-#define FS_VERSION_MINOR 6					// increase by 1 for minor revs
-#define FS_VERSION_BUILD 12					// bugfix release
-#define FS_VERSION_REVIS 0					// SVN revision
+#define FS_VERSION_MAJOR 3                    // major version
+#define FS_VERSION_MINOR 6                    // increase by 1 for minor revs
+#define FS_VERSION_BUILD 12                    // bugfix release
+#define FS_VERSION_REVIS 0                    // SVN revision
 
-#define SAGA_VERSION_MAJOR 1					// major version
-#define SAGA_VERSION_MINOR 1					// increase by 1 for minor revs
-#define SAGA_VERSION_BUILD 0					// bugfix release
-#define SAGA_VERSION_REVIS 7822					// SVN revision
+#define SAGA_VERSION_MAJOR 1                    // major version
+#define SAGA_VERSION_MINOR 1                    // increase by 1 for minor revs
+#define SAGA_VERSION_BUILD 0                    // bugfix release
+#define SAGA_VERSION_REVIS 7822                    // SVN revision
 
 
-#define VERSION_LOC_FNAME			"version.nfo"
-#define MOTD_LOC_FNAME				"motd.txt"
+#define VERSION_LOC_FNAME            "version.nfo"
+#define MOTD_LOC_FNAME                "motd.txt"
 
 #ifdef MULTIPLAYER_BETA_BUILD
-	#define MOTD_URL						"http://www.pxo.net/files/fs2beta/motd.txt"
-	#define VERSION_URL					"http://www.pxo.net/files/fs2beta/version.nfo"
+#define MOTD_URL						"http://www.pxo.net/files/fs2beta/motd.txt"
+#define VERSION_URL					"http://www.pxo.net/files/fs2beta/version.nfo"
 #elif defined(FS2_DEMO)
-	#define MOTD_URL						"http://www.pxo.net/files/fs2demo/motd.txt"
-	#define VERSION_URL					"http://www.pxo.net/files/fs2demo/version.nfo"
+#define MOTD_URL						"http://www.pxo.net/files/fs2demo/motd.txt"
+#define VERSION_URL					"http://www.pxo.net/files/fs2demo/version.nfo"
 #else
-	#define MOTD_URL						"http://www.pxo.net/files/fs2/motd.txt"
-	#define VERSION_URL					"http://www.pxo.net/files/fs2/version.nfo"
+#define MOTD_URL                        "http://www.pxo.net/files/fs2/motd.txt"
+#define VERSION_URL                    "http://www.pxo.net/files/fs2/version.nfo"
 #endif
 
 #define VERSION_FILE_COMMENT_CHAR ';'
-#define NO_VERSION_IN_REGISTRY		-2
+#define NO_VERSION_IN_REGISTRY        -2
 
 // ----------------------------------------------------------------------------------------------------------------
 // VERSION FUNCTIONS
@@ -75,7 +75,7 @@
 // 1 if same version
 // 2 if higher version
 // fills in user version and latest version values if non-NULL
-int version_compare(char* filename, int* u_major, int* u_minor, int* u_build, int* l_major, int* l_minor,
-					int* l_build);
+int version_compare(char *filename, int *u_major, int *u_minor, int *u_build, int *l_major, int *l_minor,
+                    int *l_build);
 
 #endif

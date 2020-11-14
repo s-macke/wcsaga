@@ -28,7 +28,9 @@ Revision History:
 #define _INC_MMREG     146      // version * 100 + revision
 
 #ifndef RC_INVOKED
+
 #include "pshpack1.h"   /* Assume byte packing throughout */
+
 #endif  /* RC_INVOKED */
 
 #ifdef __cplusplus
@@ -230,7 +232,7 @@ extern "C" {            /* Assume C declarations for C++ */
 #define  MM_MSFT_ACM_G711                   37      /*  G.711 codec  */
 #define  MM_MSFT_ACM_PCM                    38      /*  PCM converter  */
 
-   // Microsoft Windows Sound System drivers
+// Microsoft Windows Sound System drivers
 
 #define  MM_WSS_SB16_WAVEIN                 39      /*  Sound Blaster 16 waveform input  */
 #define  MM_WSS_SB16_WAVEOUT                40      /*  Sound Blaster 16  waveform output  */
@@ -1302,9 +1304,9 @@ extern "C" {            /* Assume C declarations for C++ */
 #define  WAVE_FORMAT_UNKNOWN    0x0000  /*  Microsoft Corporation  */
 #define  WAVE_FORMAT_ADPCM      0x0002  /*  Microsoft Corporation  */
 #define  WAVE_FORMAT_IEEE_FLOAT 0x0003  /*  Microsoft Corporation  */
-                                        /*  IEEE754: range (+1, -1]  */
-                                        /*  32-bit/64-bit format as defined by */
-                                        /*  MSVC++ float/double type */
+/*  IEEE754: range (+1, -1]  */
+/*  32-bit/64-bit format as defined by */
+/*  MSVC++ float/double type */
 #define  WAVE_FORMAT_IBM_CVSD   0x0005  /*  IBM Corporation  */
 #define  WAVE_FORMAT_ALAW       0x0006  /*  Microsoft Corporation  */
 #define  WAVE_FORMAT_MULAW      0x0007  /*  Microsoft Corporation  */
@@ -1380,27 +1382,35 @@ extern "C" {            /* Assume C declarations for C++ */
 
 /* general waveform format structure (information common to all formats) */
 typedef struct waveformat_tag {
-    WORD    wFormatTag;        /* format type */
-    WORD    nChannels;         /* number of channels (i.e. mono, stereo...) */
-    DWORD   nSamplesPerSec;    /* sample rate */
-    DWORD   nAvgBytesPerSec;   /* for buffer estimation */
-    WORD    nBlockAlign;       /* block size of data */
+    WORD wFormatTag;        /* format type */
+    WORD nChannels;         /* number of channels (i.e. mono, stereo...) */
+    DWORD nSamplesPerSec;    /* sample rate */
+    DWORD nAvgBytesPerSec;   /* for buffer estimation */
+    WORD nBlockAlign;       /* block size of data */
 } WAVEFORMAT;
-typedef WAVEFORMAT       *PWAVEFORMAT;
-typedef WAVEFORMAT NEAR *NPWAVEFORMAT;
-typedef WAVEFORMAT FAR  *LPWAVEFORMAT;
+typedef WAVEFORMAT *PWAVEFORMAT;
+typedef WAVEFORMAT NEAR
+*
+NPWAVEFORMAT;
+typedef WAVEFORMAT FAR
+*
+LPWAVEFORMAT;
 
 /* flags for wFormatTag field of WAVEFORMAT */
 #define WAVE_FORMAT_PCM     1
 
 /* specific waveform format structure for PCM data */
 typedef struct pcmwaveformat_tag {
-    WAVEFORMAT  wf;
-    WORD        wBitsPerSample;
+    WAVEFORMAT wf;
+    WORD wBitsPerSample;
 } PCMWAVEFORMAT;
-typedef PCMWAVEFORMAT       *PPCMWAVEFORMAT;
-typedef PCMWAVEFORMAT NEAR *NPPCMWAVEFORMAT;
-typedef PCMWAVEFORMAT FAR  *LPPCMWAVEFORMAT;
+typedef PCMWAVEFORMAT *PPCMWAVEFORMAT;
+typedef PCMWAVEFORMAT NEAR
+*
+NPPCMWAVEFORMAT;
+typedef PCMWAVEFORMAT FAR
+*
+LPPCMWAVEFORMAT;
 
 #endif /* WAVE_FORMAT_PCM */
 
@@ -1410,21 +1420,24 @@ typedef PCMWAVEFORMAT FAR  *LPPCMWAVEFORMAT;
 */
 #ifndef _WAVEFORMATEX_
 #define _WAVEFORMATEX_
-typedef struct tWAVEFORMATEX
-{
-    WORD    wFormatTag;        /* format type */
-    WORD    nChannels;         /* number of channels (i.e. mono, stereo...) */
-    DWORD   nSamplesPerSec;    /* sample rate */
-    DWORD   nAvgBytesPerSec;   /* for buffer estimation */
-    WORD    nBlockAlign;       /* block size of data */
-    WORD    wBitsPerSample;    /* Number of bits per sample of mono data */
-    WORD    cbSize;            /* The count in bytes of the size of
+typedef struct tWAVEFORMATEX {
+    WORD wFormatTag;        /* format type */
+    WORD nChannels;         /* number of channels (i.e. mono, stereo...) */
+    DWORD nSamplesPerSec;    /* sample rate */
+    DWORD nAvgBytesPerSec;   /* for buffer estimation */
+    WORD nBlockAlign;       /* block size of data */
+    WORD wBitsPerSample;    /* Number of bits per sample of mono data */
+    WORD cbSize;            /* The count in bytes of the size of
                                     extra information (after cbSize) */
 
 } WAVEFORMATEX;
-typedef WAVEFORMATEX       *PWAVEFORMATEX;
-typedef WAVEFORMATEX NEAR *NPWAVEFORMATEX;
-typedef WAVEFORMATEX FAR  *LPWAVEFORMATEX;
+typedef WAVEFORMATEX *PWAVEFORMATEX;
+typedef WAVEFORMATEX NEAR
+*
+NPWAVEFORMATEX;
+typedef WAVEFORMATEX FAR
+*
+LPWAVEFORMATEX;
 #endif /* _WAVEFORMATEX_ */
 
 #ifndef NONEWWAVE
@@ -1432,12 +1445,16 @@ typedef WAVEFORMATEX FAR  *LPWAVEFORMATEX;
 /* Define data for MS ADPCM */
 
 typedef struct adpcmcoef_tag {
-        short   iCoef1;
-        short   iCoef2;
+    short iCoef1;
+    short iCoef2;
 } ADPCMCOEFSET;
-typedef ADPCMCOEFSET       *PADPCMCOEFSET;
-typedef ADPCMCOEFSET NEAR *NPADPCMCOEFSET;
-typedef ADPCMCOEFSET FAR  *LPADPCMCOEFSET;
+typedef ADPCMCOEFSET *PADPCMCOEFSET;
+typedef ADPCMCOEFSET NEAR
+*
+NPADPCMCOEFSET;
+typedef ADPCMCOEFSET FAR
+*
+LPADPCMCOEFSET;
 
 /*
  *  this pragma disables the warning issued by the Microsoft C compiler
@@ -1450,14 +1467,18 @@ typedef ADPCMCOEFSET FAR  *LPADPCMCOEFSET;
 #endif
 
 typedef struct adpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wSamplesPerBlock;
-        WORD            wNumCoef;
-        ADPCMCOEFSET    aCoef[];
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
+    WORD wNumCoef;
+    ADPCMCOEFSET aCoef[];
 } ADPCMWAVEFORMAT;
-typedef ADPCMWAVEFORMAT       *PADPCMWAVEFORMAT;
-typedef ADPCMWAVEFORMAT NEAR *NPADPCMWAVEFORMAT;
-typedef ADPCMWAVEFORMAT FAR  *LPADPCMWAVEFORMAT;
+typedef ADPCMWAVEFORMAT *PADPCMWAVEFORMAT;
+typedef ADPCMWAVEFORMAT NEAR
+*
+NPADPCMWAVEFORMAT;
+typedef ADPCMWAVEFORMAT FAR
+*
+LPADPCMWAVEFORMAT;
 
 #ifdef _MSC_VER
 #pragma warning(default:4200)
@@ -1471,12 +1492,16 @@ typedef ADPCMWAVEFORMAT FAR  *LPADPCMWAVEFORMAT;
 //
 
 typedef struct dvi_adpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } DVIADPCMWAVEFORMAT;
-typedef DVIADPCMWAVEFORMAT       *PDVIADPCMWAVEFORMAT;
-typedef DVIADPCMWAVEFORMAT NEAR *NPDVIADPCMWAVEFORMAT;
-typedef DVIADPCMWAVEFORMAT FAR  *LPDVIADPCMWAVEFORMAT;
+typedef DVIADPCMWAVEFORMAT *PDVIADPCMWAVEFORMAT;
+typedef DVIADPCMWAVEFORMAT NEAR
+*
+NPDVIADPCMWAVEFORMAT;
+typedef DVIADPCMWAVEFORMAT FAR
+*
+LPDVIADPCMWAVEFORMAT;
 
 //
 //  IMA endorsed ADPCM structure definitions--note that this is exactly
@@ -1487,12 +1512,16 @@ typedef DVIADPCMWAVEFORMAT FAR  *LPDVIADPCMWAVEFORMAT;
 //
 
 typedef struct ima_adpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } IMAADPCMWAVEFORMAT;
-typedef IMAADPCMWAVEFORMAT       *PIMAADPCMWAVEFORMAT;
-typedef IMAADPCMWAVEFORMAT NEAR *NPIMAADPCMWAVEFORMAT;
-typedef IMAADPCMWAVEFORMAT FAR  *LPIMAADPCMWAVEFORMAT;
+typedef IMAADPCMWAVEFORMAT *PIMAADPCMWAVEFORMAT;
+typedef IMAADPCMWAVEFORMAT NEAR
+*
+NPIMAADPCMWAVEFORMAT;
+typedef IMAADPCMWAVEFORMAT FAR
+*
+LPIMAADPCMWAVEFORMAT;
 
 /*
 //VideoLogic's Media Space ADPCM Structure definitions
@@ -1501,12 +1530,16 @@ typedef IMAADPCMWAVEFORMAT FAR  *LPIMAADPCMWAVEFORMAT;
 //
 */
 typedef struct mediaspace_adpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD    wRevision;
+    WAVEFORMATEX wfx;
+    WORD wRevision;
 } MEDIASPACEADPCMWAVEFORMAT;
-typedef MEDIASPACEADPCMWAVEFORMAT           *PMEDIASPACEADPCMWAVEFORMAT;
-typedef MEDIASPACEADPCMWAVEFORMAT NEAR     *NPMEDIASPACEADPCMWAVEFORMAT;
-typedef MEDIASPACEADPCMWAVEFORMAT FAR      *LPMEDIASPACEADPCMWAVEFORMAT;
+typedef MEDIASPACEADPCMWAVEFORMAT *PMEDIASPACEADPCMWAVEFORMAT;
+typedef MEDIASPACEADPCMWAVEFORMAT NEAR
+*
+NPMEDIASPACEADPCMWAVEFORMAT;
+typedef MEDIASPACEADPCMWAVEFORMAT FAR
+*
+LPMEDIASPACEADPCMWAVEFORMAT;
 
 //
 //  Sierra Semiconductor
@@ -1516,12 +1549,16 @@ typedef MEDIASPACEADPCMWAVEFORMAT FAR      *LPMEDIASPACEADPCMWAVEFORMAT;
 //
 
 typedef struct sierra_adpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wRevision;
+    WAVEFORMATEX wfx;
+    WORD wRevision;
 } SIERRAADPCMWAVEFORMAT;
-typedef SIERRAADPCMWAVEFORMAT   *PSIERRAADPCMWAVEFORMAT;
-typedef SIERRAADPCMWAVEFORMAT NEAR      *NPSIERRAADPCMWAVEFORMAT;
-typedef SIERRAADPCMWAVEFORMAT FAR       *LPSIERRAADPCMWAVEFORMAT;
+typedef SIERRAADPCMWAVEFORMAT *PSIERRAADPCMWAVEFORMAT;
+typedef SIERRAADPCMWAVEFORMAT NEAR
+*
+NPSIERRAADPCMWAVEFORMAT;
+typedef SIERRAADPCMWAVEFORMAT FAR
+*
+LPSIERRAADPCMWAVEFORMAT;
 
 //
 //  Antex Electronics  structure definitions
@@ -1531,13 +1568,17 @@ typedef SIERRAADPCMWAVEFORMAT FAR       *LPSIERRAADPCMWAVEFORMAT;
 //
 
 typedef struct g723_adpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            cbExtraSize;
-        WORD            nAuxBlockSize;
+    WAVEFORMATEX wfx;
+    WORD cbExtraSize;
+    WORD nAuxBlockSize;
 } G723_ADPCMWAVEFORMAT;
 typedef G723_ADPCMWAVEFORMAT *PG723_ADPCMWAVEFORMAT;
-typedef G723_ADPCMWAVEFORMAT NEAR *NPG723_ADPCMWAVEFORMAT;
-typedef G723_ADPCMWAVEFORMAT FAR  *LPG723_ADPCMWAVEFORMAT;
+typedef G723_ADPCMWAVEFORMAT NEAR
+*
+NPG723_ADPCMWAVEFORMAT;
+typedef G723_ADPCMWAVEFORMAT FAR
+*
+LPG723_ADPCMWAVEFORMAT;
 
 //
 //  DSP Solutions (formerly DIGISPEECH) structure definitions
@@ -1547,11 +1588,15 @@ typedef G723_ADPCMWAVEFORMAT FAR  *LPG723_ADPCMWAVEFORMAT;
 //
 
 typedef struct digistdwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } DIGISTDWAVEFORMAT;
-typedef DIGISTDWAVEFORMAT       *PDIGISTDWAVEFORMAT;
-typedef DIGISTDWAVEFORMAT NEAR *NPDIGISTDWAVEFORMAT;
-typedef DIGISTDWAVEFORMAT FAR  *LPDIGISTDWAVEFORMAT;
+typedef DIGISTDWAVEFORMAT *PDIGISTDWAVEFORMAT;
+typedef DIGISTDWAVEFORMAT NEAR
+*
+NPDIGISTDWAVEFORMAT;
+typedef DIGISTDWAVEFORMAT FAR
+*
+LPDIGISTDWAVEFORMAT;
 
 //
 //  DSP Solutions (formerly DIGISPEECH) structure definitions
@@ -1561,22 +1606,30 @@ typedef DIGISTDWAVEFORMAT FAR  *LPDIGISTDWAVEFORMAT;
 //
 
 typedef struct digifixwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } DIGIFIXWAVEFORMAT;
-typedef DIGIFIXWAVEFORMAT       *PDIGIFIXWAVEFORMAT;
-typedef DIGIFIXWAVEFORMAT NEAR *NPDIGIFIXWAVEFORMAT;
-typedef DIGIFIXWAVEFORMAT FAR  *LPDIGIFIXWAVEFORMAT;
+typedef DIGIFIXWAVEFORMAT *PDIGIFIXWAVEFORMAT;
+typedef DIGIFIXWAVEFORMAT NEAR
+*
+NPDIGIFIXWAVEFORMAT;
+typedef DIGIFIXWAVEFORMAT FAR
+*
+LPDIGIFIXWAVEFORMAT;
 
 //
 //   Dialogic Corporation
 // WAVEFORMAT_DIALOGIC_OKI_ADPCM   (0x0017)
 //
-typedef struct creative_fastspeechformat_tag{
-        WAVEFORMATEX    ewf;
-}DIALOGICOKIADPCMWAVEFORMAT;
-typedef DIALOGICOKIADPCMWAVEFORMAT       *PDIALOGICOKIADPCMWAVEFORMAT;
-typedef DIALOGICOKIADPCMWAVEFORMAT NEAR *NPDIALOGICOKIADPCMWAVEFORMAT;
-typedef DIALOGICOKIADPCMWAVEFORMAT FAR  *LPDIALOGICOKIADPCMWAVEFORMAT;
+typedef struct creative_fastspeechformat_tag {
+    WAVEFORMATEX ewf;
+} DIALOGICOKIADPCMWAVEFORMAT;
+typedef DIALOGICOKIADPCMWAVEFORMAT *PDIALOGICOKIADPCMWAVEFORMAT;
+typedef DIALOGICOKIADPCMWAVEFORMAT NEAR
+*
+NPDIALOGICOKIADPCMWAVEFORMAT;
+typedef DIALOGICOKIADPCMWAVEFORMAT FAR
+*
+LPDIALOGICOKIADPCMWAVEFORMAT;
 
 //
 //  Yamaha Compression's ADPCM structure definitions
@@ -1586,12 +1639,16 @@ typedef DIALOGICOKIADPCMWAVEFORMAT FAR  *LPDIALOGICOKIADPCMWAVEFORMAT;
 //
 
 typedef struct yamaha_adpmcwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 
 } YAMAHA_ADPCMWAVEFORMAT;
 typedef YAMAHA_ADPCMWAVEFORMAT *PYAMAHA_ADPCMWAVEFORMAT;
-typedef YAMAHA_ADPCMWAVEFORMAT NEAR *NPYAMAHA_ADPCMWAVEFORMAT;
-typedef YAMAHA_ADPCMWAVEFORMAT FAR  *LPYAMAHA_ADPCMWAVEFORMAT;
+typedef YAMAHA_ADPCMWAVEFORMAT NEAR
+*
+NPYAMAHA_ADPCMWAVEFORMAT;
+typedef YAMAHA_ADPCMWAVEFORMAT FAR
+*
+LPYAMAHA_ADPCMWAVEFORMAT;
 
 //
 //  Speech Compression's Sonarc structure definitions
@@ -1601,12 +1658,16 @@ typedef YAMAHA_ADPCMWAVEFORMAT FAR  *LPYAMAHA_ADPCMWAVEFORMAT;
 //
 
 typedef struct sonarcwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wCompType;
+    WAVEFORMATEX wfx;
+    WORD wCompType;
 } SONARCWAVEFORMAT;
-typedef SONARCWAVEFORMAT       *PSONARCWAVEFORMAT;
-typedef SONARCWAVEFORMAT NEAR *NPSONARCWAVEFORMAT;
-typedef SONARCWAVEFORMAT FAR  *LPSONARCWAVEFORMAT;
+typedef SONARCWAVEFORMAT *PSONARCWAVEFORMAT;
+typedef SONARCWAVEFORMAT NEAR
+*
+NPSONARCWAVEFORMAT;
+typedef SONARCWAVEFORMAT FAR
+*
+LPSONARCWAVEFORMAT;
 
 //
 //  DSP Groups's TRUESPEECH structure definitions
@@ -1616,14 +1677,18 @@ typedef SONARCWAVEFORMAT FAR  *LPSONARCWAVEFORMAT;
 //
 
 typedef struct truespeechwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wRevision;
-        WORD            nSamplesPerBlock;
-        BYTE            abReserved[28];
+    WAVEFORMATEX wfx;
+    WORD wRevision;
+    WORD nSamplesPerBlock;
+    BYTE abReserved[28];
 } TRUESPEECHWAVEFORMAT;
-typedef TRUESPEECHWAVEFORMAT       *PTRUESPEECHWAVEFORMAT;
-typedef TRUESPEECHWAVEFORMAT NEAR *NPTRUESPEECHWAVEFORMAT;
-typedef TRUESPEECHWAVEFORMAT FAR  *LPTRUESPEECHWAVEFORMAT;
+typedef TRUESPEECHWAVEFORMAT *PTRUESPEECHWAVEFORMAT;
+typedef TRUESPEECHWAVEFORMAT NEAR
+*
+NPTRUESPEECHWAVEFORMAT;
+typedef TRUESPEECHWAVEFORMAT FAR
+*
+LPTRUESPEECHWAVEFORMAT;
 
 //
 //  Echo Speech Corp structure definitions
@@ -1633,11 +1698,15 @@ typedef TRUESPEECHWAVEFORMAT FAR  *LPTRUESPEECHWAVEFORMAT;
 //
 
 typedef struct echosc1waveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } ECHOSC1WAVEFORMAT;
-typedef ECHOSC1WAVEFORMAT       *PECHOSC1WAVEFORMAT;
-typedef ECHOSC1WAVEFORMAT NEAR *NPECHOSC1WAVEFORMAT;
-typedef ECHOSC1WAVEFORMAT FAR  *LPECHOSC1WAVEFORMAT;
+typedef ECHOSC1WAVEFORMAT *PECHOSC1WAVEFORMAT;
+typedef ECHOSC1WAVEFORMAT NEAR
+*
+NPECHOSC1WAVEFORMAT;
+typedef ECHOSC1WAVEFORMAT FAR
+*
+LPECHOSC1WAVEFORMAT;
 
 //
 //  Audiofile Inc.structure definitions
@@ -1647,11 +1716,15 @@ typedef ECHOSC1WAVEFORMAT FAR  *LPECHOSC1WAVEFORMAT;
 //
 
 typedef struct audiofile_af36waveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } AUDIOFILE_AF36WAVEFORMAT;
-typedef AUDIOFILE_AF36WAVEFORMAT       *PAUDIOFILE_AF36WAVEFORMAT;
-typedef AUDIOFILE_AF36WAVEFORMAT NEAR *NPAUDIOFILE_AF36WAVEFORMAT;
-typedef AUDIOFILE_AF36WAVEFORMAT FAR  *LPAUDIOFILE_AF36WAVEFORMAT;
+typedef AUDIOFILE_AF36WAVEFORMAT *PAUDIOFILE_AF36WAVEFORMAT;
+typedef AUDIOFILE_AF36WAVEFORMAT NEAR
+*
+NPAUDIOFILE_AF36WAVEFORMAT;
+typedef AUDIOFILE_AF36WAVEFORMAT FAR
+*
+LPAUDIOFILE_AF36WAVEFORMAT;
 
 //
 //  Audio Processing Technology structure definitions
@@ -1660,11 +1733,15 @@ typedef AUDIOFILE_AF36WAVEFORMAT FAR  *LPAUDIOFILE_AF36WAVEFORMAT;
 //
 //
 typedef struct aptxwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } APTXWAVEFORMAT;
-typedef APTXWAVEFORMAT       *PAPTXWAVEFORMAT;
-typedef APTXWAVEFORMAT NEAR *NPAPTXWAVEFORMAT;
-typedef APTXWAVEFORMAT FAR  *LPAPTXWAVEFORMAT;
+typedef APTXWAVEFORMAT *PAPTXWAVEFORMAT;
+typedef APTXWAVEFORMAT NEAR
+*
+NPAPTXWAVEFORMAT;
+typedef APTXWAVEFORMAT FAR
+*
+LPAPTXWAVEFORMAT;
 
 //
 //  Audiofile Inc.structure definitions
@@ -1674,31 +1751,39 @@ typedef APTXWAVEFORMAT FAR  *LPAPTXWAVEFORMAT;
 //
 
 typedef struct audiofile_af10waveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } AUDIOFILE_AF10WAVEFORMAT;
-typedef AUDIOFILE_AF10WAVEFORMAT       *PAUDIOFILE_AF10WAVEFORMAT;
-typedef AUDIOFILE_AF10WAVEFORMAT NEAR *NPAUDIOFILE_AF10WAVEFORMAT;
-typedef AUDIOFILE_AF10WAVEFORMAT FAR  *LPAUDIOFILE_AF10WAVEFORMAT;
+typedef AUDIOFILE_AF10WAVEFORMAT *PAUDIOFILE_AF10WAVEFORMAT;
+typedef AUDIOFILE_AF10WAVEFORMAT NEAR
+*
+NPAUDIOFILE_AF10WAVEFORMAT;
+typedef AUDIOFILE_AF10WAVEFORMAT FAR
+*
+LPAUDIOFILE_AF10WAVEFORMAT;
 
 //
 /* Dolby's AC-2 wave format structure definition
            WAVE_FORMAT_DOLBY_AC2    (0x0030)*/
 //
 typedef struct dolbyac2waveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            nAuxBitsCode;
+    WAVEFORMATEX wfx;
+    WORD nAuxBitsCode;
 } DOLBYAC2WAVEFORMAT;
 
 /*Microsoft's */
 // WAVE_FORMAT_GSM 610           0x0031
 //
 typedef struct gsm610waveformat_tag {
-WAVEFORMATEX    wfx;
-WORD                    wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } GSM610WAVEFORMAT;
 typedef GSM610WAVEFORMAT *PGSM610WAVEFORMAT;
-typedef GSM610WAVEFORMAT NEAR    *NPGSM610WAVEFORMAT;
-typedef GSM610WAVEFORMAT FAR     *LPGSM610WAVEFORMAT;
+typedef GSM610WAVEFORMAT NEAR
+*
+NPGSM610WAVEFORMAT;
+typedef GSM610WAVEFORMAT FAR
+*
+LPGSM610WAVEFORMAT;
 
 //
 //      Antex Electronics Corp
@@ -1708,23 +1793,31 @@ typedef GSM610WAVEFORMAT FAR     *LPGSM610WAVEFORMAT;
 //
 
 typedef struct adpcmewaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } ADPCMEWAVEFORMAT;
-typedef ADPCMEWAVEFORMAT                *PADPCMEWAVEFORMAT;
-typedef ADPCMEWAVEFORMAT NEAR   *NPADPCMEWAVEFORMAT;
-typedef ADPCMEWAVEFORMAT FAR    *LPADPCMEWAVEFORMAT;
+typedef ADPCMEWAVEFORMAT *PADPCMEWAVEFORMAT;
+typedef ADPCMEWAVEFORMAT NEAR
+*
+NPADPCMEWAVEFORMAT;
+typedef ADPCMEWAVEFORMAT FAR
+*
+LPADPCMEWAVEFORMAT;
 
 /*       Control Resources Limited */
 // WAVE_FORMAT_CONTROL_RES_VQLPC                 0x0034
 //
 typedef struct contres_vqlpcwaveformat_tag {
-WAVEFORMATEX    wfx;
-WORD                    wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } CONTRESVQLPCWAVEFORMAT;
 typedef CONTRESVQLPCWAVEFORMAT *PCONTRESVQLPCWAVEFORMAT;
-typedef CONTRESVQLPCWAVEFORMAT NEAR      *NPCONTRESVQLPCWAVEFORMAT;
-typedef CONTRESVQLPCWAVEFORMAT FAR       *LPCONTRESVQLPCWAVEFORMAT;
+typedef CONTRESVQLPCWAVEFORMAT NEAR
+*
+NPCONTRESVQLPCWAVEFORMAT;
+typedef CONTRESVQLPCWAVEFORMAT FAR
+*
+LPCONTRESVQLPCWAVEFORMAT;
 
 //
 //
@@ -1734,12 +1827,16 @@ typedef CONTRESVQLPCWAVEFORMAT FAR       *LPCONTRESVQLPCWAVEFORMAT;
 //
 
 typedef struct digirealwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } DIGIREALWAVEFORMAT;
 typedef DIGIREALWAVEFORMAT *PDIGIREALWAVEFORMAT;
-typedef DIGIREALWAVEFORMAT NEAR *NPDIGIREALWAVEFORMAT;
-typedef DIGIREALWAVEFORMAT FAR *LPDIGIREALWAVEFORMAT;
+typedef DIGIREALWAVEFORMAT NEAR
+*
+NPDIGIREALWAVEFORMAT;
+typedef DIGIREALWAVEFORMAT FAR
+*
+LPDIGIREALWAVEFORMAT;
 
 //
 //  DSP Solutions
@@ -1749,23 +1846,31 @@ typedef DIGIREALWAVEFORMAT FAR *LPDIGIREALWAVEFORMAT;
 //
 
 typedef struct digiadpcmmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } DIGIADPCMWAVEFORMAT;
-typedef DIGIADPCMWAVEFORMAT       *PDIGIADPCMWAVEFORMAT;
-typedef DIGIADPCMWAVEFORMAT NEAR *NPDIGIADPCMWAVEFORMAT;
-typedef DIGIADPCMWAVEFORMAT FAR  *LPDIGIADPCMWAVEFORMAT;
+typedef DIGIADPCMWAVEFORMAT *PDIGIADPCMWAVEFORMAT;
+typedef DIGIADPCMWAVEFORMAT NEAR
+*
+NPDIGIADPCMWAVEFORMAT;
+typedef DIGIADPCMWAVEFORMAT FAR
+*
+LPDIGIADPCMWAVEFORMAT;
 
 /*       Control Resources Limited */
 // WAVE_FORMAT_CONTROL_RES_CR10          0x0037
 //
 typedef struct contres_cr10waveformat_tag {
-WAVEFORMATEX    wfx;
-WORD                    wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } CONTRESCR10WAVEFORMAT;
 typedef CONTRESCR10WAVEFORMAT *PCONTRESCR10WAVEFORMAT;
-typedef CONTRESCR10WAVEFORMAT NEAR       *NPCONTRESCR10WAVEFORMAT;
-typedef CONTRESCR10WAVEFORMAT FAR        *LPCONTRESCR10WAVEFORMAT;
+typedef CONTRESCR10WAVEFORMAT NEAR
+*
+NPCONTRESCR10WAVEFORMAT;
+typedef CONTRESCR10WAVEFORMAT FAR
+*
+LPCONTRESCR10WAVEFORMAT;
 
 //
 //  Natural Microsystems
@@ -1775,12 +1880,16 @@ typedef CONTRESCR10WAVEFORMAT FAR        *LPCONTRESCR10WAVEFORMAT;
 //
 
 typedef struct nms_vbxadpcmmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wSamplesPerBlock;
+    WAVEFORMATEX wfx;
+    WORD wSamplesPerBlock;
 } NMS_VBXADPCMWAVEFORMAT;
-typedef NMS_VBXADPCMWAVEFORMAT       *PNMS_VBXADPCMWAVEFORMAT;
-typedef NMS_VBXADPCMWAVEFORMAT NEAR *NPNMS_VBXADPCMWAVEFORMAT;
-typedef NMS_VBXADPCMWAVEFORMAT FAR  *LPNMS_VBXADPCMWAVEFORMAT;
+typedef NMS_VBXADPCMWAVEFORMAT *PNMS_VBXADPCMWAVEFORMAT;
+typedef NMS_VBXADPCMWAVEFORMAT NEAR
+*
+NPNMS_VBXADPCMWAVEFORMAT;
+typedef NMS_VBXADPCMWAVEFORMAT FAR
+*
+LPNMS_VBXADPCMWAVEFORMAT;
 
 //
 //  Antex Electronics  structure definitions
@@ -1790,12 +1899,16 @@ typedef NMS_VBXADPCMWAVEFORMAT FAR  *LPNMS_VBXADPCMWAVEFORMAT;
 //
 
 typedef struct g721_adpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            nAuxBlockSize;
+    WAVEFORMATEX wfx;
+    WORD nAuxBlockSize;
 } G721_ADPCMWAVEFORMAT;
 typedef G721_ADPCMWAVEFORMAT *PG721_ADPCMWAVEFORMAT;
-typedef G721_ADPCMWAVEFORMAT NEAR *NPG721_ADPCMWAVEFORMAT;
-typedef G721_ADPCMWAVEFORMAT FAR  *LPG721_ADPCMWAVEFORMAT;
+typedef G721_ADPCMWAVEFORMAT NEAR
+*
+NPG721_ADPCMWAVEFORMAT;
+typedef G721_ADPCMWAVEFORMAT FAR
+*
+LPG721_ADPCMWAVEFORMAT;
 
 //
 //
@@ -1803,19 +1916,23 @@ typedef G721_ADPCMWAVEFORMAT FAR  *LPG721_ADPCMWAVEFORMAT;
 //
 /*  MPEG-1 audio wave format (audio layer only).   (0x0050)   */
 typedef struct mpeg1waveformat_tag {
-    WAVEFORMATEX    wfx;
-    WORD            fwHeadLayer;
-    DWORD           dwHeadBitrate;
-    WORD            fwHeadMode;
-    WORD            fwHeadModeExt;
-    WORD            wHeadEmphasis;
-    WORD            fwHeadFlags;
-    DWORD           dwPTSLow;
-    DWORD           dwPTSHigh;
+    WAVEFORMATEX wfx;
+    WORD fwHeadLayer;
+    DWORD dwHeadBitrate;
+    WORD fwHeadMode;
+    WORD fwHeadModeExt;
+    WORD wHeadEmphasis;
+    WORD fwHeadFlags;
+    DWORD dwPTSLow;
+    DWORD dwPTSHigh;
 } MPEG1WAVEFORMAT;
-typedef MPEG1WAVEFORMAT                 *PMPEG1WAVEFORMAT;
-typedef MPEG1WAVEFORMAT NEAR           *NPMPEG1WAVEFORMAT;
-typedef MPEG1WAVEFORMAT FAR            *LPMPEG1WAVEFORMAT;
+typedef MPEG1WAVEFORMAT *PMPEG1WAVEFORMAT;
+typedef MPEG1WAVEFORMAT NEAR
+*
+NPMPEG1WAVEFORMAT;
+typedef MPEG1WAVEFORMAT FAR
+*
+LPMPEG1WAVEFORMAT;
 
 #define ACM_MPEG_LAYER1             (0x0001)
 #define ACM_MPEG_LAYER2             (0x0002)
@@ -1839,17 +1956,21 @@ typedef MPEG1WAVEFORMAT FAR            *LPMPEG1WAVEFORMAT;
 // WAVE_FORMAT_MPEGLAYER3 format sructure
 //
 typedef struct mpeglayer3waveformat_tag {
-  WAVEFORMATEX  wfx;
-  WORD          wID;
-  DWORD         fdwFlags;
-  WORD          nBlockSize;
-  WORD          nFramesPerBlock;
-  WORD          nCodecDelay;
+    WAVEFORMATEX wfx;
+    WORD wID;
+    DWORD fdwFlags;
+    WORD nBlockSize;
+    WORD nFramesPerBlock;
+    WORD nCodecDelay;
 } MPEGLAYER3WAVEFORMAT;
 
-typedef MPEGLAYER3WAVEFORMAT          *PMPEGLAYER3WAVEFORMAT;
-typedef MPEGLAYER3WAVEFORMAT NEAR    *NPMPEGLAYER3WAVEFORMAT;
-typedef MPEGLAYER3WAVEFORMAT FAR     *LPMPEGLAYER3WAVEFORMAT;
+typedef MPEGLAYER3WAVEFORMAT *PMPEGLAYER3WAVEFORMAT;
+typedef MPEGLAYER3WAVEFORMAT NEAR
+*
+NPMPEGLAYER3WAVEFORMAT;
+typedef MPEGLAYER3WAVEFORMAT FAR
+*
+LPMPEGLAYER3WAVEFORMAT;
 
 //==========================================================================;
 
@@ -1869,35 +1990,47 @@ typedef MPEGLAYER3WAVEFORMAT FAR     *LPMPEGLAYER3WAVEFORMAT;
 //
 
 typedef struct creative_adpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wRevision;
+    WAVEFORMATEX wfx;
+    WORD wRevision;
 } CREATIVEADPCMWAVEFORMAT;
-typedef CREATIVEADPCMWAVEFORMAT       *PCREATIVEADPCMWAVEFORMAT;
-typedef CREATIVEADPCMWAVEFORMAT NEAR *NPCREATIVEADPCMWAVEFORMAT;
-typedef CREATIVEADPCMWAVEFORMAT FAR  *LPCREATIVEADPCMWAVEFORMAT;
+typedef CREATIVEADPCMWAVEFORMAT *PCREATIVEADPCMWAVEFORMAT;
+typedef CREATIVEADPCMWAVEFORMAT NEAR
+*
+NPCREATIVEADPCMWAVEFORMAT;
+typedef CREATIVEADPCMWAVEFORMAT FAR
+*
+LPCREATIVEADPCMWAVEFORMAT;
 
 //
 //    Creative FASTSPEECH
 // WAVEFORMAT_CREATIVE_FASTSPEECH8   (0x0202)
 //
 typedef struct creative_fastspeech8format_tag {
-        WAVEFORMATEX    wfx;
-        WORD wRevision;
+    WAVEFORMATEX wfx;
+    WORD wRevision;
 } CREATIVEFASTSPEECH8WAVEFORMAT;
-typedef CREATIVEFASTSPEECH8WAVEFORMAT       *PCREATIVEFASTSPEECH8WAVEFORMAT;
-typedef CREATIVEFASTSPEECH8WAVEFORMAT NEAR *NPCREATIVEFASTSPEECH8WAVEFORMAT;
-typedef CREATIVEFASTSPEECH8WAVEFORMAT FAR  *LPCREATIVEFASTSPEECH8WAVEFORMAT;
+typedef CREATIVEFASTSPEECH8WAVEFORMAT *PCREATIVEFASTSPEECH8WAVEFORMAT;
+typedef CREATIVEFASTSPEECH8WAVEFORMAT NEAR
+*
+NPCREATIVEFASTSPEECH8WAVEFORMAT;
+typedef CREATIVEFASTSPEECH8WAVEFORMAT FAR
+*
+LPCREATIVEFASTSPEECH8WAVEFORMAT;
 //
 //    Creative FASTSPEECH
 // WAVEFORMAT_CREATIVE_FASTSPEECH10   (0x0203)
 //
 typedef struct creative_fastspeech10format_tag {
-        WAVEFORMATEX    wfx;
-        WORD wRevision;
+    WAVEFORMATEX wfx;
+    WORD wRevision;
 } CREATIVEFASTSPEECH10WAVEFORMAT;
-typedef CREATIVEFASTSPEECH10WAVEFORMAT       *PCREATIVEFASTSPEECH10WAVEFORMAT;
-typedef CREATIVEFASTSPEECH10WAVEFORMAT NEAR *NPCREATIVEFASTSPEECH10WAVEFORMAT;
-typedef CREATIVEFASTSPEECH10WAVEFORMAT FAR  *LPCREATIVEFASTSPEECH10WAVEFORMAT;
+typedef CREATIVEFASTSPEECH10WAVEFORMAT *PCREATIVEFASTSPEECH10WAVEFORMAT;
+typedef CREATIVEFASTSPEECH10WAVEFORMAT NEAR
+*
+NPCREATIVEFASTSPEECH10WAVEFORMAT;
+typedef CREATIVEFASTSPEECH10WAVEFORMAT FAR
+*
+LPCREATIVEFASTSPEECH10WAVEFORMAT;
 
 //
 //  Fujitsu FM Towns 'SND' structure
@@ -1907,12 +2040,16 @@ typedef CREATIVEFASTSPEECH10WAVEFORMAT FAR  *LPCREATIVEFASTSPEECH10WAVEFORMAT;
 //
 
 typedef struct fmtowns_snd_waveformat_tag {
-        WAVEFORMATEX    wfx;
-        WORD            wRevision;
+    WAVEFORMATEX wfx;
+    WORD wRevision;
 } FMTOWNS_SND_WAVEFORMAT;
-typedef FMTOWNS_SND_WAVEFORMAT       *PFMTOWNS_SND_WAVEFORMAT;
-typedef FMTOWNS_SND_WAVEFORMAT NEAR *NPFMTOWNS_SND_WAVEFORMAT;
-typedef FMTOWNS_SND_WAVEFORMAT FAR  *LPFMTOWNS_SND_WAVEFORMAT;
+typedef FMTOWNS_SND_WAVEFORMAT *PFMTOWNS_SND_WAVEFORMAT;
+typedef FMTOWNS_SND_WAVEFORMAT NEAR
+*
+NPFMTOWNS_SND_WAVEFORMAT;
+typedef FMTOWNS_SND_WAVEFORMAT FAR
+*
+LPFMTOWNS_SND_WAVEFORMAT;
 
 //
 //  Olivetti structure
@@ -1922,11 +2059,15 @@ typedef FMTOWNS_SND_WAVEFORMAT FAR  *LPFMTOWNS_SND_WAVEFORMAT;
 //
 
 typedef struct oligsmwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } OLIGSMWAVEFORMAT;
-typedef OLIGSMWAVEFORMAT     *POLIGSMWAVEFORMAT;
-typedef OLIGSMWAVEFORMAT NEAR *NPOLIGSMWAVEFORMAT;
-typedef OLIGSMWAVEFORMAT  FAR  *LPOLIGSMWAVEFORMAT;
+typedef OLIGSMWAVEFORMAT *POLIGSMWAVEFORMAT;
+typedef OLIGSMWAVEFORMAT NEAR
+*
+NPOLIGSMWAVEFORMAT;
+typedef OLIGSMWAVEFORMAT FAR
+*
+LPOLIGSMWAVEFORMAT;
 
 //
 //  Olivetti structure
@@ -1936,11 +2077,15 @@ typedef OLIGSMWAVEFORMAT  FAR  *LPOLIGSMWAVEFORMAT;
 //
 
 typedef struct oliadpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } OLIADPCMWAVEFORMAT;
-typedef OLIADPCMWAVEFORMAT     *POLIADPCMWAVEFORMAT;
-typedef OLIADPCMWAVEFORMAT NEAR *NPOLIADPCMWAVEFORMAT ;
-typedef OLIADPCMWAVEFORMAT  FAR  *LPOLIADPCMWAVEFORMAT;
+typedef OLIADPCMWAVEFORMAT *POLIADPCMWAVEFORMAT;
+typedef OLIADPCMWAVEFORMAT NEAR
+*
+NPOLIADPCMWAVEFORMAT;
+typedef OLIADPCMWAVEFORMAT FAR
+*
+LPOLIADPCMWAVEFORMAT;
 
 //
 //  Olivetti structure
@@ -1950,11 +2095,15 @@ typedef OLIADPCMWAVEFORMAT  FAR  *LPOLIADPCMWAVEFORMAT;
 //
 
 typedef struct olicelpwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } OLICELPWAVEFORMAT;
-typedef OLICELPWAVEFORMAT     *POLICELPWAVEFORMAT;
-typedef OLICELPWAVEFORMAT NEAR *NPOLICELPWAVEFORMAT ;
-typedef OLICELPWAVEFORMAT  FAR  *LPOLICELPWAVEFORMAT;
+typedef OLICELPWAVEFORMAT *POLICELPWAVEFORMAT;
+typedef OLICELPWAVEFORMAT NEAR
+*
+NPOLICELPWAVEFORMAT;
+typedef OLICELPWAVEFORMAT FAR
+*
+LPOLICELPWAVEFORMAT;
 
 //
 //  Olivetti structure
@@ -1964,11 +2113,15 @@ typedef OLICELPWAVEFORMAT  FAR  *LPOLICELPWAVEFORMAT;
 //
 
 typedef struct olisbcwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } OLISBCWAVEFORMAT;
-typedef OLISBCWAVEFORMAT     *POLISBCWAVEFORMAT;
-typedef OLISBCWAVEFORMAT NEAR *NPOLISBCWAVEFORMAT ;
-typedef OLISBCWAVEFORMAT  FAR  *LPOLISBCWAVEFORMAT;
+typedef OLISBCWAVEFORMAT *POLISBCWAVEFORMAT;
+typedef OLISBCWAVEFORMAT NEAR
+*
+NPOLISBCWAVEFORMAT;
+typedef OLISBCWAVEFORMAT FAR
+*
+LPOLISBCWAVEFORMAT;
 
 //
 //  Olivetti structure
@@ -1978,11 +2131,15 @@ typedef OLISBCWAVEFORMAT  FAR  *LPOLISBCWAVEFORMAT;
 //
 
 typedef struct olioprwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } OLIOPRWAVEFORMAT;
-typedef OLIOPRWAVEFORMAT     *POLIOPRWAVEFORMAT;
-typedef OLIOPRWAVEFORMAT NEAR *NPOLIOPRWAVEFORMAT ;
-typedef OLIOPRWAVEFORMAT  FAR  *LPOLIOPRWAVEFORMAT;
+typedef OLIOPRWAVEFORMAT *POLIOPRWAVEFORMAT;
+typedef OLIOPRWAVEFORMAT NEAR
+*
+NPOLIOPRWAVEFORMAT;
+typedef OLIOPRWAVEFORMAT FAR
+*
+LPOLIOPRWAVEFORMAT;
 
 //
 //  Crystal Semiconductor IMA ADPCM format
@@ -1992,11 +2149,15 @@ typedef OLIOPRWAVEFORMAT  FAR  *LPOLIOPRWAVEFORMAT;
 //
 
 typedef struct csimaadpcmwaveformat_tag {
-        WAVEFORMATEX    wfx;
+    WAVEFORMATEX wfx;
 } CSIMAADPCMWAVEFORMAT;
-typedef CSIMAADPCMWAVEFORMAT     *PCSIMAADPCMWAVEFORMAT;
-typedef CSIMAADPCMWAVEFORMAT NEAR *NPCSIMAADPCMWAVEFORMAT ;
-typedef CSIMAADPCMWAVEFORMAT  FAR  *LPCSIMAADPCMWAVEFORMAT;
+typedef CSIMAADPCMWAVEFORMAT *PCSIMAADPCMWAVEFORMAT;
+typedef CSIMAADPCMWAVEFORMAT NEAR
+*
+NPCSIMAADPCMWAVEFORMAT;
+typedef CSIMAADPCMWAVEFORMAT FAR
+*
+LPCSIMAADPCMWAVEFORMAT;
 
 //==========================================================================;
 //
@@ -2012,14 +2173,18 @@ typedef CSIMAADPCMWAVEFORMAT  FAR  *LPCSIMAADPCMWAVEFORMAT;
 #define WAVE_FILTER_DEVELOPMENT    (0xFFFF)
 
 typedef struct wavefilter_tag {
-    DWORD   cbStruct;           /* Size of the filter in bytes */
-    DWORD   dwFilterTag;        /* filter type */
-    DWORD   fdwFilter;          /* Flags for the filter (Universal Dfns) */
-    DWORD   dwReserved[5];      /* Reserved for system use */
+    DWORD cbStruct;           /* Size of the filter in bytes */
+    DWORD dwFilterTag;        /* filter type */
+    DWORD fdwFilter;          /* Flags for the filter (Universal Dfns) */
+    DWORD dwReserved[5];      /* Reserved for system use */
 } WAVEFILTER;
-typedef WAVEFILTER       *PWAVEFILTER;
-typedef WAVEFILTER NEAR *NPWAVEFILTER;
-typedef WAVEFILTER FAR  *LPWAVEFILTER;
+typedef WAVEFILTER *PWAVEFILTER;
+typedef WAVEFILTER NEAR
+*
+NPWAVEFILTER;
+typedef WAVEFILTER FAR
+*
+LPWAVEFILTER;
 
 #endif  /* _ACM_WAVEFILTER */
 
@@ -2027,12 +2192,16 @@ typedef WAVEFILTER FAR  *LPWAVEFILTER;
 #define WAVE_FILTER_VOLUME      0x0001
 
 typedef struct wavefilter_volume_tag {
-        WAVEFILTER      wfltr;
-        DWORD           dwVolume;
+    WAVEFILTER wfltr;
+    DWORD dwVolume;
 } VOLUMEWAVEFILTER;
-typedef VOLUMEWAVEFILTER       *PVOLUMEWAVEFILTER;
-typedef VOLUMEWAVEFILTER NEAR *NPVOLUMEWAVEFILTER;
-typedef VOLUMEWAVEFILTER FAR  *LPVOLUMEWAVEFILTER;
+typedef VOLUMEWAVEFILTER *PVOLUMEWAVEFILTER;
+typedef VOLUMEWAVEFILTER NEAR
+*
+NPVOLUMEWAVEFILTER;
+typedef VOLUMEWAVEFILTER FAR
+*
+LPVOLUMEWAVEFILTER;
 
 #endif  /* WAVE_FILTER_VOLUME */
 
@@ -2040,13 +2209,17 @@ typedef VOLUMEWAVEFILTER FAR  *LPVOLUMEWAVEFILTER;
 #define WAVE_FILTER_ECHO        0x0002
 
 typedef struct wavefilter_echo_tag {
-        WAVEFILTER      wfltr;
-        DWORD           dwVolume;
-        DWORD           dwDelay;
+    WAVEFILTER wfltr;
+    DWORD dwVolume;
+    DWORD dwDelay;
 } ECHOWAVEFILTER;
-typedef ECHOWAVEFILTER       *PECHOWAVEFILTER;
-typedef ECHOWAVEFILTER NEAR *NPECHOWAVEFILTER;
-typedef ECHOWAVEFILTER FAR  *LPECHOWAVEFILTER;
+typedef ECHOWAVEFILTER *PECHOWAVEFILTER;
+typedef ECHOWAVEFILTER NEAR
+*
+NPECHOWAVEFILTER;
+typedef ECHOWAVEFILTER FAR
+*
+LPECHOWAVEFILTER;
 
 #endif  /* WAVEFILTER_ECHO */
 
@@ -2059,13 +2232,13 @@ typedef ECHOWAVEFILTER FAR  *LPECHOWAVEFILTER;
 #define RIFFWAVE_inst   mmioFOURCC('i','n','s','t')
 
 struct tag_s_RIFFWAVE_inst {
-    BYTE    bUnshiftedNote;
-    char    chFineTune;
-    char    chGain;
-    BYTE    bLowNote;
-    BYTE    bHighNote;
-    BYTE    bLowVelocity;
-    BYTE    bHighVelocity;
+    BYTE bUnshiftedNote;
+    char chFineTune;
+    char chGain;
+    BYTE bLowNote;
+    BYTE bHighNote;
+    BYTE bLowVelocity;
+    BYTE bHighVelocity;
 };
 
 typedef struct tag_s_RIFFWAVE_INST s_RIFFWAVE_inst;
@@ -2137,16 +2310,16 @@ typedef struct tag_s_RIFFWAVE_INST s_RIFFWAVE_inst;
 /* Structure definitions */
 
 typedef struct tagEXBMINFOHEADER {
-        BITMAPINFOHEADER    bmi;
-        /* extended BITMAPINFOHEADER fields */
-        DWORD   biExtDataOffset;
+    BITMAPINFOHEADER bmi;
+    /* extended BITMAPINFOHEADER fields */
+    DWORD biExtDataOffset;
 
-        /* Other stuff will go here */
+    /* Other stuff will go here */
 
-        /* ... */
+    /* ... */
 
-        /* Format-specific information */
-        /* biExtDataOffset points here */
+    /* Format-specific information */
+    /* biExtDataOffset points here */
 
 } EXBMINFOHEADER;
 
@@ -2170,7 +2343,7 @@ typedef struct tagEXBMINFOHEADER {
 /* AVI File format extensions */
 #define AVIIF_CONTROLFRAME              0x00000200L     /* This is a control frame */
 
-    /* JIF Marker byte pairs in JPEG Interchange Format sequence */
+/* JIF Marker byte pairs in JPEG Interchange Format sequence */
 #define JIFMK_SOF0    0xFFC0   /* SOF Huff  - Baseline DCT*/
 #define JIFMK_SOF1    0xFFC1   /* SOF Huff  - Extended sequential DCT*/
 #define JIFMK_SOF2    0xFFC2   /* SOF Huff  - Progressive DCT*/
@@ -2241,14 +2414,14 @@ typedef struct tagEXBMINFOHEADER {
 typedef struct tagJPEGINFOHEADER {
     /* compression-specific fields */
     /* these fields are defined for 'JPEG' and 'MJPG' */
-    DWORD       JPEGSize;
-    DWORD       JPEGProcess;
+    DWORD JPEGSize;
+    DWORD JPEGProcess;
 
     /* Process specific fields */
-    DWORD       JPEGColorSpaceID;
-    DWORD       JPEGBitsPerSample;
-    DWORD       JPEGHSubSampling;
-    DWORD       JPEGVSubSampling;
+    DWORD JPEGColorSpaceID;
+    DWORD JPEGBitsPerSample;
+    DWORD JPEGHSubSampling;
+    DWORD JPEGVSubSampling;
 } JPEGINFOHEADER;
 
 #ifdef MJPGDHTSEG_STORAGE
@@ -2320,7 +2493,9 @@ MJPGHDTSEG_STORAGE BYTE MJPGDHTSeg[0x1A4] = {
 #endif
 
 #ifndef RC_INVOKED
+
 #include "poppack.h"    /* Revert to default packing */
+
 #endif  /* RC_INVOKED */
 
 #ifdef __cplusplus

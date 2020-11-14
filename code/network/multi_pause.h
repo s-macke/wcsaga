@@ -18,6 +18,7 @@
 //
 
 class UI_WINDOW;
+
 struct net_player;
 
 // state of the game (paused or not) on _my_ machine. Obviously this is important for the server
@@ -25,7 +26,7 @@ struct net_player;
 extern int Multi_pause_status;
 
 // who paused the game
-extern net_player* Multi_pause_pauser;
+extern net_player *Multi_pause_pauser;
 
 
 // ----------------------------------------------------------------------------------
@@ -45,7 +46,7 @@ void multi_pause_pause();
 void multi_pause_unpause();
 
 // (server) evaluate a pause request from the given player (should call for himself as well)
-void multi_pause_server_eval_request(net_player* pl, int pause);
+void multi_pause_server_eval_request(net_player *pl, int pause);
 
 // if we still want to eat keys 
 int multi_pause_eat_keys();

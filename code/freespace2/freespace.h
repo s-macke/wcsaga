@@ -11,7 +11,7 @@
 
 #ifndef _FREESPACE_H
 #define _FREESPACE_H
-#ifndef STAMPER_PROGRAM							// because of all the dependancies, I have to do this...yuck!!!  MWA 7/21/97
+#ifndef STAMPER_PROGRAM                            // because of all the dependancies, I have to do this...yuck!!!  MWA 7/21/97
 
 #include "camera/camera.h"
 #include "globalincs/pstypes.h"
@@ -21,30 +21,30 @@
 // --------------------------------------------------------------------------------------------------------
 // FREESPACE DEFINES/VARS
 //
-														
+
 // filename extensions
-#define FS_CAMPAIGN_FILE_EXT				NOX(".fc2")
+#define FS_CAMPAIGN_FILE_EXT                NOX(".fc2")
 
 // CDROM volume names
 #ifdef MULTIPLAYER_BETA_BUILD
-	#define FS_CDROM_VOLUME_1					NOX("FS2_BETA")
-	#define FS_CDROM_VOLUME_2					NOX("FS2_BETA")
+#define FS_CDROM_VOLUME_1					NOX("FS2_BETA")
+#define FS_CDROM_VOLUME_2					NOX("FS2_BETA")
 #elif defined(E3_BUILD)
-	#define FS_CDROM_VOLUME_1					NOX("FS2_E3DEMO")
-	#define FS_CDROM_VOLUME_2					NOX("FS2_E3DEMO")
+#define FS_CDROM_VOLUME_1					NOX("FS2_E3DEMO")
+#define FS_CDROM_VOLUME_2					NOX("FS2_E3DEMO")
 #elif defined(OEM_BUILD)
-	#define FS_CDROM_VOLUME_1					NOX("FS2_OEM")
-	#define FS_CDROM_VOLUME_2					NOX("FS2_OEM")
-	#define FS_CDROM_VOLUME_3					NOX("FS2_OEM")
+#define FS_CDROM_VOLUME_1					NOX("FS2_OEM")
+#define FS_CDROM_VOLUME_2					NOX("FS2_OEM")
+#define FS_CDROM_VOLUME_3					NOX("FS2_OEM")
 #else
-	#define FS_CDROM_VOLUME_1					NOX("FREESPACE2_1")
-	#define FS_CDROM_VOLUME_2					NOX("FREESPACE2_2")
-	#define FS_CDROM_VOLUME_3					NOX("FREESPACE2_3")
+#define FS_CDROM_VOLUME_1                    NOX("FREESPACE2_1")
+#define FS_CDROM_VOLUME_2                    NOX("FREESPACE2_2")
+#define FS_CDROM_VOLUME_3                    NOX("FREESPACE2_3")
 
-	// old volume names
-	// #define FS_CDROM_VOLUME_1					NOX("FREESPACE_1")
-	// #define FS_CDROM_VOLUME_2					NOX("FREESPACE_2")
-	// #define FS_CDROM_VOLUME_3					NOX("FREESPACE_3")
+// old volume names
+// #define FS_CDROM_VOLUME_1					NOX("FREESPACE_1")
+// #define FS_CDROM_VOLUME_2					NOX("FREESPACE_2")
+// #define FS_CDROM_VOLUME_3					NOX("FREESPACE_3")
 #endif
 
 // frametime/missiontime variables
@@ -68,7 +68,7 @@ extern bool Time_compression_locked;
 extern fix Game_time_compression;
 
 // Set if subspace is active this level
-extern int Game_subspace_effect;		
+extern int Game_subspace_effect;
 
 // The current mission being played.
 extern char Game_current_mission_filename[MAX_FILENAME_LEN];
@@ -86,17 +86,17 @@ extern int Game_weapons_tbl_valid;
 extern int Networking_disabled;
 
 // this is a mission actually designed at Volition
-#define MAX_BUILTIN_MISSIONS					100
-#define FSB_FROM_VOLITION						(1<<0)			// we made it in-house
-#define FSB_MULTI									(1<<1)			// is a multiplayer mission
-#define FSB_TRAINING								(1<<2)			// is a training mission
-#define FSB_CAMPAIGN								(1<<3)			// is a campaign mission
-#define FSB_CAMPAIGN_FILE						(1<<4)			// is actually a campaign file
+#define MAX_BUILTIN_MISSIONS                    100
+#define FSB_FROM_VOLITION                        (1<<0)            // we made it in-house
+#define FSB_MULTI                                    (1<<1)            // is a multiplayer mission
+#define FSB_TRAINING                                (1<<2)            // is a training mission
+#define FSB_CAMPAIGN                                (1<<3)            // is a campaign mission
+#define FSB_CAMPAIGN_FILE                        (1<<4)            // is actually a campaign file
 
 typedef struct fs_builtin_mission {
-	char filename[MAX_FILENAME_LEN];
-	int flags;															// see FSB_* defines above
-	char cd_volume[MAX_FILENAME_LEN];							// cd volume which this needs
+    char filename[MAX_FILENAME_LEN];
+    int flags;                                                            // see FSB_* defines above
+    char cd_volume[MAX_FILENAME_LEN];                            // cd volume which this needs
 } fs_builtin_mission;
 
 
@@ -107,7 +107,7 @@ typedef struct fs_builtin_mission {
 // mission management -------------------------------------------------
 
 // loads in the currently selected mission
-int game_start_mission();		
+int game_start_mission();
 
 // shutdown a mission
 void game_level_close();
@@ -149,7 +149,7 @@ fix game_get_overall_frametime();
 void game_stop_looped_sounds();
 
 // do stuff that may need to be done regardless of state
-void game_do_state_common(int state,int no_networking = 0);
+void game_do_state_common(int state, int no_networking = 0);
 
 
 // skill level --------------------------------------------------------
@@ -182,7 +182,7 @@ void game_flash_reset();
 // Adds a flash effect.  These can be positive or negative.
 // The range will get capped at around -1 to 1, so stick 
 // with a range like that.
-void game_flash( float r, float g, float b );
+void game_flash(float r, float g, float b);
 
 // Adds a flash for Big Ship explosions
 // cap range from 0 to 1
@@ -203,7 +203,7 @@ void game_load_palette();
 void game_whack_reset();
 
 // Call to apply a whack to a the ship. Used for force feedback
-void game_whack_apply( float x, float y );
+void game_whack_apply(float x, float y);
 
 // call to apply a "shudder"
 void game_shudder_apply(int time, float intensity);
@@ -211,10 +211,14 @@ void game_shudder_apply(int time, float intensity);
 //===================================================================
 
 // make sure a CD is in the drive before continuing (returns 1 to continue, otherwise 0).
-int game_do_cd_check(char *volume_name=NULL);
+int game_do_cd_check(char *volume_name = NULL);
+
 int game_do_cd_check_specific(char *volume_name, int cdnum);
-int find_freespace_cd(char *volume_name=NULL);
+
+int find_freespace_cd(char *volume_name = NULL);
+
 int set_cdrom_path(int drive_num);
+
 int game_do_cd_mission_check(char *filename);
 
 // Used to tell the player that a feature isn't available in the demo version of FreeSpace
@@ -230,7 +234,7 @@ void game_feature_disabled_popup();
 void get_version_string(char *str, int max_size);
 
 // format the specified time (fixed point) into a nice string
-void game_format_time(fix m_time,char *time_str);
+void game_format_time(fix m_time, char *time_str);
 
 // if the game is running using hacked data
 int game_hacked_data();
@@ -240,18 +244,25 @@ void oem_upsell_show_screens();
 
 // calls to be executed when the game is put in or restored from minimized or inactive state
 void game_pause();
+
 void game_unpause();
 
 //WMC - Stuff for scripting, these make the game go
 extern camid Main_camera;
 
 extern void game_level_init(int seed = -1);
+
 extern void game_post_level_init();
+
 extern camid game_render_frame_setup();
+
 extern void game_render_frame(camid cid);
+
 extern void game_simulation_frame();
+
 extern void game_update_missiontime();
+
 extern void game_render_post_frame();
 
-#endif			// endif of #ifndef STAMPER_PROGRAM
+#endif            // endif of #ifndef STAMPER_PROGRAM
 #endif 

@@ -13,41 +13,46 @@
 /////////////////////////////////////////////////////////////////////////////
 // InitialShips dialog
 
-#define INITIAL_SHIPS	1
-#define INITIAL_WEAPONS	2
+#define INITIAL_SHIPS    1
+#define INITIAL_WEAPONS    2
 
-#define MAX_INITIAL_CHECKBOXES	30
+#define MAX_INITIAL_CHECKBOXES    30
 
-class InitialShips : public CDialog
-{
+class InitialShips : public CDialog {
 // Construction
 public:
-	int m_initial_items;
-	InitialShips(CWnd* pParent = NULL);   // standard constructor
+    int m_initial_items;
+
+    InitialShips(CWnd *pParent = NULL);   // standard constructor
 
 // Dialog Data
-	//{{AFX_DATA(InitialShips)
-	enum { IDD = IDD_INITIAL_SHIPS };
-	CCheckListBox	m_initial_list;
-	//}}AFX_DATA
+    //{{AFX_DATA(InitialShips)
+    enum {
+        IDD = IDD_INITIAL_SHIPS
+    };
+    CCheckListBox m_initial_list;
+    //}}AFX_DATA
 
 
 // Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(InitialShips)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(InitialShips)
+protected:
+    virtual void DoDataExchange(CDataExchange *pDX);    // DDX/DDV support
+    //}}AFX_VIRTUAL
 
 // Implementation
 protected:
 
-	// Generated message map functions
-	//{{AFX_MSG(InitialShips)
-	virtual BOOL OnInitDialog();
-	virtual void OnOK();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+    // Generated message map functions
+    //{{AFX_MSG(InitialShips)
+    virtual BOOL OnInitDialog();
+
+    virtual void OnOK();
+
+    //}}AFX_MSG
+    DECLARE_MESSAGE_MAP()
+
 private:
-	int m_list_count;
+    int m_list_count;
 };

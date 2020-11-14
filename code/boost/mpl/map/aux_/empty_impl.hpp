@@ -18,17 +18,18 @@
 #include <boost/mpl/not.hpp>
 #include <boost/mpl/map/aux_/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct empty_impl< aux::map_tag >
-{
-    template< typename Map > struct apply
-        : not_< typename Map::size >
-    {
-    };
-};
+        template<>
+        struct empty_impl<aux::map_tag> {
+            template<typename Map>
+            struct apply
+                    : not_<typename Map::size> {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_MAP_AUX_EMPTY_IMPL_HPP_INCLUDED

@@ -252,8 +252,11 @@ typedef struct _AUX_RGBImageRec {
 ** Prototypes
 */
 
-void APIENTRY auxInitDisplayMode(GLenum);
-void APIENTRY auxInitPosition(int, int, int, int);
+void APIENTRY
+auxInitDisplayMode(GLenum);
+void APIENTRY
+
+auxInitPosition(int, int, int, int);
 
 /* GLenum APIENTRY auxInitWindow(LPCTSTR); */
 #ifdef UNICODE
@@ -261,37 +264,78 @@ void APIENTRY auxInitPosition(int, int, int, int);
 #else
 #define auxInitWindow auxInitWindowA
 #endif
-GLenum APIENTRY auxInitWindowA(LPCSTR);
-GLenum APIENTRY auxInitWindowW(LPCWSTR);
+GLenum APIENTRY
+auxInitWindowA(LPCSTR);
+GLenum APIENTRY
+auxInitWindowW(LPCWSTR);
 
-void APIENTRY auxCloseWindow(void);
-void APIENTRY auxQuit(void);
-void APIENTRY auxSwapBuffers(void);
+void APIENTRY
 
-typedef void (CALLBACK* AUXMAINPROC)(void);
-void APIENTRY auxMainLoop(AUXMAINPROC);
+auxCloseWindow(void);
 
-typedef void (CALLBACK* AUXEXPOSEPROC)(int, int);
-void APIENTRY auxExposeFunc(AUXEXPOSEPROC);
+void APIENTRY
 
-typedef void (CALLBACK* AUXRESHAPEPROC)(GLsizei, GLsizei);
-void APIENTRY auxReshapeFunc(AUXRESHAPEPROC);
+auxQuit(void);
 
-typedef void (CALLBACK* AUXIDLEPROC)(void);
-void APIENTRY auxIdleFunc(AUXIDLEPROC);
+void APIENTRY
 
-typedef void (CALLBACK* AUXKEYPROC)(void);
-void APIENTRY auxKeyFunc(int, AUXKEYPROC);
+auxSwapBuffers(void);
 
-typedef void (CALLBACK* AUXMOUSEPROC)(AUX_EVENTREC *);
-void APIENTRY auxMouseFunc(int, int, AUXMOUSEPROC);
+typedef void (CALLBACK
+* AUXMAINPROC)(void);
+void APIENTRY
+auxMainLoop(AUXMAINPROC);
 
-int  APIENTRY auxGetColorMapSize(void);
-void APIENTRY auxGetMouseLoc(int *, int *);
-void APIENTRY auxSetOneColor(int, float, float, float);
-void APIENTRY auxSetFogRamp(int, int);
-void APIENTRY auxSetGreyRamp(void);
-void APIENTRY auxSetRGBMap(int, float *);
+typedef void (CALLBACK
+* AUXEXPOSEPROC)(int, int);
+void APIENTRY
+auxExposeFunc(AUXEXPOSEPROC);
+
+typedef void (CALLBACK
+* AUXRESHAPEPROC)(GLsizei, GLsizei);
+void APIENTRY
+auxReshapeFunc(AUXRESHAPEPROC);
+
+typedef void (CALLBACK
+* AUXIDLEPROC)(void);
+void APIENTRY
+auxIdleFunc(AUXIDLEPROC);
+
+typedef void (CALLBACK
+* AUXKEYPROC)(void);
+void APIENTRY
+
+auxKeyFunc(int, AUXKEYPROC);
+
+typedef void (CALLBACK
+* AUXMOUSEPROC)(AUX_EVENTREC *);
+void APIENTRY
+
+auxMouseFunc(int, int, AUXMOUSEPROC);
+
+int APIENTRY
+
+auxGetColorMapSize(void);
+
+void APIENTRY
+
+auxGetMouseLoc(int *, int *);
+
+void APIENTRY
+
+auxSetOneColor(int, float, float, float);
+
+void APIENTRY
+
+auxSetFogRamp(int, int);
+
+void APIENTRY
+
+auxSetGreyRamp(void);
+
+void APIENTRY
+
+auxSetRGBMap(int, float *);
 
 /* AUX_RGBImageRec * APIENTRY auxRGBImageLoad(LPCTSTR); */
 #ifdef UNICODE
@@ -299,57 +343,103 @@ void APIENTRY auxSetRGBMap(int, float *);
 #else
 #define auxRGBImageLoad auxRGBImageLoadA
 #endif
-AUX_RGBImageRec * APIENTRY auxRGBImageLoadA(LPCSTR);
-AUX_RGBImageRec * APIENTRY auxRGBImageLoadW(LPCWSTR);
+AUX_RGBImageRec *APIENTRY
+auxRGBImageLoadA(LPCSTR);
+AUX_RGBImageRec *APIENTRY
+auxRGBImageLoadW(LPCWSTR);
 
 #ifdef UNICODE
 #define auxDIBImageLoad auxDIBImageLoadW
 #else
 #define auxDIBImageLoad auxDIBImageLoadA
 #endif
-AUX_RGBImageRec * APIENTRY auxDIBImageLoadA(LPCSTR);
-AUX_RGBImageRec * APIENTRY auxDIBImageLoadW(LPCWSTR);
+AUX_RGBImageRec *APIENTRY
+auxDIBImageLoadA(LPCSTR);
+AUX_RGBImageRec *APIENTRY
+auxDIBImageLoadW(LPCWSTR);
 
-void APIENTRY auxCreateFont(void);
+void APIENTRY
+
+auxCreateFont(void);
 /* void APIENTRY auxDrawStr(LPCTSTR); */
 #ifdef UNICODE
 #define auxDrawStr auxDrawStrW
 #else
 #define auxDrawStr auxDrawStrA
 #endif
-void APIENTRY auxDrawStrA(LPCSTR);
-void APIENTRY auxDrawStrW(LPCWSTR);
+void APIENTRY
+auxDrawStrA(LPCSTR);
+void APIENTRY
+auxDrawStrW(LPCWSTR);
 
-void APIENTRY auxWireSphere(GLdouble);
-void APIENTRY auxSolidSphere(GLdouble);
-void APIENTRY auxWireCube(GLdouble);
-void APIENTRY auxSolidCube(GLdouble);
-void APIENTRY auxWireBox(GLdouble, GLdouble, GLdouble);
-void APIENTRY auxSolidBox(GLdouble, GLdouble, GLdouble);
-void APIENTRY auxWireTorus(GLdouble, GLdouble);
-void APIENTRY auxSolidTorus(GLdouble, GLdouble);
-void APIENTRY auxWireCylinder(GLdouble, GLdouble);
-void APIENTRY auxSolidCylinder(GLdouble, GLdouble);
-void APIENTRY auxWireIcosahedron(GLdouble);
-void APIENTRY auxSolidIcosahedron(GLdouble);
-void APIENTRY auxWireOctahedron(GLdouble);
-void APIENTRY auxSolidOctahedron(GLdouble);
-void APIENTRY auxWireTetrahedron(GLdouble);
-void APIENTRY auxSolidTetrahedron(GLdouble);
-void APIENTRY auxWireDodecahedron(GLdouble);
-void APIENTRY auxSolidDodecahedron(GLdouble);
-void APIENTRY auxWireCone(GLdouble, GLdouble);
-void APIENTRY auxSolidCone(GLdouble, GLdouble);
-void APIENTRY auxWireTeapot(GLdouble);
-void APIENTRY auxSolidTeapot(GLdouble);
+void APIENTRY
+auxWireSphere(GLdouble);
+void APIENTRY
+auxSolidSphere(GLdouble);
+void APIENTRY
+auxWireCube(GLdouble);
+void APIENTRY
+auxSolidCube(GLdouble);
+void APIENTRY
+auxWireBox(GLdouble, GLdouble, GLdouble
+);
+void APIENTRY
+auxSolidBox(GLdouble, GLdouble, GLdouble
+);
+void APIENTRY
+auxWireTorus(GLdouble, GLdouble
+);
+void APIENTRY
+auxSolidTorus(GLdouble, GLdouble
+);
+void APIENTRY
+auxWireCylinder(GLdouble, GLdouble
+);
+void APIENTRY
+auxSolidCylinder(GLdouble, GLdouble
+);
+void APIENTRY
+auxWireIcosahedron(GLdouble);
+void APIENTRY
+auxSolidIcosahedron(GLdouble);
+void APIENTRY
+auxWireOctahedron(GLdouble);
+void APIENTRY
+auxSolidOctahedron(GLdouble);
+void APIENTRY
+auxWireTetrahedron(GLdouble);
+void APIENTRY
+auxSolidTetrahedron(GLdouble);
+void APIENTRY
+auxWireDodecahedron(GLdouble);
+void APIENTRY
+auxSolidDodecahedron(GLdouble);
+void APIENTRY
+auxWireCone(GLdouble, GLdouble
+);
+void APIENTRY
+auxSolidCone(GLdouble, GLdouble
+);
+void APIENTRY
+auxWireTeapot(GLdouble);
+void APIENTRY
+auxSolidTeapot(GLdouble);
 
 /*
 ** Window specific functions
 ** hwnd, hdc, and hglrc valid after auxInitWindow()
 */
-HWND  APIENTRY auxGetHWND(void);
-HDC   APIENTRY auxGetHDC(void);
-HGLRC APIENTRY auxGetHGLRC(void);
+HWND APIENTRY
+
+auxGetHWND(void);
+
+HDC APIENTRY
+
+auxGetHDC(void);
+
+HGLRC APIENTRY
+
+auxGetHGLRC(void);
 
 /*
 ** Viewperf support functions and constants
@@ -360,11 +450,21 @@ enum {
     AUX_EXACT_MATCH,
     AUX_MINIMUM_CRITERIA
 };
-void   APIENTRY auxInitDisplayModePolicy(GLenum);
-GLenum APIENTRY auxInitDisplayModeID(GLint);
-GLenum APIENTRY auxGetDisplayModePolicy(void);
-GLint  APIENTRY auxGetDisplayModeID(void);
-GLenum APIENTRY auxGetDisplayMode(void);
+void APIENTRY
+auxInitDisplayModePolicy(GLenum);
+GLenum APIENTRY
+auxInitDisplayModeID(GLint);
+GLenum APIENTRY
+
+auxGetDisplayModePolicy(void);
+
+GLint APIENTRY
+
+auxGetDisplayModeID(void);
+
+GLenum APIENTRY
+
+auxGetDisplayMode(void);
 
 #ifdef __cplusplus
 }

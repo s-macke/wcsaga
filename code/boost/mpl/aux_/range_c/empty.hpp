@@ -18,20 +18,20 @@
 #include <boost/mpl/equal_to.hpp>
 #include <boost/mpl/aux_/range_c/tag.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct empty_impl< aux::half_open_range_tag >
-{
-    template< typename Range > struct apply
-        : equal_to<
-              typename Range::start
-            , typename Range::finish
-            >
-    {
-    };
-};
+        template<>
+        struct empty_impl<aux::half_open_range_tag> {
+            template<typename Range>
+            struct apply
+                    : equal_to<
+                            typename Range::start, typename Range::finish
+                    > {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_AUX_RANGE_C_EMPTY_HPP_INCLUDED

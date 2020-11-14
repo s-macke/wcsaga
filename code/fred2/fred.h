@@ -10,10 +10,10 @@
 
 
 #ifndef __AFXWIN_H__
-	#error include 'stdafx.h' before including this file for PCH
+#error include 'stdafx.h' before including this file for PCH
 #endif
 
-#include "globalincs/systemvars.h"		//	Low level variables, common to FreeSpace and Fred
+#include "globalincs/systemvars.h"        //	Low level variables, common to FreeSpace and Fred
 #include "resource.h"       // main symbols
 #include "mission/missionparse.h"
 #include "ShipEditorDlg.h"
@@ -23,25 +23,25 @@
 #include "BriefingEditorDlg.h"
 #include "globalincs/systemvars.h"
 
-#define MODIFY(a, b) do {	\
-	if (a != (b)) {			\
-		a = (b);					\
-		set_modified();		\
-	}								\
+#define MODIFY(a, b) do {    \
+    if (a != (b)) {            \
+        a = (b);                    \
+        set_modified();        \
+    }                                \
 } while(0)
 
-#define	F_RENDER_SHIP_MODELS	0x01
-#define	F_RENDER_SHIP_ICONS	0x02
+#define    F_RENDER_SHIP_MODELS    0x01
+#define    F_RENDER_SHIP_ICONS    0x02
 
 // user interface types
-#define HOFFOSS_INTERFACE	1
-#define ALLENDER_INTERFACE	2
+#define HOFFOSS_INTERFACE    1
+#define ALLENDER_INTERFACE    2
 
 typedef struct window_data {
-	WINDOWPLACEMENT p;
-	int visible;
-	int valid;
-	int processed;
+    WINDOWPLACEMENT p;
+    int visible;
+    int valid;
+    int processed;
 } window_data;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -49,36 +49,44 @@ typedef struct window_data {
 // See FRED.cpp for the implementation of this class
 //
 
-class CFREDApp : public CWinApp
-{
-	int app_init;
+class CFREDApp : public CWinApp {
+    int app_init;
 
 public:
-	void record_window_data(window_data *wndd, CWnd *wnd);
-	int init_window(window_data *wndd, CWnd *wnd, int adjust = 0, int pre = 0);
-	void read_window(char *name, window_data *wndd);
-	void write_window(char *name, window_data *wndd);
-	void write_ini_file(int degree = 0);
-	CFREDApp();
-	~CFREDApp();
+    void record_window_data(window_data *wndd, CWnd *wnd);
 
-	// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CFREDApp)
-	public:
-	virtual BOOL InitInstance();
-	virtual BOOL OnIdle(LONG lCount);
-	virtual int ExitInstance();
-	//}}AFX_VIRTUAL
+    int init_window(window_data *wndd, CWnd *wnd, int adjust = 0, int pre = 0);
+
+    void read_window(char *name, window_data *wndd);
+
+    void write_window(char *name, window_data *wndd);
+
+    void write_ini_file(int degree = 0);
+
+    CFREDApp();
+
+    ~CFREDApp();
+
+    // Overrides
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CFREDApp)
+public:
+    virtual BOOL InitInstance();
+
+    virtual BOOL OnIdle(LONG lCount);
+
+    virtual int ExitInstance();
+    //}}AFX_VIRTUAL
 
 // Implementation
 
-	//{{AFX_MSG(CFREDApp)
-	afx_msg void OnAppAbout();
-		// NOTE - the ClassWizard will add and remove member functions here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+    //{{AFX_MSG(CFREDApp)
+    afx_msg void OnAppAbout();
+
+    // NOTE - the ClassWizard will add and remove member functions here.
+    //    DO NOT EDIT what you see in these blocks of generated code !
+    //}}AFX_MSG
+    DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -91,7 +99,9 @@ public:
 //	ship.  It is useful to have a visual indication that you have changed the
 //	current ship.
 void add_pending_message(HWND hwnd, int id, int wparam, int lparam, int skip_count);
+
 void init_pending_messages(void);
+
 void update_map_window();
 
 extern int User_interface;
@@ -100,11 +110,11 @@ extern int Update_window;
 extern HCURSOR h_cursor_move, h_cursor_rotate;
 
 extern CWnd *Prev_window;
-extern CShipEditorDlg	Ship_editor_dialog;
-extern wing_editor		Wing_editor_dialog;
-extern waypoint_path_dlg	Waypoint_editor_dialog;
-extern bg_bitmap_dlg		*Bg_bitmap_dialog;
-extern briefing_editor_dlg	*Briefing_dialog;
+extern CShipEditorDlg Ship_editor_dialog;
+extern wing_editor Wing_editor_dialog;
+extern waypoint_path_dlg Waypoint_editor_dialog;
+extern bg_bitmap_dlg *Bg_bitmap_dialog;
+extern briefing_editor_dlg *Briefing_dialog;
 
 extern CFREDApp theApp;
 

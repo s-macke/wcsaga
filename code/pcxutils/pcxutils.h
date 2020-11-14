@@ -22,28 +22,29 @@ extern "C" {
 #endif
 */
 
-#define PCX_ERROR_NONE 				0
-#define PCX_ERROR_OPENING			1
-#define PCX_ERROR_NO_HEADER		2
-#define PCX_ERROR_WRONG_VERSION	3
-#define PCX_ERROR_READING			4
-#define PCX_ERROR_NO_PALETTE		5
-#define PCX_ERROR_WRITING			6
-#define PCX_ERROR_MEMORY			7
+#define PCX_ERROR_NONE                0
+#define PCX_ERROR_OPENING            1
+#define PCX_ERROR_NO_HEADER        2
+#define PCX_ERROR_WRONG_VERSION    3
+#define PCX_ERROR_READING            4
+#define PCX_ERROR_NO_PALETTE        5
+#define PCX_ERROR_WRITING            6
+#define PCX_ERROR_MEMORY            7
 
-extern int pcx_read_header(char* filename, CFILE* img_cfp = NULL, int* w = 0, int* h = 0, int* bpp = 0, ubyte* pal =
-						   NULL);
+extern int pcx_read_header(char *filename, CFILE *img_cfp = NULL, int *w = 0, int *h = 0, int *bpp = 0, ubyte *pal =
+NULL);
+
 //extern int pcx_read_bitmap_8bpp( char * filename, ubyte *org_data, ubyte *palette );
 //extern int pcx_read_bitmap_16bpp( char * filename, ubyte *org_data );
 //extern int pcx_read_bitmap_16bpp_aabitmap( char *filename, ubyte *org_data );
 //extern int pcx_read_bitmap_16bpp_nondark( char *filename, ubyte *org_data );
 //extern int pcx_read_bitmap_32(char *real_filename, ubyte *data );
-extern int pcx_read_bitmap(char* filename, ubyte* org_data, ubyte* pal, int byte_size, int aabitmap = 0, int nondark =
-						   0, int cf_type = CF_TYPE_ANY);
+extern int pcx_read_bitmap(char *filename, ubyte *org_data, ubyte *pal, int byte_size, int aabitmap = 0, int nondark =
+0, int cf_type = CF_TYPE_ANY);
 
 // Dumps a 8bpp bitmap to a file.
 // Set rowoff to -w for upside down bitmaps.
-extern int pcx_write_bitmap(char* filename, int w, int h, ubyte** row_ptrs, ubyte* palette);
+extern int pcx_write_bitmap(char *filename, int w, int h, ubyte **row_ptrs, ubyte *palette);
 
 
 /*

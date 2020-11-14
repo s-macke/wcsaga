@@ -21,23 +21,22 @@
 
 #include <boost/type_traits/is_same.hpp>
 
-namespace boost { namespace mpl {
+namespace boost {
+    namespace mpl {
 
-template<>
-struct contains_impl< aux::map_tag >
-{
-    template< typename Map, typename Pair > struct apply
-        : is_same< 
-              typename at_impl<aux::map_tag>::apply<
-                  Map
-                , typename Pair::first
-                >::type
-            , typename Pair::second
-            >
-    {
-    };
-};
+        template<>
+        struct contains_impl<aux::map_tag> {
+            template<typename Map, typename Pair>
+            struct apply
+                    : is_same<
+                            typename at_impl<aux::map_tag>::apply<
+                                    Map, typename Pair::first
+                            >::type, typename Pair::second
+                    > {
+            };
+        };
 
-}}
+    }
+}
 
 #endif // BOOST_MPL_MAP_AUX_CONTAINS_IMPL_HPP_INCLUDED

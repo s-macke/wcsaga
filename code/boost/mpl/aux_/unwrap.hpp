@@ -17,31 +17,34 @@
 
 #include <boost/ref.hpp>
 
-namespace boost { namespace mpl { namespace aux {
+namespace boost {
+    namespace mpl {
+        namespace aux {
 
-template< typename F >
-inline
-F& unwrap(F& f, long)
-{
-    return f;
+            template<typename F>
+            inline
+            F &unwrap(F &f, long) {
+                return f;
+            }
+
+            template<typename F>
+            inline
+            F &
+            unwrap(reference_wrapper <F> &f, int) {
+                return f;
+            }
+
+            template<typename F>
+            inline
+            F &
+                    unwrap(reference_wrapper < F >
+            const& f, int) {
+            return
+            f;
+        }
+
+    }
 }
-
-template< typename F >
-inline
-F&
-unwrap(reference_wrapper<F>& f, int)
-{
-    return f;
 }
-
-template< typename F >
-inline
-F&
-unwrap(reference_wrapper<F> const& f, int)
-{
-    return f;
-}
-
-}}}
 
 #endif // BOOST_MPL_AUX_UNWRAP_HPP_INCLUDED
