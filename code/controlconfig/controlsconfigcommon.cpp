@@ -2076,7 +2076,8 @@ char* textify_scancode(int code)
 // initialize common control config stuff - call at game startup after localization has been initialized
 void control_config_common_init()
 {
-	int layout = get_keyboad_layout();
+	//int layout = get_keyboad_layout();
+    int layout = LCL_GERMAN;
 
 	if (layout == LCL_GERMAN)
 	{

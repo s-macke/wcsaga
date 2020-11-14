@@ -910,3 +910,7 @@ int get_keyboad_layout()
 
 
 #endif // _WIN32
+
+int get_keyboad_layout() {
+    return LCL_GERMAN;
+}
