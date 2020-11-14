@@ -14,3 +14,8 @@ depcomp
 install-sh
 missing
 .svn
+compile
+.dirstamp
+
+# JetBrains
+.idea
