@@ -1,7 +1,7 @@
 set -e
 
 export CFLAGS="-g -O0"
-export CXXFLAGS="-g -O0 -Wno-variadic-macros -Wno-class-memaccess -Wno-unused-but-set-variable -Wno-shadow -Wno-unused-value"
+export CXXFLAGS="-g -O0 -Wno-variadic-macros -Wno-class-memaccess -Wno-unused-but-set-variable -Wno-shadow -Wno-unused-value -Wno-format-overflow -Wno-format-security -std=c++11"
 export PNG_CFLAGS="-I$PWD/libpng"
 export PNG_LIBS="../libpng/libpng.a -lz"
 export LUA_CFLAGS=" "

@@ -8,8 +8,6 @@
 */
 
 
-
-
 #include "network/multi_voice.h"
 #include "io/timer.h"
 #include "io/key.h"
@@ -610,7 +608,7 @@ void multi_voice_server_process()
 			break;
 
 			// if the token has been released - check to see if the stream is "done" (ie, can be marked as FREE once again)
-		case MULTI_VOICE_TOKEN_INDEX_RELEASED:
+		case (int)MULTI_VOICE_TOKEN_INDEX_RELEASED:
 			// if the stream_last_heard var is -1, it means we never got sound from this guy so free the token up immediately
 			if (Multi_voice_stream[idx].stream_last_heard == -1)
 			{
