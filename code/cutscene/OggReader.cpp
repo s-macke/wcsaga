@@ -3,8 +3,7 @@
 
 #include "io/timer.h"
 
-OggReader::OggReader(CFILE* f, THEORAFILE* movie)
-{
+OggReader::OggReader(CFILE *f, THEORAFILE *movie) {
     this->f = fopen("debug.txt", "wb");
 
     this->file = f;
@@ -30,10 +29,8 @@ OggReader::OggReader(CFILE* f, THEORAFILE* movie)
     this->body_returned = 0;
 }
 
-OggReader::~OggReader()
-{
-    if (this->file && isOpen)
-    {
+OggReader::~OggReader() {
+    if (this->file && isOpen) {
         ::cfclose(this->file);
     }
 
@@ -107,67 +104,84 @@ DWORD OggReader::run(LPVOID ptr)
 void * OggReader::run(void* ptr)
 #endif
 {
-    OggReader* reader = (OggReader*)ptr;
+OggReader *reader = (OggReader *) ptr;
 
-    while (reader->working && reader->isOpen)
-    {
-        // get maximum read size given available sync buffer space
-        int size = reader->movie->osyncstate.fill - reader->movie->osyncstate.returned;
-        if (size < 0)
-            size = reader->movie->osyncstate.storage - size;
-        size = reader->movie->osyncstate.storage - size;
+while (reader->
+working &&reader
+->isOpen)
+{
+// get maximum read size given available sync buffer space
+int size = reader->movie->osyncstate.fill - reader->movie->osyncstate.returned;
+if (size < 0)
+size = reader->movie->osyncstate.storage - size;
+size = reader->movie->osyncstate.storage - size;
 
-        if (size > 4096 && !reader->cfeof())
-        {
-            char* buffer = ogg_sync_buffer(&reader->movie->osyncstate, size);
-            int bytes = reader->cfread(buffer, 1, size);
-            ogg_sync_wrote(&reader->movie->osyncstate, bytes);
-        }
+if (size > 4096 && !reader->
 
-        while (reader->working)
-        {
-            size = reader->movie->t_osstate.body_storage - reader->movie->t_osstate.body_fill;
+cfeof()
 
-            if (size <= 1024 * 1024)
-                break;
-
-            reader->buffering = true;
-
-            if (ogg_sync_pageout(&reader->movie->osyncstate, &reader->movie->opage) > 0)
-            {
-                reader->writerLock();
-
-                bool success = reader->pushVideoPage(&reader->movie->opage);
-
-                if (!success)
-                {
-                    if (reader->movie->vorbis_p)
-                    {
-                        reader->pushAudioPage(&reader->movie->opage);
-                    }
-                }
-                reader->writerRelease();
-            }
-            else
-            {
-                break;
-            }
-
-            // the trick: let's try not to starve any other threads in the game that may be running
-            ::Sleep(1);
-
-        }
-
-        reader->buffering = false;
-
-        ::Sleep(5);
-    }
-
-    return 0;
+)
+{
+char *buffer = ogg_sync_buffer(&reader->movie->osyncstate, size);
+int bytes = reader->cfread(buffer, 1, size);
+ogg_sync_wrote(&reader
+->movie->osyncstate, bytes);
 }
 
-void OggReader::start()
+while (reader->working)
 {
+size = reader->movie->t_osstate.body_storage - reader->movie->t_osstate.body_fill;
+
+if (size <= 1024 * 1024)
+break;
+
+reader->
+buffering = true;
+
+if (
+ogg_sync_pageout(&reader
+->movie->osyncstate, &reader->movie->opage) > 0)
+{
+reader->
+
+writerLock();
+
+bool success = reader->pushVideoPage(&reader->movie->opage);
+
+if (!success)
+{
+if (reader->movie->vorbis_p)
+{
+reader->
+pushAudioPage(&reader
+->movie->opage);
+}
+}
+reader->
+
+writerRelease();
+
+}
+else
+{
+break;
+}
+
+// the trick: let's try not to starve any other threads in the game that may be running
+::Sleep(1);
+
+}
+
+reader->
+buffering = false;
+
+::Sleep(5);
+}
+
+return 0;
+}
+
+void OggReader::start() {
     this->working = true;
     this->body_returned = movie->t_osstate.body_returned;
 #ifdef WIN32
@@ -177,10 +191,8 @@ void OggReader::start()
 #endif
 }
 
-void OggReader::stop()
-{
-    if (this->thread)
-    {
+void OggReader::stop() {
+    if (this->thread) {
         // wait for thread to end
         working = false;
 
@@ -200,36 +212,32 @@ void OggReader::stop()
 #ifdef WIN32
         if (!CloseHandle(this->thread))
 #elif defined(SCP_UNIX)
-            if (!pthread_cancel(thread))
+        if (!pthread_cancel(thread))
 #endif
-            {
-                fprintf(f, "WARNING:: Error closing thread handle, check if we don't have a handle leak\r\n");
-            }
+        {
+            fprintf(f, "WARNING:: Error closing thread handle, check if we don't have a handle leak\r\n");
+        }
 #ifdef WIN32
         this->thread = NULL;
 #endif
     }
 }
 
-int OggReader::cfread(void* buf, int elsize, int nelem)
-{
+int OggReader::cfread(void *buf, int elsize, int nelem) {
     return ::cfread(buf, elsize, nelem, file);
 }
 
-bool OggReader::cfeof()
-{
+bool OggReader::cfeof() {
     return ::cfeof(this->file) != 0 && (movie->osyncstate.fill == movie->osyncstate.returned);
 }
 
-int OggReader::cfclose()
-{
+int OggReader::cfclose() {
     return ::cfclose(file);
 }
 
-int OggReader::popVideoPacket(ogg_packet* op)
-{
+int OggReader::popVideoPacket(ogg_packet *op) {
     int ret = 0;
-    ogg_stream_state* os = &movie->t_osstate;
+    ogg_stream_state *os = &movie->t_osstate;
 
     compact_restore_state(os);
 
@@ -242,13 +250,11 @@ int OggReader::popVideoPacket(ogg_packet* op)
     return ret;
 }
 
-int OggReader::popAudioPacket(ogg_packet* op)
-{
-    return popOggPacket( &movie->v_osstate, op);
+int OggReader::popAudioPacket(ogg_packet *op) {
+    return popOggPacket(&movie->v_osstate, op);
 }
 
-int OggReader::popOggPacket(ogg_stream_state* os, ogg_packet* op)
-{
+int OggReader::popOggPacket(ogg_stream_state *os, ogg_packet *op) {
     int ret = 0;
 
     ret = ogg_stream_packetout(os, op);
@@ -256,18 +262,15 @@ int OggReader::popOggPacket(ogg_stream_state* os, ogg_packet* op)
     return ret;
 }
 
-bool OggReader::pushVideoPage(ogg_page* op)
-{
+bool OggReader::pushVideoPage(ogg_page *op) {
     return pushOggPage(&movie->t_osstate, op);
 }
 
-bool OggReader::pushAudioPage(ogg_page* op)
-{
+bool OggReader::pushAudioPage(ogg_page *op) {
     return pushOggPage(&movie->v_osstate, op);
 }
 
-bool OggReader::pushOggPage(ogg_stream_state* os, ogg_page* op)
-{
+bool OggReader::pushOggPage(ogg_stream_state *os, ogg_page *op) {
     int ret = 0;
 
     ret = ogg_stream_pagein(os, op);
@@ -275,8 +278,7 @@ bool OggReader::pushOggPage(ogg_stream_state* os, ogg_page* op)
     return ret == 0;
 }
 
-void OggReader::readerLock()
-{
+void OggReader::readerLock() {
 #ifdef WIN32
     WaitForSingleObject(mutexVideo, INFINITE);
     wantToRead = true;
@@ -290,8 +292,7 @@ void OggReader::readerLock()
 #endif
 }
 
-void OggReader::readerRelease()
-{
+void OggReader::readerRelease() {
 #ifdef WIN32
     WaitForSingleObject(mutexVideo, INFINITE);
     wantToRead = false;
@@ -313,15 +314,13 @@ void OggReader::readerRelease()
 #endif
 }
 
-void OggReader::writerLock()
-{
+void OggReader::writerLock() {
 #ifdef WIN32
     WaitForSingleObject(mutexVideo, INFINITE);
 #elif defined(SCP_UNIX)
     pthread_mutex_lock(&mutexVideo);
 #endif
-    if (wantToRead)
-    {
+    if (wantToRead) {
         writerIsWaiting = true;
 #ifdef WIN32
         ReleaseMutex(mutexVideo);
@@ -343,8 +342,7 @@ void OggReader::writerLock()
 #endif
 }
 
-void OggReader::writerRelease()
-{
+void OggReader::writerRelease() {
 #ifdef WIN32
     ReleaseSemaphore(canWrite, 1, NULL);
 #elif defined(SCP_UNIX)
@@ -352,8 +350,7 @@ void OggReader::writerRelease()
 #endif
 }
 
-void OggReader::compact_now(ogg_stream_state* os)
-{
+void OggReader::compact_now(ogg_stream_state *os) {
     // huge ammounts of evil hackery
     memmove(os->body_data, os->body_data + os->body_returned, os->body_fill - os->body_returned);
     os->body_fill -= os->body_returned;
@@ -361,41 +358,35 @@ void OggReader::compact_now(ogg_stream_state* os)
     this->body_returned = 0;
 }
 
-void OggReader::compact_delay(ogg_stream_state* os) const
-{
+void OggReader::compact_delay(ogg_stream_state *os) const {
     os->body_returned = 0;
 }
 
-void OggReader::compact_save_state(ogg_stream_state* os)
-{
+void OggReader::compact_save_state(ogg_stream_state *os) {
     this->body_returned = os->body_returned;
 }
 
-void OggReader::compact_restore_state(ogg_stream_state* os)
-{
+void OggReader::compact_restore_state(ogg_stream_state *os) {
     os->body_returned = this->body_returned;
 }
 
-bool OggReader::compact_eval_state(ogg_stream_state* os)
-{
-    bool readFarFromEnding = (os->body_storage - os->body_returned >= 2 * 1024 * 1024);	// try to minimize compact operation, but...
-    bool hasAudio = (ogg_stream_packetpeek(&movie->v_osstate, NULL) > 0);			// ... if we run out of audio, don't risk audio glitches!
+bool OggReader::compact_eval_state(ogg_stream_state *os) {
+    bool readFarFromEnding = (os->body_storage - os->body_returned >=
+                              2 * 1024 * 1024);    // try to minimize compact operation, but...
+    bool hasAudio = (ogg_stream_packetpeek(&movie->v_osstate, NULL) >
+                     0);            // ... if we run out of audio, don't risk audio glitches!
     bool pastMinimumReturn = (os->body_returned > 3 * 1024 * 1024);
 
     return !readFarFromEnding || (!hasAudio && movie->vorbis_p /*&& !::cfeof(this->file) && !buffering **/ &&
                                   pastMinimumReturn);
 }
 
-void OggReader::compact_if_needed()
-{
-    ogg_stream_state* os = &movie->t_osstate;
+void OggReader::compact_if_needed() {
+    ogg_stream_state *os = &movie->t_osstate;
 
-    if (!compact_eval_state(os))
-    {
+    if (!compact_eval_state(os)) {
         compact_delay(os);
-    }
-    else
-    {
+    } else {
         compact_now(os);
     }
 

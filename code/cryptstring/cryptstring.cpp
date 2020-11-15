@@ -21,52 +21,50 @@
 #undef main
 #endif
 
-int main(int argc, char **argv)
-{
-	int i;
-	char *crypt_string;
+int main(int argc, char **argv) {
+    int i;
+    char *crypt_string;
 
-	if ( argc == 1 ) {
-		printf("Usage: cryptstring <string1> <string2> ...\n");
-		printf("Output will be <crypt1> <crypt2>\n");
-		exit(1);
-	}
+    if (argc == 1) {
+        printf("Usage: cryptstring <string1> <string2> ...\n");
+        printf("Output will be <crypt1> <crypt2>\n");
+        exit(1);
+    }
 
-	for ( i = 1; i < argc; i++ ) {
-		char *s;
+    for (i = 1; i < argc; i++) {
+        char *s;
 
-		s = argv[i];
-		// if the length of the string is greater than the number of crypted symbols we
-		// return, then pass only the maximum length
-		if ( strlen(s) > CRYPT_STRING_LENGTH )
-			s += (strlen(s) - CRYPT_STRING_LENGTH);
+        s = argv[i];
+        // if the length of the string is greater than the number of crypted symbols we
+        // return, then pass only the maximum length
+        if (strlen(s) > CRYPT_STRING_LENGTH)
+            s += (strlen(s) - CRYPT_STRING_LENGTH);
 
-		crypt_string = jcrypt(s);
-		printf("%s\n", crypt_string);
-	}
+        crypt_string = jcrypt(s);
+        printf("%s\n", crypt_string);
+    }
 
-	return 0;
+    return 0;
 }
 
-char *jcrypt (char *plainstring)
-{
-	int i,t,len;
-	static char cryptstring[CRYPT_STRING_LENGTH + 1];
+char *jcrypt(char *plainstring) {
+    int i, t, len;
+    static char cryptstring[CRYPT_STRING_LENGTH + 1];
 
-	len=strlen (plainstring);
-	if (len > CRYPT_STRING_LENGTH)
-		len = CRYPT_STRING_LENGTH;
-   
-	for (i = 0;i < len; i++) {
-		cryptstring[i]=0; 
+    len = strlen(plainstring);
+    if (len > CRYPT_STRING_LENGTH)
+        len = CRYPT_STRING_LENGTH;
 
-		for (t = 0; t < len; t++) {
-			cryptstring[i]^=(plainstring[t] ^ plainstring[i%(t+1)]);
-			cryptstring[i]%=90;
-			cryptstring[i]+=33;
-		}
-	}
+    for (i = 0; i < len; i++) {
+        cryptstring[i] = 0;
 
-	cryptstring[i]=0;
-	return ((char *)cryptstring);
+        for (t = 0; t < len; t++) {
+            cryptstring[i] ^= (plainstring[t] ^ plainstring[i % (t + 1)]);
+            cryptstring[i] %= 90;
+            cryptstring[i] += 33;
+        }
+    }
+
+    cryptstring[i] = 0;
+    return ((char *) cryptstring);
 }
