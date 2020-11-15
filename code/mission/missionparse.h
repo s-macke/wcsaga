@@ -121,7 +121,7 @@ typedef struct mission_cutscene {
             : type(0),
               is_campaign_only(false),
               formula(1) {
-        cutscene_name[0] = NULL;
+        cutscene_name[0] = 0;
     }
 } mission_cutscene;
 
@@ -323,9 +323,9 @@ typedef struct texture_replace {
 
     void Reset() {
         new_texture_id = -1;
-        ship_name[0] = NULL;
-        old_texture[0] = NULL;
-        new_texture[0] = NULL;
+        ship_name[0] = 0;
+        old_texture[0] = 0;
+        new_texture[0] = 0;
     }
 } texture_replace;
 

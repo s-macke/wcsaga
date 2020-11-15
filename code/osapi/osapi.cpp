@@ -152,8 +152,8 @@ void os_init(char* wclass, char* title, char* app_name, char* version_string)
 	INITIALIZE_CRITICAL_SECTION(Os_lock);
 	/*
 		#ifdef THREADED_PROCESS
-			// Create an even to signal that the window is created, 
-			// so that we don't return from this function until 
+			// Create an even to signal that the window is created,
+			// so that we don't return from this function until
 			// the window is all properly created.
 			HANDLE Window_created = CreateEvent( NULL, FALSE, FALSE, NULL );
 			hThread = CreateThread( NULL, 0, (LPTHREAD_START_ROUTINE)win32_process, Window_created, 0, &ThreadID );
@@ -275,9 +275,9 @@ DWORD win32_process(DWORD lparam)
 	// Let the app continue once the window is created
 	SetEvent(Window_created);
 
-	while (1)	{	
+	while (1)	{
 		if (WaitMessage() == TRUE)	{
-			ENTER_CRITICAL_SECTION( Os_lock );			
+			ENTER_CRITICAL_SECTION( Os_lock );
 			while(PeekMessage(&msg,0,0,0,PM_REMOVE))	{
 				if ( msg.message == WM_DESTROY )	{
 					LEAVE_CRITICAL_SECTION( Os_lock );
@@ -290,7 +290,7 @@ DWORD win32_process(DWORD lparam)
 				DispatchMessage(&msg);
 			}
 			LEAVE_CRITICAL_SECTION( Os_lock );
-		} 
+		}
 	}*/
 
 	return 0;
@@ -500,8 +500,8 @@ LRESULT CALLBACK win32_message_handler(HWND hwnd, UINT msg, WPARAM wParam, LPARA
 			if (latency < 0)
 				latency = 0;
 
-			nVirtKey = (int)wParam;    // virtual-key code 
-			lKeyData = (lParam >> 16) & 255;          // key data 
+			nVirtKey = (int)wParam;    // virtual-key code
+			lKeyData = (lParam >> 16) & 255;          // key data
 			if ((lParam >> 16) & 256)
 				lKeyData += 0x80;
 
@@ -537,8 +537,8 @@ LRESULT CALLBACK win32_message_handler(HWND hwnd, UINT msg, WPARAM wParam, LPARA
 			if (latency < 0)
 				latency = 0;
 
-			nVirtKey = (int)wParam;    // virtual-key code 
-			lKeyData = (lParam >> 16) & 255;          // key data 
+			nVirtKey = (int)wParam;    // virtual-key code
+			lKeyData = (lParam >> 16) & 255;          // key data
 			if ((lParam >> 16) & 256)
 				lKeyData += 0x80;
 
@@ -726,7 +726,7 @@ void win32_create_window(int width, int height)
 	{
 		RECT my_rect;
 
-		// make sure we adjust for the actual window border	
+		// make sure we adjust for the actual window border
 		x_add = GetSystemMetrics(SM_CXFIXEDFRAME) * 2;
 		y_add = 2 * GetSystemMetrics(SM_CYFIXEDFRAME) + GetSystemMetrics(SM_CYCAPTION);
 
@@ -845,7 +845,7 @@ static HHOOK g_hKeyboardHook = NULL;
 
 LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
-	if (nCode < 0 || nCode != HC_ACTION)  // do not process message 
+	if (nCode < 0 || nCode != HC_ACTION)  // do not process message
 		return CallNextHookEx(g_hKeyboardHook, nCode, wParam, lParam);
 
 	// hack!

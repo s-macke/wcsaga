@@ -45,7 +45,7 @@ typedef struct game_snd {
               id(0),
               id_sig(0),
               flags(0) {
-        filename[0] = NULL;
+        filename[0] = 0;
         min = 0;
         max = 0;
     }

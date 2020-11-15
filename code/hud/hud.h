@@ -34,7 +34,7 @@ typedef struct hud_anim {
               sy(0),
               total_time(0),
               time_elapsed(0) {
-        filename[0] = NULL;
+        filename[0] = 0;
     }
 } hud_anim;
 

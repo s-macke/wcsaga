@@ -1291,7 +1291,7 @@ int popup_till_condition(int (*condition)(), ...)
 
 	// get button text
 	s = va_arg(args, char *);
-	Popup_info.button_text[0] = NULL;
+	Popup_info.button_text[0] = 0;
 	popup_maybe_assign_keypress(&Popup_info, 0, s);
 
 	// get msg text

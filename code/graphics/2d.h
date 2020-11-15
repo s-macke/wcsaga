@@ -58,7 +58,7 @@ gr_line(x1,y1,x2,y2)
 enum Alignment {
     ALIGNMENT_LEFT = 0,
     ALIGNMENT_CENTER,
-    ALIGNMENT_RIGHT,
+    ALIGNMENT_RIGHT
 };
 
 //MAX_POLYGON_NORMS

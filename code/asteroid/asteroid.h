@@ -73,7 +73,7 @@ typedef struct asteroid_info {
               damage(0),
               blast(0),
               initial_asteroid_strength(0) {
-        name[0] = NULL;
+        name[0] = 0;
         memset(pof_files, 0, sizeof(pof_files));
         memset(detail_distance, 0, sizeof(detail_distance));
         memset(modelp, 0, sizeof(modelp));

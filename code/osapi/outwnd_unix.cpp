@@ -40,7 +40,7 @@ struct outwnd_filter_struct {
 	outwnd_filter_struct()
 		: enabled( false )
 	{ 
-		name[ 0 ] = NULL;
+		name[ 0 ] = 0;
 	}
 };
 
@@ -237,7 +237,7 @@ void outwnd_print(char *id, char *tmp)
 
 	if (Log_debug_output_to_file) {
 		if (Log_fp != NULL) {
-			fputs(tmp, Log_fp);	
+			fputs(tmp, Log_fp);
 			fflush(Log_fp);
 		}
 	} else {
@@ -295,7 +295,7 @@ void safe_point_print(char *format, ...)
 {
 	char tmp[512];
 	va_list args;
-	
+
 	va_start(args, format);
 	vsnprintf(tmp, sizeof(tmp)-1,format, args);
 	va_end(args);
