@@ -186,6 +186,8 @@ void outwnd_print(char *id, char *tmp) {
     if ((id == NULL) || (tmp == NULL))
         return;
 
+    printf(tmp);
+
     if (!outwnd_inited) {
         fputs("outwnd not initialized yet...  ", stdout);
         fputs(tmp, stdout);

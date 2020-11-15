@@ -44,4 +44,4 @@ make V=1 j=4
 
 
 #readelf -d ./fs2_open_r
-
+#./fs2_open_d -wcsaga -window

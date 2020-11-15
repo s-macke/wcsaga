@@ -630,7 +630,7 @@ CFILE *cfopen(char *file_path, char *mode, int type, int dir_type, bool localize
     /* Bobboau, what is this doing here? 31 is way too short... - Goober5000
     if( strlen(file_path) > 31 )
         Error(LOCATION, "file name %s too long, \nmust be less than 31 charicters", file_path);*/
-
+    printf("cfopen '%s'\n", file_path);
     char longname[_MAX_PATH];
 
     if (!cfile_inited) {
