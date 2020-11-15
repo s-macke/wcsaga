@@ -3,7 +3,7 @@ set -e
 export CFLAGS="-g -O0"
 export CXXFLAGS="-g -O0 -Wno-variadic-macros -Wno-class-memaccess -Wno-unused-but-set-variable -Wno-shadow -Wno-unused-value -Wno-format-overflow -Wno-format-security -std=c++11"
 export PNG_CFLAGS="-I$PWD/libpng"
-export PNG_LIBS="../libpng/libpng.a -lz"
+export PNG_LIBS="../libpng/libpng.a ../zlib/libz.a"
 export LUA_CFLAGS=" "
 export LUA_LIBS=" "
 
@@ -28,6 +28,12 @@ gcc $CFLAGS -DLUA_ANSI -c *.c
 ar r liblua.a *.o
 cd ..
 
+cd zlib
+rm -f *.a
+rm -f *.o
+gcc $CFLAGS -c *.c
+ar r libz.a *.o
+cd ..
 
 #cd libogg
 #cd src

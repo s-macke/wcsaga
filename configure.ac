@@ -455,10 +455,6 @@ elif test "$fs2_os_osx" = "yes" ; then
 	fi
 fi
 
-dnl Dynamic Linking
-AC_SEARCH_LIBS([dlsym], [dl])
-FS2_LIBS=$FS2_LIBS" -ldl"
-
 dnl Posix Threads
 AC_SEARCH_LIBS([pthread_mutex_timedlock], [pthread])
 FS2_LIBS=$FS2_LIBS" -lpthread"
