@@ -140,11 +140,11 @@ int Multi_client_update_times[MAX_PLAYERS];    // client update packet timestamp
 
 // local network buffer data
 LOCAL
-        ubyte
-net_buffer[NUM_REENTRANT_LEVELS][MAX_NET_BUFFER];
+ubyte
+        net_buffer[NUM_REENTRANT_LEVELS][MAX_NET_BUFFER];
 LOCAL
-        ubyte
-Multi_read_count;
+ubyte
+        Multi_read_count;
 
 int Multi_restr_query_timestamp = -1;
 join_request Multi_restr_join_request;
@@ -152,8 +152,8 @@ net_addr Multi_restr_addr;
 int Multi_join_restr_mode = -1;
 
 LOCAL
-        fix
-Multi_server_wait_start;                // variable to hold start time when waiting to reestablish with server
+fix
+        Multi_server_wait_start;                // variable to hold start time when waiting to reestablish with server
 
 // non API master tracker vars
 char Multi_tracker_login[MULTI_TRACKER_STRING_LEN + 1] = "";
@@ -494,7 +494,7 @@ void multi_client_check_server() {
 //	Prelimiary verification of the magic number and checksum are done here.  
 //
 
-void process_packet_normal(ubyte * data, header * header_info) {
+void process_packet_normal(ubyte *data, header *header_info) {
     switch (data[0]) {
 
         case JOIN:
@@ -944,90 +944,80 @@ void process_packet_normal(ubyte * data, header * header_info) {
 //  --------------------^
 // this should be process_packet() I think, or with the new code
 // process_tracker_packet() as defined in MultiTracker.[h,cpp]
-void multi_process_bigdata(ubyte * data, int
+void multi_process_bigdata(ubyte *data, int
 len,
-net_addr *from_addr,
-int reliable
-)
-{
-int type, bytes_processed;
-int player_num;
-header header_info;
-ubyte *buf;
+                           net_addr *from_addr,
+                           int reliable
+) {
+    int type, bytes_processed;
+    int player_num;
+    header header_info;
+    ubyte *buf;
 
 // the only packets we will process from an unknown player are GAME_QUERY, GAME_INFO, JOIN, PING, PONG, ACCEPT, and GAME_ACTIVE packets
-player_num = find_player(from_addr);
+    player_num = find_player(from_addr);
 
 // find the player who sent the message and mark the last_heard time for this player
 // check to see if netplayer is null (it may be in cases such as getting lists of games from the tracker)
-if (player_num >= 0)
-{
-Net_players[player_num].
-last_heard_time = timer_get_fixed_seconds();
-}
+    if (player_num >= 0) {
+        Net_players[player_num].
+                last_heard_time = timer_get_fixed_seconds();
+    }
 
 // store fields that were passed along in the message
 // store header information that was captured from the network-layer header
-memcpy(header_info
-.addr, from_addr->addr, 6);
-memcpy(header_info
-.net_id, from_addr->net_id, 4);
-header_info.
-port = from_addr->port;
-if (player_num >= 0)
-{
-header_info.
-id = Net_players[player_num].player_id;
-}
-else
-{
-header_info.
-id = -1;
-}
+    memcpy(header_info
+                   .addr, from_addr->addr, 6);
+    memcpy(header_info
+                   .net_id, from_addr->net_id, 4);
+    header_info.
+            port = from_addr->port;
+    if (player_num >= 0) {
+        header_info.
+                id = Net_players[player_num].player_id;
+    } else {
+        header_info.
+                id = -1;
+    }
 
-bytes_processed = 0;
-while ((bytes_processed >= 0) && (bytes_processed<len))
-{
+    bytes_processed = 0;
+    while ((bytes_processed >= 0) && (bytes_processed < len)) {
 
-buf = &(data[bytes_processed]);
+        buf = &(data[bytes_processed]);
 
-type = buf[0];
+        type = buf[0];
 
 // if its coming from an unknown source, there are only certain packets we will actually process
-if ((player_num == -1) && !
-multi_is_valid_unknown_packet((ubyte)
-type))
-{
-return;
-}
+        if ((player_num == -1) && !
+                multi_is_valid_unknown_packet((ubyte)
+                                                      type)) {
+            return;
+        }
 
-if ((type < 0) || (type > MAX_TYPE_ID))
-{
-nprintf(("Network", "multi_process_bigdata: Invalid packet type %d!\n", type));
-return;
-}
+        if ((type < 0) || (type > MAX_TYPE_ID)) {
+            nprintf(("Network", "multi_process_bigdata: Invalid packet type %d!\n", type));
+            return;
+        }
 
 // perform any special processing checks here
-process_packet_normal(buf, &header_info
-);
+        process_packet_normal(buf, &header_info
+        );
 
 // MWA -- magic number was removed from header on 8/4/97.  Replaced with bytes_processed
 // variable which gets stuffed whenever a packet is processed.
-bytes_processed += header_info.
-bytes_processed;
-}
+        bytes_processed += header_info.
+                bytes_processed;
+    }
 
 // if this is not reliable data and we have a valid player
-if (Net_player != NULL)
-{
-if (!MULTIPLAYER_MASTER && !
-reliable &&(Game_mode
-& GM_IN_MISSION))
-{
-Net_player->cl_bytes_recvd +=
-len;
-}
-}
+    if (Net_player != NULL) {
+        if (!MULTIPLAYER_MASTER && !
+                reliable && (Game_mode
+                             & GM_IN_MISSION)) {
+            Net_player->cl_bytes_recvd +=
+                    len;
+        }
+    }
 }
 
 // process all reliable socket details
@@ -1093,7 +1083,7 @@ void multi_process_reliable_details() {
 // the data to process_big_data
 void multi_process_incoming() {
     int size;
-    ubyte * data, *savep;
+    ubyte *data, *savep;
     net_addr from_addr;
 
     Assert(Multi_read_count < NUM_REENTRANT_LEVELS);
@@ -1148,15 +1138,15 @@ void multi_process_incoming() {
 //
 
 int eye_tog = 1;
+
 DCF(eye_tog,
-"")
-{
-eye_tog = !eye_tog;
-if (eye_tog){
-dc_printf("proper eye stuff on\n");
-} else {
-dc_printf("proper eye stuff off\n");
-}
+    "") {
+    eye_tog = !eye_tog;
+    if (eye_tog) {
+        dc_printf("proper eye stuff on\n");
+    } else {
+        dc_printf("proper eye stuff off\n");
+    }
 }
 
 void multi_do_frame() {
@@ -1819,21 +1809,20 @@ void multi_reset_timestamps() {
 
 // netgame debug flags for debug console stuff
 DCF(netd,
-"change/list netgame debug flags")
-{
-dc_get_arg(ARG_INT);
+    "change/list netgame debug flags") {
+    dc_get_arg(ARG_INT);
 
 // if we got an integer, and we're the server, change flags
-if ((
-Dc_arg_type &ARG_INT
-) && (Net_player != NULL) && (Net_player->
-flags &NETINFO_FLAG_AM_MASTER
-) && (Dc_arg_int <= 7)){
-Netgame.debug_flags ^= (1<<Dc_arg_int);
-}
+    if ((
+                Dc_arg_type & ARG_INT
+        ) && (Net_player != NULL) && (Net_player->
+            flags & NETINFO_FLAG_AM_MASTER
+        ) && (Dc_arg_int <= 7)) {
+        Netgame.debug_flags ^= (1 << Dc_arg_int);
+    }
 
 // display network flags
-dc_printf("BITS\n");
+    dc_printf("BITS\n");
 // dc_printf("1 - Client side firing (%d)\n", Netgame.debug_flags & NETD_FLAG_CLIENT_FIRING ? 1 : 0);
 // dc_printf("2 - Client nodamage (%d)\n", Netgame.debug_flags & NETD_FLAG_CLIENT_NODAMAGE ? 1 : 0);
 }

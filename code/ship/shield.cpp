@@ -440,13 +440,13 @@ void render_shield_triangle(gshield_tri *trip, matrix *orient, vec3d *pos, ubyte
 
     vec3d norm;
     Poly_count++;
-    vm_vec_perp(&norm, (vec3d * ) & verts[0]->x, (vec3d * ) & verts[1]->x, (vec3d * ) & verts[2]->x);
+    vm_vec_perp(&norm, (vec3d *) &verts[0]->x, (vec3d *) &verts[1]->x, (vec3d *) &verts[2]->x);
 
     int flags = TMAP_FLAG_TEXTURED | TMAP_FLAG_RGB | TMAP_FLAG_GOURAUD;
     if (!Cmdline_nohtl)
         flags |= TMAP_HTL_3D_UNLIT;
 
-    if (vm_vec_dot(&norm, (vec3d * ) & verts[1]->x) >= 0.0) {
+    if (vm_vec_dot(&norm, (vec3d *) &verts[1]->x) >= 0.0) {
         vertex *vertlist[3];
         vertlist[0] = verts[2];
         vertlist[1] = verts[1];

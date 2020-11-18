@@ -169,19 +169,18 @@ void palette_load_table(char *filename) {
 
 
 DCF(palette,
-"Loads a new palette")
-{
-if (Dc_command)    {
-dc_get_arg(ARG_STRING
-|ARG_NONE);
-if (Dc_arg_type == ARG_NONE)    {
-} else {
-palette_load_table(Dc_arg);
-}
-}
-if (Dc_help)    {
-dc_printf("Usage: palette filename\nLoads the palette file.\n");
-}
+    "Loads a new palette") {
+    if (Dc_command) {
+        dc_get_arg(ARG_STRING
+                   | ARG_NONE);
+        if (Dc_arg_type == ARG_NONE) {
+        } else {
+            palette_load_table(Dc_arg);
+        }
+    }
+    if (Dc_help) {
+        dc_printf("Usage: palette filename\nLoads the palette file.\n");
+    }
 
 }
 

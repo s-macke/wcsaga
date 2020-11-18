@@ -12,68 +12,64 @@
 #include "globalincs/pstypes.h"
 
 //Struct used to hold data about file defaults
-typedef struct def_file
-{
-	char* filename;
-	char* contents;
+typedef struct def_file {
+    char *filename;
+    char *contents;
 } def_file;
 
 //:PART 1:
 //**********
-extern char* Default_species_table;
-extern char* Default_iff_table;
-extern char* Default_shiptypes_table;
-extern char* Default_ai_profiles_table;
-extern char* Default_autopilot_table;
-extern char* Default_fonts_table;
+extern char *Default_species_table;
+extern char *Default_iff_table;
+extern char *Default_shiptypes_table;
+extern char *Default_ai_profiles_table;
+extern char *Default_autopilot_table;
+extern char *Default_fonts_table;
 //**********
 
 //:PART 2:
 //**********
 def_file Default_files[] =
-{
-	{
-		"species_defs.tbl",
-		Default_species_table
-	},
-	{
-		"iff_defs.tbl",
-		Default_iff_table
-	},
-	{
-		"objecttypes.tbl",
-		Default_shiptypes_table
-	},
-	{
-		"ai_profiles.tbl",
-		Default_ai_profiles_table
-	},
-	{
-		"autopilot.tbl",
-		Default_autopilot_table
-	},
-	{
-		"fonts.tbl",
-		Default_fonts_table
-	},
-};
+        {
+                {
+                        "species_defs.tbl",
+                        Default_species_table
+                },
+                {
+                        "iff_defs.tbl",
+                        Default_iff_table
+                },
+                {
+                        "objecttypes.tbl",
+                        Default_shiptypes_table
+                },
+                {
+                        "ai_profiles.tbl",
+                        Default_ai_profiles_table
+                },
+                {
+                        "autopilot.tbl",
+                        Default_autopilot_table
+                },
+                {
+                        "fonts.tbl",
+                        Default_fonts_table
+                },
+        };
 
 static int Num_default_files = sizeof(Default_files) / sizeof(def_file);
 //**********
 
-char* defaults_get_file(char* filename)
-{
-	for (int i = 0; i < Num_default_files; i++)
-	{
-		if (!stricmp(Default_files[i].filename, filename))
-		{
-			return Default_files[i].contents;
-		}
-	}
+char *defaults_get_file(char *filename) {
+    for (int i = 0; i < Num_default_files; i++) {
+        if (!stricmp(Default_files[i].filename, filename)) {
+            return Default_files[i].contents;
+        }
+    }
 
-	//WMC - This is really bad, because it means we have a default table missing.
-	Error(LOCATION, "Default table '%s' missing from executable - contact a coder.", filename);
-	return NULL;
+    //WMC - This is really bad, because it means we have a default table missing.
+    Error(LOCATION, "Default table '%s' missing from executable - contact a coder.", filename);
+    return NULL;
 }
 
 //:PART 3:
@@ -84,7 +80,7 @@ char* defaults_get_file(char* filename)
 // Please note that the {\n\}s should be removed from the end of each line
 // if you intend to use this to format your own table.
 
-char* Default_species_table = "\
+char *Default_species_table = "\
 																		\n\
 #SPECIES DEFS															\n\
 																		\n\
@@ -149,7 +145,7 @@ $AwacsMultiplier: 1.50													\n\
 // and the {\"}s  should be replaced with {"}s if you intend to use this to
 // format your own table.
 
-char* Default_iff_table = "\
+char *Default_iff_table = "\
 																		\n\
 #IFFs																	\n\
 																		\n\
@@ -214,7 +210,7 @@ $Attacks: ( \"Friendly\" \"Hostile\" \"Neutral\" \"Traitor\" )			\n\
 // each line and the {\"}s  should be replaced with {"}s if you intend to
 // use this to format your own table.
 
-char* Default_shiptypes_table = "\
+char *Default_shiptypes_table = "\
 																		\n\
 #Ship types																\n\
 ""\
@@ -669,7 +665,7 @@ $Vaporize Percent Chance: 0.0											\n\
 // Please note that the {\n\}s and {\n""\}s should be removed from the end
 // of each line if you intend to use this to format your own table.
 
-char* Default_ai_profiles_table = "\
+char *Default_ai_profiles_table = "\
 																		\n\
 ;; AI Profiles table.  Incorporates stuff from the old difficulty.tbl	\n\
 ;; plus additional flags previously covered under the blanket New AI	\n\
@@ -970,7 +966,7 @@ $do capship vs capship collisions:	YES									\n\
 // Please note that the {\n\}s should be removed from the end of each line
 // if you intend to use this to format your own table.
 
-char* Default_autopilot_table = "\
+char *Default_autopilot_table = "\
 #Autopilot																\n\
 																		\n\
 $Link Distance: 1000													\n\
@@ -1003,7 +999,7 @@ $Hazard:																\n\
 // Please note that the {\n\}s should be removed from the end of each line
 // if you intend to use this to format your own table.
 
-char* Default_fonts_table = "\
+char *Default_fonts_table = "\
 #Fonts																	\n\
 																		\n\
 $Font: font01.vf														\n\

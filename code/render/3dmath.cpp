@@ -64,7 +64,7 @@ ubyte g3_code_vertex(vertex *p) {
 
     if (G3_user_clip) {
         // Check if behind user plane
-        if (g3_point_behind_user_plane((vec3d * ) & p->x)) {
+        if (g3_point_behind_user_plane((vec3d *) &p->x)) {
             cc |= CC_OFF_USER;
         }
     }
@@ -136,7 +136,7 @@ ubyte g3_rotate_vertex(vertex *dest, vec3d *src) {
 
     if (G3_user_clip) {
         // Check if behind user plane
-        if (g3_point_behind_user_plane((vec3d * ) & dest->x)) {
+        if (g3_point_behind_user_plane((vec3d *) &dest->x)) {
             codes |= CC_OFF_USER;
         }
     }
@@ -157,7 +157,7 @@ ubyte g3_rotate_faraway_vertex(vertex *dest, vec3d *src) {
 
     MONITOR_INC(NumRotations, 1);
 
-    vm_vec_rotate((vec3d * ) & dest->x, src, &View_matrix);
+    vm_vec_rotate((vec3d *) &dest->x, src, &View_matrix);
     dest->flags = 0;    //not projected
     return g3_code_vertex(dest);
 }

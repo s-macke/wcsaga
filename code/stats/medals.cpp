@@ -40,7 +40,7 @@ int Num_medals = 0;
 */
 
 // define for the medal information
-SCP_vector <medal_stuff> Medals;
+SCP_vector<medal_stuff> Medals;
 //badge_stuff Badge_info[MAX_BADGES];
 
 // holds indices into Medals array of the badges for # kills
@@ -440,116 +440,96 @@ void medal_close(){
 
 // replacement for -gimmemedals
 DCF(medals,
-"Grant or revoke medals")
-{
-int i;
+    "Grant or revoke medals") {
+    int i;
 
-if (Dc_command)
-{
-dc_get_arg(ARG_STRING
-| ARG_INT | ARG_NONE);
+    if (Dc_command) {
+        dc_get_arg(ARG_STRING
+                   | ARG_INT | ARG_NONE);
 
-if (
-Dc_arg_type &ARG_INT
-)
-{
-int idx = Dc_arg_int;
+        if (
+                Dc_arg_type & ARG_INT
+                ) {
+            int idx = Dc_arg_int;
 
-if (idx < 0 || idx >= MAX_MEDALS)
-{
-dc_printf("Medal index %d is out of range\n", idx);
-return;
-}
+            if (idx < 0 || idx >= MAX_MEDALS) {
+                dc_printf("Medal index %d is out of range\n", idx);
+                return;
+            }
 
-dc_printf("Granted %s\n", Medals[idx].name);
-Player->stats.medals[idx]++;
-}
-else if (
-Dc_arg_type &ARG_STRING
-)
-{
-if (!
-strcmp(Dc_arg,
-"all"))
-{
-for (
-i = 0;
-i<MAX_MEDALS;
-i++)
-Player->stats.medals[i]++;
+            dc_printf("Granted %s\n", Medals[idx].name);
+            Player->stats.medals[idx]++;
+        } else if (
+                Dc_arg_type & ARG_STRING
+                ) {
+            if (!
+                    strcmp(Dc_arg,
+                           "all")) {
+                for (
+                        i = 0;
+                        i < MAX_MEDALS;
+                        i++)
+                    Player->stats.medals[i]++;
 
-dc_printf("Granted all medals\n");
-}
-else if (!
-strcmp(Dc_arg,
-"clear"))
-{
-for (
-i = 0;
-i<MAX_MEDALS;
-i++)
-Player->stats.medals[i] = 0;
+                dc_printf("Granted all medals\n");
+            } else if (!
+                    strcmp(Dc_arg,
+                           "clear")) {
+                for (
+                        i = 0;
+                        i < MAX_MEDALS;
+                        i++)
+                    Player->stats.medals[i] = 0;
 
-dc_printf("Cleared all medals\n");
-}
-else if (!
-strcmp(Dc_arg,
-"demote"))
-{
-if (Player->stats.rank > 0)
-Player->stats.rank--;
+                dc_printf("Cleared all medals\n");
+            } else if (!
+                    strcmp(Dc_arg,
+                           "demote")) {
+                if (Player->stats.rank > 0)
+                    Player->stats.rank--;
 
-dc_printf("Demoted to %s\n", Ranks[Player->stats.rank].name);
-}
-else if (!
-strcmp(Dc_arg,
-"promote"))
-{
-if (Player->stats.rank<MAX_FREESPACE2_RANK)
-Player->stats.rank++;
+                dc_printf("Demoted to %s\n", Ranks[Player->stats.rank].name);
+            } else if (!
+                    strcmp(Dc_arg,
+                           "promote")) {
+                if (Player->stats.rank < MAX_FREESPACE2_RANK)
+                    Player->stats.rank++;
 
-dc_printf("Promoted to %s\n", Ranks[Player->stats.rank].name);
-}
-else
-{
-Dc_help = 1;
-}
-}
-else
-{
-dc_printf("The following medals are available:\n");
-for (
-i = 0;
-i<MAX_MEDALS;
-i++)
-dc_printf("%d: %s\n", i, Medals[i].name);
-}
+                dc_printf("Promoted to %s\n", Ranks[Player->stats.rank].name);
+            } else {
+                Dc_help = 1;
+            }
+        } else {
+            dc_printf("The following medals are available:\n");
+            for (
+                    i = 0;
+                    i < MAX_MEDALS;
+                    i++)
+                dc_printf("%d: %s\n", i, Medals[i].name);
+        }
 
-Dc_status = 0;
-}
+        Dc_status = 0;
+    }
 
-if (Dc_help)
-{
-dc_printf ("Usage: gimmemedals all | clear | promote | demote | [index]\n");
-dc_printf ("       [index] --  index of medal to grant\n");
-dc_printf ("       with no parameters, displays the available medals\n");
-Dc_status = 0;
-}
+    if (Dc_help) {
+        dc_printf("Usage: gimmemedals all | clear | promote | demote | [index]\n");
+        dc_printf("       [index] --  index of medal to grant\n");
+        dc_printf("       with no parameters, displays the available medals\n");
+        Dc_status = 0;
+    }
 
-if (Dc_status)
-{
-dc_printf("You have the following medals:\n");
+    if (Dc_status) {
+        dc_printf("You have the following medals:\n");
 
-for (
-i = 0;
-i<MAX_MEDALS;
-i++)
-{
-if (Player->stats.medals[i] > 0)
-dc_printf("%d %s\n", Player->stats.medals[i], Medals[i].name);
-}
-dc_printf("%s\n", Ranks[Player->stats.rank].name);
-}
+        for (
+                i = 0;
+                i < MAX_MEDALS;
+                i++) {
+            if (Player->stats.medals[i] > 0)
+                dc_printf("%d %s\n", Player->stats.medals[i], Medals[i].name);
+        }
+        dc_printf("%s\n", Ranks[Player->stats.rank].name);
+    }
 }
 
 
@@ -730,7 +710,7 @@ void blit_callsign() {
     gr_string(0x8000, Medals_callsign_y[gr_screen.res], Medals_player->callsign);
 }
 
-void GetEarnedRibbons(std::vector <std::pair<medal_stuff, int> > &earnedMedals) {
+void GetEarnedRibbons(std::vector<std::pair<medal_stuff, int> > &earnedMedals) {
     Assert(FIRST_RIBBON < Medals.size());
 
     for (size_t i = FIRST_RIBBON; i < Medals.size(); ++i) {
@@ -803,7 +783,7 @@ int medal_main_do() {
                 size_t idxRibbon = idxMedal - FIRST_RIBBON;
 
                 if (idxRibbon < numRibbons) {
-                    std::vector <std::pair<medal_stuff, int> > earnedRibbons;
+                    std::vector<std::pair<medal_stuff, int> > earnedRibbons;
                     GetEarnedRibbons(earnedRibbons);
                     Assert(idxRibbon < earnedRibbons.size());
                     blit_label(earnedRibbons[idxRibbon].first.name, &Medal_coords[gr_screen.res][idxMedal][0],

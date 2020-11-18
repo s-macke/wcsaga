@@ -181,9 +181,9 @@ int do_facing_check(vec3d *norm, vertex **vertlist, vec3d *p) {
 
         //get three points (rotated) and compute normal
 
-        vm_vec_perp(&tempv, (vec3d * ) & vertlist[0]->x, (vec3d * ) & vertlist[1]->x, (vec3d * ) & vertlist[2]->x);
+        vm_vec_perp(&tempv, (vec3d *) &vertlist[0]->x, (vec3d *) &vertlist[1]->x, (vec3d *) &vertlist[2]->x);
 
-        return (vm_vec_dot(&tempv, (vec3d * ) & vertlist[1]->x) < 0.0);
+        return (vm_vec_dot(&tempv, (vec3d *) &vertlist[1]->x) < 0.0);
     }
 }
 
@@ -772,9 +772,9 @@ int g3_draw_bitmap_3d_v(vertex *pnt, int orient, float rad, uint tmap_flags, flo
     g3_transfer_vertex(&P[3], &p[0]);
 
     for (i = 0; i < 4; i++) {
-        P[i].r = (ubyte)(255.0f * c);
-        P[i].g = (ubyte)(255.0f * c);
-        P[i].b = (ubyte)(255.0f * c);
+        P[i].r = (ubyte) (255.0f * c);
+        P[i].g = (ubyte) (255.0f * c);
+        P[i].b = (ubyte) (255.0f * c);
     }
 
     //set up the UV coords
@@ -2892,7 +2892,7 @@ void flash_ball::render(float rad, float intinsity, float life) {
     flash_ball::batcher.allocate(n_rays);
     for (int i = 0; i < n_rays; i++) {
         vec3d end;
-        vm_vec_interp_constant(&end, (vec3d * ) & ray[i].start.x, (vec3d * ) & ray[i].end.x, life);
+        vm_vec_interp_constant(&end, (vec3d *) &ray[i].start.x, (vec3d *) &ray[i].end.x, life);
         vm_vec_scale(&end, rad);
         vm_vec_add2(&end, &center);
         flash_ball::batcher.draw_beam(&center, &end, ray[i].width * rad, intinsity);

@@ -197,82 +197,81 @@ storm_type *Storm = NULL;
 
 // vars
 DCF(b_scale,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Bolt_types[DEBUG_BOLT].
-b_scale = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Bolt_types[DEBUG_BOLT].
+            b_scale = Dc_arg_float;
 }
-DCF(b_rand,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Bolt_types[DEBUG_BOLT].
-b_rand = Dc_arg_float;
-}
-DCF(b_shrink,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Bolt_types[DEBUG_BOLT].
-b_shrink = Dc_arg_float;
-}
-DCF(b_poly_pct,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Bolt_types[DEBUG_BOLT].
-b_poly_pct = Dc_arg_float;
-}
-DCF(b_add,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Bolt_types[DEBUG_BOLT].
-b_add = Dc_arg_float;
-}
-DCF(b_strikes,
-"")
-{
-dc_get_arg(ARG_INT);
-Bolt_types[DEBUG_BOLT].
-num_strikes = Dc_arg_int;
-}
-DCF(b_noise,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Bolt_types[DEBUG_BOLT].
-noise = Dc_arg_float;
-}
-DCF(b_bright,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Bolt_types[DEBUG_BOLT].
-b_bright = Dc_arg_float;
-}
-DCF(b_lifetime,
-"")
-{
-dc_get_arg(ARG_INT);
-Bolt_types[DEBUG_BOLT].
-lifetime = Dc_arg_int;
-}
-DCF(b_list,
-"")
-{
-dc_printf("Debug lightning bolt settings :\n");
 
-dc_printf("b_scale : %f\n", Bolt_types[DEBUG_BOLT].b_scale);
-dc_printf("b_rand : %f\n", Bolt_types[DEBUG_BOLT].b_rand);
-dc_printf("b_shrink : %f\n", Bolt_types[DEBUG_BOLT].b_shrink);
-dc_printf("b_poly_pct : %f\n", Bolt_types[DEBUG_BOLT].b_poly_pct);
-dc_printf("b_add : %f\n", Bolt_types[DEBUG_BOLT].b_add);
-dc_printf("b_strikes : %d\n", Bolt_types[DEBUG_BOLT].num_strikes);
-dc_printf("b_noise : %f\n", Bolt_types[DEBUG_BOLT].noise);
-dc_printf("b_bright : %f\n", Bolt_types[DEBUG_BOLT].b_bright);
-dc_printf("b_lifetime : %d\n", Bolt_types[DEBUG_BOLT].lifetime);
+DCF(b_rand,
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Bolt_types[DEBUG_BOLT].
+            b_rand = Dc_arg_float;
+}
+
+DCF(b_shrink,
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Bolt_types[DEBUG_BOLT].
+            b_shrink = Dc_arg_float;
+}
+
+DCF(b_poly_pct,
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Bolt_types[DEBUG_BOLT].
+            b_poly_pct = Dc_arg_float;
+}
+
+DCF(b_add,
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Bolt_types[DEBUG_BOLT].
+            b_add = Dc_arg_float;
+}
+
+DCF(b_strikes,
+    "") {
+    dc_get_arg(ARG_INT);
+    Bolt_types[DEBUG_BOLT].
+            num_strikes = Dc_arg_int;
+}
+
+DCF(b_noise,
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Bolt_types[DEBUG_BOLT].
+            noise = Dc_arg_float;
+}
+
+DCF(b_bright,
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Bolt_types[DEBUG_BOLT].
+            b_bright = Dc_arg_float;
+}
+
+DCF(b_lifetime,
+    "") {
+    dc_get_arg(ARG_INT);
+    Bolt_types[DEBUG_BOLT].
+            lifetime = Dc_arg_int;
+}
+
+DCF(b_list,
+    "") {
+    dc_printf("Debug lightning bolt settings :\n");
+
+    dc_printf("b_scale : %f\n", Bolt_types[DEBUG_BOLT].b_scale);
+    dc_printf("b_rand : %f\n", Bolt_types[DEBUG_BOLT].b_rand);
+    dc_printf("b_shrink : %f\n", Bolt_types[DEBUG_BOLT].b_shrink);
+    dc_printf("b_poly_pct : %f\n", Bolt_types[DEBUG_BOLT].b_poly_pct);
+    dc_printf("b_add : %f\n", Bolt_types[DEBUG_BOLT].b_add);
+    dc_printf("b_strikes : %d\n", Bolt_types[DEBUG_BOLT].num_strikes);
+    dc_printf("b_noise : %f\n", Bolt_types[DEBUG_BOLT].noise);
+    dc_printf("b_bright : %f\n", Bolt_types[DEBUG_BOLT].b_bright);
+    dc_printf("b_lifetime : %d\n", Bolt_types[DEBUG_BOLT].lifetime);
 }
 
 
@@ -296,17 +295,16 @@ int Nebl_supercap_min = 3000;            // min supercap time
 int Nebl_supercap_max = 12000;        // max supercap time
 
 DCF(lightning_intensity,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-float val = Dc_arg_float;
-if (val < 0.0f){
-val = 0.0f;
-} else if (val > 1.0f){
-val = 1.0f;
-}
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    float val = Dc_arg_float;
+    if (val < 0.0f) {
+        val = 0.0f;
+    } else if (val > 1.0f) {
+        val = 1.0f;
+    }
 
-Nebl_intensity = 1.0f - val;
+    Nebl_intensity = 1.0f - val;
 }
 
 // ------------------------------------------------------------------------------------------------------

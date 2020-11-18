@@ -57,9 +57,9 @@ vertex *clip_edge(int plane_flag, vertex *on_pnt, vertex *off_pnt, uint flags) {
         vec3d w, ray_direction;
         float num, den;
 
-        vm_vec_sub(&ray_direction, (vec3d * ) & off_pnt->x, (vec3d * ) & on_pnt->x);
+        vm_vec_sub(&ray_direction, (vec3d *) &off_pnt->x, (vec3d *) &on_pnt->x);
 
-        vm_vec_sub(&w, (vec3d * ) & on_pnt->x, &G3_user_clip_point);
+        vm_vec_sub(&w, (vec3d *) &on_pnt->x, &G3_user_clip_point);
 
         den = -vm_vec_dot(&G3_user_clip_normal, &ray_direction);
         if (den == 0.0f) {    // Ray & plane are parallel, so there is no intersection

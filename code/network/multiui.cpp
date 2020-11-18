@@ -1088,38 +1088,37 @@ int multi_join_warn_pxo();
 void multi_join_blit_protocol();
 
 DCF(mj_make,
-"")
-{
-active_game ag, *newitem;
-int idx;
+    "") {
+    active_game ag, *newitem;
+    int idx;
 
-dc_get_arg(ARG_INT);
-for (
-idx = 0;
-idx<Dc_arg_int;
-idx++){
+    dc_get_arg(ARG_INT);
+    for (
+            idx = 0;
+            idx < Dc_arg_int;
+            idx++) {
 // stuff some fake info
-memset(&ag,
-0, sizeof(active_game));
-sprintf(ag
-.name, "Game %d", idx);
-ag.
-version = MULTI_FS_SERVER_VERSION;
-ag.
-comp_version = MULTI_FS_SERVER_VERSION;
-ag.server_addr.addr[0] = (char)
-idx;
-ag.
-flags = (AG_FLAG_COOP | AG_FLAG_FORMING | AG_FLAG_STANDALONE);
+        memset(&ag,
+               0, sizeof(active_game));
+        sprintf(ag
+                        .name, "Game %d", idx);
+        ag.
+                version = MULTI_FS_SERVER_VERSION;
+        ag.
+                comp_version = MULTI_FS_SERVER_VERSION;
+        ag.server_addr.addr[0] = (char)
+                idx;
+        ag.
+                flags = (AG_FLAG_COOP | AG_FLAG_FORMING | AG_FLAG_STANDALONE);
 
 // add the game
-newitem = multi_update_active_games(&ag);
+        newitem = multi_update_active_games(&ag);
 
 // timestamp it so we get random timeouts
-if (newitem != NULL){
+        if (newitem != NULL) {
 // newitem->heard_from_timer = timestamp((int)frand_range(500.0f, 10000.0f));
-}
-}
+        }
+    }
 }
 
 void multi_join_notify_new_game() {
@@ -4232,8 +4231,8 @@ int Multi_create_list_start;                                            // where
 int Multi_create_list_select;                                            // which item is currently highlighted
 int Multi_create_files_loaded;
 
-SCP_vector <multi_create_info> Multi_create_mission_list;
-SCP_vector <multi_create_info> Multi_create_campaign_list;
+SCP_vector<multi_create_info> Multi_create_mission_list;
+SCP_vector<multi_create_info> Multi_create_campaign_list;
 
 // LOCAL function definitions
 void multi_create_check_buttons();
@@ -6236,10 +6235,12 @@ int multi_create_ok_to_commit() {
             // don't allow squad war matches to continue
             if (Netgame.type_flags & NG_TYPE_SW) {
 #ifdef RELEASE_REAL
-                                                                                                                                        // if this is squad war, don't allow it to continue
-				popup(PF_USE_AFFIRMATIVE_ICON, 1, POPUP_OK, XSTR("One or more players has hacked data files. You cannot play a SquadWar match unless all clients have legal data", 1272));
+                // if this is squad war, don't allow it to continue
+                popup(PF_USE_AFFIRMATIVE_ICON, 1, POPUP_OK,
+                      XSTR("One or more players has hacked data files. You cannot play a SquadWar match unless all clients have legal data",
+                           1272));
 
-				return 0;
+                return 0;
 #endif
             }
                 // otherwise, warn the players that stats will not saved
@@ -7486,9 +7487,9 @@ void multi_ho_update_sliders() {
     }
 
     // get the voice qos options
-    if (Netgame.options.voice_qos != (ubyte)(Multi_ho_sliders[gr_screen.res][MULTI_HO_SLIDER_VOICE_QOS].slider.pos +
-                                             1)) {
-        Netgame.options.voice_qos = (ubyte)(Multi_ho_sliders[gr_screen.res][MULTI_HO_SLIDER_VOICE_QOS].slider.pos + 1);
+    if (Netgame.options.voice_qos != (ubyte) (Multi_ho_sliders[gr_screen.res][MULTI_HO_SLIDER_VOICE_QOS].slider.pos +
+                                              1)) {
+        Netgame.options.voice_qos = (ubyte) (Multi_ho_sliders[gr_screen.res][MULTI_HO_SLIDER_VOICE_QOS].slider.pos + 1);
         gamesnd_play_iface(SND_USER_SELECT);
     }
 
@@ -7716,7 +7717,7 @@ void multi_ho_accept_hit() {
     }
 
     // get the voice qos options
-    Netgame.options.voice_qos = (ubyte)(Multi_ho_sliders[gr_screen.res][MULTI_HO_SLIDER_VOICE_QOS].slider.pos + 1);
+    Netgame.options.voice_qos = (ubyte) (Multi_ho_sliders[gr_screen.res][MULTI_HO_SLIDER_VOICE_QOS].slider.pos + 1);
 
     // get the voice duration options
     Netgame.options.voice_record_time = (int) (0.5f * (float) (Multi_ho_sliders[gr_screen.

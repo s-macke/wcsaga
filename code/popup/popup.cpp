@@ -1100,13 +1100,13 @@ int popup(int flags, int nchoices, ...) {
 
     // get button text
     for (i = 0; i < nchoices; i++) {
-        s = va_arg(args, char * );
+        s = va_arg(args, char *);
         Popup_info.button_text[i] = NULL;
         popup_maybe_assign_keypress(&Popup_info, i, s);
     }
 
     // get msg text
-    format = va_arg(args, char * );
+    format = va_arg(args, char *);
     Popup_info.raw_text[0] = 0;
     vsprintf(Popup_info.raw_text, format, args);
     va_end(args);
@@ -1153,12 +1153,12 @@ int popup_till_condition(int (*condition)(), ...) {
     va_start(args, condition);
 
     // get button text
-    s = va_arg(args, char * );
+    s = va_arg(args, char *);
     Popup_info.button_text[0] = 0;
     popup_maybe_assign_keypress(&Popup_info, 0, s);
 
     // get msg text
-    format = va_arg(args, char * );
+    format = va_arg(args, char *);
     Popup_info.raw_text[0] = 0;
     vsprintf(Popup_info.raw_text, format, args);
     va_end(args);

@@ -17,6 +17,7 @@
 
 
 int Lasers = 1;
+
 DCF_BOOL(lasers, Lasers
 )
 

@@ -447,9 +447,9 @@ void neb2_post_level_init() {
                 }
 
                 if (pcount > 0) {
-                    Neb2_fog_color_r = (ubyte)(r / pcount);
-                    Neb2_fog_color_g = (ubyte)(g / pcount);
-                    Neb2_fog_color_b = (ubyte)(b / pcount);
+                    Neb2_fog_color_r = (ubyte) (r / pcount);
+                    Neb2_fog_color_g = (ubyte) (g / pcount);
+                    Neb2_fog_color_b = (ubyte) (b / pcount);
                 } else {
                     // it's just black
                     Neb2_fog_color_r = Neb2_fog_color_g = Neb2_fog_color_b = 0;
@@ -575,15 +575,15 @@ void neb2_page_in() {
 
 // should we not render this object because its obscured by the nebula?
 int neb_skip_opt = 1;
+
 DCF(neb_skip,
-"")
-{
-neb_skip_opt = !neb_skip_opt;
-if (neb_skip_opt){
-dc_printf("Using neb object skipping!\n");
-} else {
-dc_printf("Not using neb object skipping!\n");
-}
+    "") {
+    neb_skip_opt = !neb_skip_opt;
+    if (neb_skip_opt) {
+        dc_printf("Using neb object skipping!\n");
+    } else {
+        dc_printf("Not using neb object skipping!\n");
+    }
 }
 
 int neb2_skip_render(object *objp, float z_depth) {
@@ -984,11 +984,11 @@ void neb2_regen() {
 }
 
 float max_area = 100000000.0f;
+
 DCF(max_area,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-max_area = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    max_area = Dc_arg_float;
 }
 
 float g3_draw_rotated_bitmap_area(vertex *pnt, float angle, float rad, uint tmap_flags, float area);
@@ -1463,9 +1463,9 @@ void neb2_get_pixel(int x, int y, int *r, int *g, int *b) {
         avg_count++;
     }
 
-    rv = (ubyte)(ra / (int) avg_count);
-    gv = (ubyte)(ga / (int) avg_count);
-    bv = (ubyte)(ba / (int) avg_count);
+    rv = (ubyte) (ra / (int) avg_count);
+    gv = (ubyte) (ga / (int) avg_count);
+    bv = (ubyte) (ba / (int) avg_count);
 
     // return values
     *r = (int) rv;
@@ -1533,70 +1533,69 @@ int neb2_get_bitmap() {
 // nebula DCF functions ------------------------------------------------------
 
 DCF(neb2,
-"list nebula console commands")
-{
+    "list nebula console commands") {
 //	dc_printf("neb2_fog <X> <float> <float>  : set near and far fog planes for ship type X\n");
 //	dc_printf("where X is an integer from 1 - 11\n");
 //	dc_printf("1 = cargo containers, 2 = fighters/bombers, 3 = cruisers\n");
 //	dc_printf("4 = freighters, 5 = capital ships, 6 = transports, 7 = support ships\n");
 //	dc_printf("8 = navbuoys, 9 = sentryguns, 10 = escape pods, 11 = background nebula polygons\n\n");
 
-dc_printf("neb2_max_alpha   : max alpha value (0.0 to 1.0) for cloud poofs. 0.0 is completely transparent\n");
-dc_printf("neb2_break_alpha : alpha value (0.0 to 1.0) at which faded polygons are not drawn. higher values generally equals higher framerate, with more visual cloud popping\n");
-dc_printf("neb2_break_off   : how many pixels offscreen (left, right, top, bottom) when a cloud poof becomes fully transparent. Lower values cause quicker fading\n");
-dc_printf("neb2_smooth      : magic fog smoothing modes (0 - 3)\n");
-dc_printf("neb2_select      : <int> <int>  where the first # is the bitmap to be adjusting (0 through 5), and the second int is a 0 or 1, to turn off and on\n");
-dc_printf("neb2_rot         : set max rotation speed for poofs\n");
-dc_printf("neb2_prad        : set cloud poof radius\n");
-dc_printf("neb2_cdim        : poof cube dimension\n");
-dc_printf("neb2_cinner      : poof cube inner dimension\n");
-dc_printf("neb2_couter      : poof cube outer dimension\n");
-dc_printf("neb2_jitter      : poof jitter\n");
-dc_printf("neb2_mode        : switch between no nebula, polygon background, pof background, lame or HTL rendering (0, 1, 2, 3 and 4 respectively)\n\n");
-dc_printf("neb2_ff          : flash fade/sec\n");
-dc_printf("neb2_background	: rgb background color\n");
-dc_printf("neb2_fog_color   : rgb fog color\n");
+    dc_printf("neb2_max_alpha   : max alpha value (0.0 to 1.0) for cloud poofs. 0.0 is completely transparent\n");
+    dc_printf(
+            "neb2_break_alpha : alpha value (0.0 to 1.0) at which faded polygons are not drawn. higher values generally equals higher framerate, with more visual cloud popping\n");
+    dc_printf(
+            "neb2_break_off   : how many pixels offscreen (left, right, top, bottom) when a cloud poof becomes fully transparent. Lower values cause quicker fading\n");
+    dc_printf("neb2_smooth      : magic fog smoothing modes (0 - 3)\n");
+    dc_printf(
+            "neb2_select      : <int> <int>  where the first # is the bitmap to be adjusting (0 through 5), and the second int is a 0 or 1, to turn off and on\n");
+    dc_printf("neb2_rot         : set max rotation speed for poofs\n");
+    dc_printf("neb2_prad        : set cloud poof radius\n");
+    dc_printf("neb2_cdim        : poof cube dimension\n");
+    dc_printf("neb2_cinner      : poof cube inner dimension\n");
+    dc_printf("neb2_couter      : poof cube outer dimension\n");
+    dc_printf("neb2_jitter      : poof jitter\n");
+    dc_printf(
+            "neb2_mode        : switch between no nebula, polygon background, pof background, lame or HTL rendering (0, 1, 2, 3 and 4 respectively)\n\n");
+    dc_printf("neb2_ff          : flash fade/sec\n");
+    dc_printf("neb2_background	: rgb background color\n");
+    dc_printf("neb2_fog_color   : rgb fog color\n");
 
 //	dc_printf("neb2_fog_vals    : display all the current settings for all above values\n");
 }
 
 DCF(neb2_prad,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Nd->
-prad = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Nd->
+            prad = Dc_arg_float;
 }
+
 DCF(neb2_cdim,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Nd->
-cube_dim = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Nd->
+            cube_dim = Dc_arg_float;
 }
 
 DCF(neb2_cinner,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Nd->
-cube_inner = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Nd->
+            cube_inner = Dc_arg_float;
 }
 
 DCF(neb2_couter,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Nd->
-cube_outer = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Nd->
+            cube_outer = Dc_arg_float;
 }
 
 DCF(neb2_jitter,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Nd->
-hj = Nd->dj = Nd->wj = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Nd->
+            hj = Nd->dj = Nd->wj = Dc_arg_float;
 }
 //WMC - unfortunately, this has to go bye-bye
 //I don't think anyone used it anyway so I'm not going to try to resurrect it
@@ -1624,148 +1623,136 @@ DCF(neb2_fog, "")
 }*/
 
 DCF(neb2_max_alpha,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Nd->
-max_alpha_glide = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Nd->
+            max_alpha_glide = Dc_arg_float;
 }
 
 DCF(neb2_break_alpha,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-Nd->
-break_alpha = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    Nd->
+            break_alpha = Dc_arg_float;
 }
 
 DCF(neb2_break_off,
-"")
-{
-dc_get_arg(ARG_INT);
-Nd->
-break_y = (float) Dc_arg_int;
-Nd->
-break_x = Nd->break_y * 1.3333f;
+    "") {
+    dc_get_arg(ARG_INT);
+    Nd->
+            break_y = (float) Dc_arg_int;
+    Nd->
+            break_x = Nd->break_y * 1.3333f;
 }
 
 DCF(neb2_smooth,
-"")
-{
-int index;
-dc_get_arg(ARG_INT);
-index = Dc_arg_int;
-if ((index >= 0) && (index <= 3)){
-wacky_scheme = index;
-}
+    "") {
+    int index;
+    dc_get_arg(ARG_INT);
+    index = Dc_arg_int;
+    if ((index >= 0) && (index <= 3)) {
+        wacky_scheme = index;
+    }
 }
 
 DCF(neb2_select,
-"")
-{
-dc_get_arg(ARG_INT);
-int bmap = Dc_arg_int;
-if ((bmap >= 0) && (bmap<Neb2_poof_count)){
-dc_get_arg(ARG_INT);
+    "") {
+    dc_get_arg(ARG_INT);
+    int bmap = Dc_arg_int;
+    if ((bmap >= 0) && (bmap < Neb2_poof_count)) {
+        dc_get_arg(ARG_INT);
 
-if (Dc_arg_int){
-Neb2_poof_flags |= (1<<bmap);
-} else {
-Neb2_poof_flags &= ~(1<<bmap);
-}
-}
+        if (Dc_arg_int) {
+            Neb2_poof_flags |= (1 << bmap);
+        } else {
+            Neb2_poof_flags &= ~(1 << bmap);
+        }
+    }
 }
 
 DCF(neb2_rot,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-max_rotation = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    max_rotation = Dc_arg_float;
 }
 
 DCF(neb2_ff,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-neb2_flash_fade = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    neb2_flash_fade = Dc_arg_float;
 }
 
 DCF(neb2_mode,
-"")
-{
-dc_get_arg(ARG_INT);
+    "") {
+    dc_get_arg(ARG_INT);
 
-switch (Dc_arg_int)
-{
-case NEB2_RENDER_NONE:
-Neb2_render_mode = NEB2_RENDER_NONE;
-break;
+    switch (Dc_arg_int) {
+        case NEB2_RENDER_NONE:
+            Neb2_render_mode = NEB2_RENDER_NONE;
+            break;
 
-case NEB2_RENDER_POLY:
-Neb2_render_mode = NEB2_RENDER_POLY;
-break;
+        case NEB2_RENDER_POLY:
+            Neb2_render_mode = NEB2_RENDER_POLY;
+            break;
 
-case NEB2_RENDER_POF:
-Neb2_render_mode = NEB2_RENDER_POF;
-stars_set_background_model(BACKGROUND_MODEL_FILENAME,
-"Eraseme3");
-break;
+        case NEB2_RENDER_POF:
+            Neb2_render_mode = NEB2_RENDER_POF;
+            stars_set_background_model(BACKGROUND_MODEL_FILENAME,
+                                       "Eraseme3");
+            break;
 
-case NEB2_RENDER_LAME:
-Neb2_render_mode = NEB2_RENDER_LAME;
-break;
+        case NEB2_RENDER_LAME:
+            Neb2_render_mode = NEB2_RENDER_LAME;
+            break;
 
-case NEB2_RENDER_HTL:
-if (!Cmdline_nohtl) {
-Neb2_render_mode = NEB2_RENDER_HTL;
-}
-break;
-}
+        case NEB2_RENDER_HTL:
+            if (!Cmdline_nohtl) {
+                Neb2_render_mode = NEB2_RENDER_HTL;
+            }
+            break;
+    }
 }
 
 DCF(neb2_slices,
-"")
-{
-dc_get_arg(ARG_INT);
-Neb2_slices = Dc_arg_int;
-Neb2_regen = 1;
+    "") {
+    dc_get_arg(ARG_INT);
+    Neb2_slices = Dc_arg_int;
+    Neb2_regen = 1;
 }
 
 DCF(neb2_background,
-"")
-{
-int r, g, b;
+    "") {
+    int r, g, b;
 
-dc_get_arg(ARG_INT);
-r = Dc_arg_int;
-dc_get_arg(ARG_INT);
-g = Dc_arg_int;
-dc_get_arg(ARG_INT);
-b = Dc_arg_int;
+    dc_get_arg(ARG_INT);
+    r = Dc_arg_int;
+    dc_get_arg(ARG_INT);
+    g = Dc_arg_int;
+    dc_get_arg(ARG_INT);
+    b = Dc_arg_int;
 
-Neb2_background_color[0] =
-r;
-Neb2_background_color[1] =
-g;
-Neb2_background_color[2] =
-b;
+    Neb2_background_color[0] =
+            r;
+    Neb2_background_color[1] =
+            g;
+    Neb2_background_color[2] =
+            b;
 }
 
 DCF(neb2_fog_color,
-"")
-{
-ubyte r, g, b;
+    "") {
+    ubyte r, g, b;
 
-dc_get_arg(ARG_INT);
-r = static_cast<ubyte>(Dc_arg_int);
-dc_get_arg(ARG_INT);
-g = static_cast<ubyte>(Dc_arg_int);
-dc_get_arg(ARG_INT);
-b = static_cast<ubyte>(Dc_arg_int);
+    dc_get_arg(ARG_INT);
+    r = static_cast<ubyte>(Dc_arg_int);
+    dc_get_arg(ARG_INT);
+    g = static_cast<ubyte>(Dc_arg_int);
+    dc_get_arg(ARG_INT);
+    b = static_cast<ubyte>(Dc_arg_int);
 
-Neb2_fog_color_r = r;
-Neb2_fog_color_g = g;
-Neb2_fog_color_b = b;
+    Neb2_fog_color_r = r;
+    Neb2_fog_color_g = g;
+    Neb2_fog_color_b = b;
 }
 
 //WMC - Going bye-bye for ship types too
