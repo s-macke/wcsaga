@@ -80,6 +80,7 @@ bool movie_play(char *name) {
     if (Game_mode & GM_CAMPAIGN_MODE) {
         cutscene_mark_viewable(name);
     }
+    printf("play movie %s\n", name);
 
     extern int Mouse_hidden;
     extern int Is_standalone;
@@ -121,6 +122,7 @@ bool movie_play(char *name) {
     gr_clear();
 
     if (rc == MOVIE_OGG) {
+
         THEORAFILE *movie_ogg = theora_open(name);
 
         if (movie_ogg) {
@@ -134,6 +136,7 @@ bool movie_play(char *name) {
             mprintf(("MOVIE ERROR: Found invalid movie! (%s)\n", name));
             return false;
         }
+
     } else if (rc == MOVIE_MVE) {
         MVESTREAM *movie_mve = mve_open(name);
 

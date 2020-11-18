@@ -652,7 +652,7 @@ void theora_close(THEORAFILE *movie) {
 
     // free the stream
     if (movie->reader) {
-        movie->reader->cfclose();
+        //movie->reader->cfclose();
         delete movie->reader;
     }
 
