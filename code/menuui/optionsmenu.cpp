@@ -232,29 +232,35 @@ static struct {
                 {    // GR_640
                         {
                                 "OptionsMain",
-                                "OptionsMain-M"
+                                "OptionsMain-M",
+                                0, 0
                         },
                         {
                                 "OptionsMulti",
-                                "OptionsMulti-M"
+                                "OptionsMulti-M",
+                                0, 0
                         },
                         {
                                 "OptionsDetail",
-                                "OptionsDetail-M"
+                                "OptionsDetail-M",
+                                0, 0
                         },
                 },
                 {    // GR_1024
                         {
                                 "2_OptionsMain",
-                                "2_OptionsMain-M"
+                                "2_OptionsMain-M",
+                                0, 0
                         },
                         {
                                 "2_OptionsMulti",
-                                "2_OptionsMulti-M"
+                                "2_OptionsMulti-M",
+                                0, 0
                         },
                         {
                                 "2_OptionsDetail",
-                                "2_OptionsDetail-M"
+                                "2_OptionsDetail-M",
+                                0, 0
                         },
                 }
                 //XSTR:ON

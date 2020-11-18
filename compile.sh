@@ -1,7 +1,7 @@
 set -e
 
 export CFLAGS="-g -O0"
-export CXXFLAGS="-g -O0 -Wno-variadic-macros -Wno-class-memaccess -Wno-unused-but-set-variable -Wno-shadow -Wno-unused-value -Wno-format-overflow -Wno-format-security -std=c++11"
+export CXXFLAGS="-g -O0 -Wno-variadic-macros -Wno-class-memaccess -Wno-unused-but-set-variable -Wno-shadow -Wno-unused-value -Wno-format-overflow -Wno-format-security -Wno-parentheses -Wno-implicit-fallthrough -Wno-unused-variable -std=c++11"
 export PNG_CFLAGS="-I$PWD/libpng"
 export PNG_LIBS="../libpng/libpng.a ../zlib/libz.a"
 export LUA_CFLAGS=" "
@@ -46,7 +46,7 @@ cd ..
 
 make clean
 ./configure --with-static-jpeg=$PWD/libjpeg --enable-debug
-make V=1 j=4
+make j=4
 
 
 #readelf -d ./fs2_open_r

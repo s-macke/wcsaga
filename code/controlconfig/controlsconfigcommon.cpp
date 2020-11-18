@@ -1,8 +1,8 @@
 /*
  * Copyright (C) Volition, Inc. 1999.  All rights reserved.
  *
- * All source code herein is the property of Volition, Inc. You may not sell 
- * or otherwise commercially exploit the source or things you created based on the 
+ * All source code herein is the property of Volition, Inc. You may not sell
+ * or otherwise commercially exploit the source or things you created based on the
  * source.
  *
 */
@@ -17,26 +17,25 @@
 
 
 #define TARGET_TAB            0
-#define SHIP_TAB                1
+#define SHIP_TAB              1
 #define WEAPON_TAB            2
-#define COMPUTER_TAB            3
+#define COMPUTER_TAB          3
 
 int Failed_key_index;
 
-// assume control keys are used as modifiers until we find out 
+// assume control keys are used as modifiers until we find out
 int Shift_is_modifier;
 int Ctrl_is_modifier;
 int Alt_is_modifier;
 
-int Axis_enabled[JOY_NUM_AXES] =
-        {
-                1,
-                1,
-                1,
-                0,
-                0,
-                0
-        };
+int Axis_enabled[JOY_NUM_AXES] = {
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+};
 int Axis_enabled_defaults[JOY_NUM_AXES] =
         {
                 1,
@@ -76,77 +75,88 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Next Ship"
+                        "Target Next Ship",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_T,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Previous Ship"
+                        "Target Previous Ship",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_H,
                         2,
                         TARGET_TAB,
                         true,
-                        "Target Next Closest Hostile Ship"
+                        "Target Next Closest Hostile Ship",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_H,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Previous Closest Hostile Ship"
+                        "Target Previous Closest Hostile Ship",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_H,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Toggle Auto Targeting"
+                        "Toggle Auto Targeting",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_F,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Next Closest Friendly Ship"
+                        "Target Next Closest Friendly Ship",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_F,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Previous Closest Friendly Ship"
+                        "Target Previous Closest Friendly Ship",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_Y,
                         4,
                         TARGET_TAB,
                         true,
-                        "Target Ship in Reticle"
+                        "Target Ship in Reticle",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_G,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Target's Nearest Attacker"
+                        "Target Target's Nearest Attacker",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_Y,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Last Ship to Send Transmission"
+                        "Target Last Ship to Send Transmission",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_T,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Turn Off Targeting"
+                        "Turn Off Targeting",
+                        0, 0, 0, 0
                 },
 
                 // targeting a ship's subsystem
@@ -155,28 +165,32 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Subsystem in Reticle"
+                        "Target Subsystem in Reticle",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_S,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Next Subsystem"
+                        "Target Next Subsystem",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_S,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Previous Subsystem"
+                        "Target Previous Subsystem",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_S,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Turn Off Targeting of Subsystems"
+                        "Turn Off Targeting of Subsystems",
+                        0, 0, 0, 0
                 },
 
                 // matching speed
@@ -185,14 +199,16 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Match Target Speed"
+                        "Match Target Speed",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_M,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Toggle Auto Speed Matching"
+                        "Toggle Auto Speed Matching",
+                        0, 0, 0, 0
                 },
 
                 // weapons
@@ -202,7 +218,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         WEAPON_TAB,
                         true,
                         "Fire Primary Weapon",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_SPACEBAR,
@@ -210,42 +227,48 @@ config_item Control_config[CCFG_MAX + 1] =
                         WEAPON_TAB,
                         true,
                         "Fire Secondary Weapon",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PERIOD,
                         -1,
                         WEAPON_TAB,
                         true,
-                        "Cycle Forward Primary Weapon"
+                        "Cycle Forward Primary Weapon",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_COMMA,
                         -1,
                         WEAPON_TAB,
                         true,
-                        "Cycle Backward Primary Weapon"
+                        "Cycle Backward Primary Weapon",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_DIVIDE,
                         -1,
                         WEAPON_TAB,
                         true,
-                        "Cycle Secondary Weapon Bank"
+                        "Cycle Secondary Weapon Bank",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_DIVIDE,
                         -1,
                         WEAPON_TAB,
                         true,
-                        "Cycle Secondary Weapon Firing Rate"
+                        "Cycle Secondary Weapon Firing Rate",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_X,
                         3,
                         WEAPON_TAB,
                         true,
-                        "Launch Countermeasure"
+                        "Launch Countermeasure",
+                        0, 0, 0, 0
                 },
 
                 // controls
@@ -255,7 +278,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Forward Thrust",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_Z,
@@ -263,7 +287,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Reverse Thrust",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PAD7,
@@ -271,7 +296,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Bank Left",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PAD9,
@@ -279,7 +305,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Bank Right",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PAD8,
@@ -287,7 +314,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Pitch Forward",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PAD2,
@@ -295,7 +323,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Pitch Backward",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PAD4,
@@ -303,7 +332,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Turn Left",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PAD6,
@@ -311,7 +341,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Turn Right",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
 
                 // throttle controls
@@ -320,42 +351,48 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         SHIP_TAB,
                         true,
-                        "Set Throttle to Zero"
+                        "Set Throttle to Zero",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SLASH,
                         -1,
                         SHIP_TAB,
                         true,
-                        "Set Throttle to Max"
+                        "Set Throttle to Max",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_LBRACKET,
                         -1,
                         SHIP_TAB,
                         true,
-                        "Set Throttle to One-Third"
+                        "Set Throttle to One-Third",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_RBRACKET,
                         -1,
                         SHIP_TAB,
                         true,
-                        "Set Throttle to Two-Thirds"
+                        "Set Throttle to Two-Thirds",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_EQUAL,
                         -1,
                         SHIP_TAB,
                         true,
-                        "Increase Throttle 5 Percent"
+                        "Increase Throttle 5 Percent",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_MINUS,
                         -1,
                         SHIP_TAB,
                         true,
-                        "Decrease Throttle 5 Percent"
+                        "Decrease Throttle 5 Percent",
+                        0, 0, 0, 0
                 },
 
                 // squadmate messaging
@@ -364,84 +401,96 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Attack My Target"
+                        "Attack My Target",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_Z,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Disarm My Target"
+                        "Disarm My Target",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_D,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Disable My Target"
+                        "Disable My Target",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_V,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Attack My Subsystem"
+                        "Attack My Subsystem",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_X,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Capture My Target"
+                        "Capture My Target",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_E,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Engage Enemy"
+                        "Engage Enemy",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_W,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Form on My Wing"
+                        "Form on My Wing",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_I,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Ignore My Target"
+                        "Ignore My Target",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_P,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Protect My Target"
+                        "Protect My Target",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_C,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Cover Me"
+                        "Cover Me",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_J,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Return to Base"
+                        "Return to Base",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_R,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Rearm Me"
+                        "Rearm Me",
+                        0, 0, 0, 0
                 },
 
                 {
@@ -449,7 +498,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         6,
                         TARGET_TAB,
                         true,
-                        "Target Closest Attacking Ship"
+                        "Target Closest Attacking Ship",
+                        0, 0, 0, 0
                 },
 
                 // Views
@@ -458,21 +508,24 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Chase View"
+                        "Chase View",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_PADPERIOD,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "External View"
+                        "External View",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_PADENTER,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Toggle External Camera Lock"
+                        "Toggle External Camera Lock",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_PAD0,
@@ -480,14 +533,16 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "Free Look View",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 }, // Not in use anymore (Swifty)
                 {
                         KEY_PADDIVIDE,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Current Target View"
+                        "Current Target View",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_PADPLUS,
@@ -495,7 +550,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "Increase View Distance",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PADMINUS,
@@ -503,7 +559,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "Decrease View Distance",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_PAD5,
@@ -511,7 +568,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "Center View",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         -1,
@@ -519,7 +577,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "View Up",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         -1,
@@ -527,7 +586,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "View Rear",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         -1,
@@ -535,7 +595,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "View Left",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         -1,
@@ -543,7 +604,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "View Right",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
 
                 {
@@ -551,35 +613,40 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Cycle Radar Range"
+                        "Cycle Radar Range",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_C,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Communications Menu"
+                        "Communications Menu",
+                        0, 0, 0, 0
                 },
                 {
                         -1,
                         -1,
                         -1,
                         true,
-                        "Show Objectives"
+                        "Show Objectives",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_J,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Enter Subspace (End Mission)"
+                        "Enter Subspace (End Mission)",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_J,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Target's Target"
+                        "Target Target's Target",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_TAB,
@@ -587,7 +654,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Afterburner",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
 
                 {
@@ -595,49 +663,56 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Increase Weapon Energy"
+                        "Increase Weapon Energy",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_DELETE,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Decrease Weapon Energy"
+                        "Decrease Weapon Energy",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_HOME,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Increase Shield Energy"
+                        "Increase Shield Energy",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_END,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Decrease Shield Energy"
+                        "Decrease Shield Energy",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_PAGEUP,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Increase Engine Energy"
+                        "Increase Engine Energy",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_PAGEDOWN,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Decrease Engine Energy"
+                        "Decrease Engine Energy",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_D,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Equalize Energy Settings"
+                        "Equalize Energy Settings",
+                        0, 0, 0, 0
                 },
 
                 {
@@ -645,49 +720,56 @@ config_item Control_config[CCFG_MAX + 1] =
                         7,
                         COMPUTER_TAB,
                         true,
-                        "Equalize Shields"
+                        "Equalize Shields",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_UP,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Augment Forward Shield"
+                        "Augment Forward Shield",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_DOWN,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Augment Rear Shield"
+                        "Augment Rear Shield",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_LEFT,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Augment Left Shield"
+                        "Augment Left Shield",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_RIGHT,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Augment Right Shield"
+                        "Augment Right Shield",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SCROLLOCK,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Transfer Energy Laser->Shield"
+                        "Transfer Energy Laser->Shield",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_SCROLLOCK,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Transfer Energy Shield->Laser"
+                        "Transfer Energy Shield->Laser",
+                        0, 0, 0, 0
                 },
                 //	{                           -1,					-1, -1,				true, "Show Damage Popup Window" },
 
@@ -697,7 +779,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         false,
                         "Glide When Pressed",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 //Backslash -- this was a convenient place for Glide When Pressed, as Show Damage Popup isn't used
                 {
@@ -706,42 +789,48 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Bank When Pressed",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         -1,
                         -1,
                         -1,
                         true,
-                        "Show Nav Map"
+                        "Show Nav Map",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_E,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Add or Remove Escort"
+                        "Add or Remove Escort",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_SHIFTED | KEY_E,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Clear Escort List"
+                        "Clear Escort List",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_E,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Next Escort Ship"
+                        "Target Next Escort Ship",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_R,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Closest Repair Ship"
+                        "Target Closest Repair Ship",
+                        0, 0, 0, 0
                 },
 
                 {
@@ -749,35 +838,40 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Next Uninspected Cargo"
+                        "Target Next Uninspected Cargo",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_U,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Previous Uninspected Cargo"
+                        "Target Previous Uninspected Cargo",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_N,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Newest Ship in Area"
+                        "Target Newest Ship in Area",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_K,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Next Live Turret"
+                        "Target Next Live Turret",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_K,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Previous Live Turret"
+                        "Target Previous Live Turret",
+                        0, 0, 0, 0
                 },
 
                 {
@@ -785,14 +879,16 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Next Hostile Bomb or Bomber"
+                        "Target Next Hostile Bomb or Bomber",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_B,
                         -1,
                         TARGET_TAB,
                         true,
-                        "Target Previous Hostile Bomb or Bomber"
+                        "Target Previous Hostile Bomb or Bomber",
+                        0, 0, 0, 0
                 },
 
                 // multiplayer messaging keys
@@ -802,7 +898,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "(Multiplayer) Message All",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_2,
@@ -810,7 +907,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "(Multiplayer) Message Friendly",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_3,
@@ -818,7 +916,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "(Multiplayer) Message Hostile",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_4,
@@ -826,49 +925,56 @@ config_item Control_config[CCFG_MAX + 1] =
                         COMPUTER_TAB,
                         true,
                         "(Multiplayer) Message Target",
-                        CC_TYPE_CONTINUOUS
+                        CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_X,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "(Multiplayer) Observer Zoom to Target"
+                        "(Multiplayer) Observer Zoom to Target",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_PERIOD,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Increase Time Compression"
+                        "Increase Time Compression",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_COMMA,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Decrease Time Compression"
+                        "Decrease Time Compression",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_L,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Toggle High HUD Contrast"
+                        "Toggle High HUD Contrast",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_N,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "(Multiplayer) Toggle Network Info"
+                        "(Multiplayer) Toggle Network Info",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_END,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "(Multiplayer) Self Destruct"
+                        "(Multiplayer) Self Destruct",
+                        0, 0, 0, 0
                 },
 
                 // Misc
@@ -877,7 +983,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Toggle HUD"
+                        "Toggle HUD",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_3,
@@ -885,7 +992,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Right Thrust",
-                        CC_TYPE_CONTINUOUS
+                           CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_1,
@@ -893,7 +1001,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Left Thrust",
-                        CC_TYPE_CONTINUOUS
+                           CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_PADPLUS,
@@ -901,7 +1010,8 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Up Thrust",
-                        CC_TYPE_CONTINUOUS
+                           CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_SHIFTED | KEY_PADENTER,
@@ -909,28 +1019,32 @@ config_item Control_config[CCFG_MAX + 1] =
                         SHIP_TAB,
                         true,
                         "Down Thrust",
-                        CC_TYPE_CONTINUOUS
+                           CC_TYPE_CONTINUOUS,
+                           0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_SHIFTED | KEY_Q,
                         -1,
                         COMPUTER_TAB,
                         true,
-                        "Toggle HUD Wireframe Target View"
+                        "Toggle HUD Wireframe Target View",
+                        0, 0, 0, 0
                 },
                 {
                         -1,
                         -1,
                         COMPUTER_TAB,
                         false,
-                        "Top-Down View"
+                        "Top-Down View",
+                        0, 0, 0, 0
                 },
                 {
                         -1,
                         -1,
                         COMPUTER_TAB,
                         false,
-                        "Target Padlock View"
+                        "Target Padlock View",
+                        0, 0, 0, 0
                 }, // (Swifty) Toggle for VM_TRACK
                 // Auto Navigation Systen
                 {
@@ -938,28 +1052,32 @@ config_item Control_config[CCFG_MAX + 1] =
                         -1,
                         COMPUTER_TAB,
                         false,
-                        "Toggle Auto Pilot"
+                        "Toggle Auto Pilot",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_N,
                         -1,
                         COMPUTER_TAB,
                         false,
-                        "Cycle Nav Points"
+                        "Cycle Nav Points",
+                        0, 0, 0, 0
                 },
                 {
                         KEY_ALTED | KEY_G,
                         -1,
                         SHIP_TAB,
                         false,
-                        "Toggle Gliding"
+                        "Toggle Gliding",
+                        0, 0, 0, 0
                 },
                 {
                         -1,
                         -1,
                         -1,
                         false,
-                        ""
+                        "",
+                        0, 0, 0, 0
                 }
         };
 

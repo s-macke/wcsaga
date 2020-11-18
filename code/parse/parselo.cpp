@@ -257,7 +257,7 @@ void advance_to_eoln(char *more_terminators) {
 
     terminators[0] = EOLN;
     terminators[1] = (char) EOF_CHAR;
-    terminators[2] = NULL;
+    terminators[2] = 0;
     if (more_terminators != NULL)
         strcat_s(terminators, more_terminators);
     else
@@ -709,7 +709,7 @@ void copy_to_eoln(char *outstr, char *more_terminators, char *instr, int max) {
 
     terminators[0] = EOLN;
     terminators[1] = (char) EOF_CHAR;
-    terminators[2] = NULL;
+    terminators[2] = 0;
     if (more_terminators != NULL)
         strcat_s(terminators, more_terminators);
     else

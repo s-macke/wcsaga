@@ -201,7 +201,7 @@ static int Brief_stage_highlight_sound_handle = -1;
 // used for scrolling briefing text ( if necessary )
 int Num_brief_text_lines[MAX_TEXT_STREAMS];
 int Top_brief_text_line;
-static char Brief_text[MAX_BRIEF_LINES][MAX_BRIEF_LINE_LEN];
+//static char Brief_text[MAX_BRIEF_LINES][MAX_BRIEF_LINE_LEN];
 
 // Used to support drawing colored text for the briefing.  Gets complicates since we
 // need to be able to draw one character at a time as well when the briefing text
@@ -1298,7 +1298,7 @@ void brief_blit_stage_num(int stage_num, int stage_max) {
 // @y     vertical position where the text is drawn
 // @instance index of Colored_stream of the text page to display
 void brief_render_line(int line_num, int x, int y, int instance) {
-    Assert(0 <= instance && instance < (sizeof(Colored_stream) / sizeof(*Colored_stream)));
+    Assert(0 <= instance && instance < (int)(sizeof(Colored_stream) / sizeof(*Colored_stream)));
 
     SCP_vector <colored_char> *src = &Colored_stream[instance].at(line_num);
 
@@ -1340,7 +1340,7 @@ void brief_render_line(int line_num, int x, int y, int instance) {
             //when the current color changes, the accumulated character sequence is drawn.
             if (current_char.color != last_color) {
                 //add a 0 terminal character to make line a valid C string
-                Assert(char_seq_pos < sizeof(char_seq));
+                Assert(char_seq_pos < (int)sizeof(char_seq));
                 char_seq[char_seq_pos] = 0;
                 {    // Draw coloured text, and increment cariage position
                     int w = 0, h = 0;
@@ -1353,12 +1353,12 @@ void brief_render_line(int line_num, int x, int y, int instance) {
                 char_seq_pos = 0;
                 last_color = current_char.color;
             }
-            Assert(char_seq_pos < sizeof(char_seq));
+            Assert(char_seq_pos < (int)sizeof(char_seq));
             char_seq[char_seq_pos++] = current_char.letter;
         }
         // Draw the final chunk of acumulated characters
         // Add a 0 terminal character to make line a valid C string
-        Assert(char_seq_pos < sizeof(char_seq));
+        Assert(char_seq_pos < (int)sizeof(char_seq));
         char_seq[char_seq_pos] = 0;
         {    // Draw coloured text, and increment cariage position
             int w = 0, h = 0;
@@ -1372,10 +1372,10 @@ void brief_render_line(int line_num, int x, int y, int instance) {
     {    // PART2: Draw leading bright white characters
         char_seq_pos = 0;
         for (int current_pos = truncate_len; current_pos < truncate_len + bright_len; current_pos++) {
-            Assert(char_seq_pos < sizeof(char_seq));
+            Assert(char_seq_pos < (int)sizeof(char_seq));
             char_seq[char_seq_pos++] = src->at(current_pos).letter;
         }
-        Assert(char_seq_pos < sizeof(char_seq));
+        Assert(char_seq_pos < (int)sizeof(char_seq));
         char_seq[char_seq_pos] = 0;
         gr_set_color_fast(&Color_bright_white);
         gr_string(x + offset, y, char_seq);
@@ -1645,7 +1645,7 @@ void brief_set_text_color(int color_index) {
 // Returns true when a character is a word separator.
 // @param character is the character to be analysed
 // @return true when the given character is a word separator, and false when the caracter is part of a word.
-bool is_a_word_separator(char character) {
+bool is_a_word_separator(unsigned char character) {
     return character <= 33                    //  2 characters including (space) and !
            || (35 <= character && character <= 38)    //  4 characters #$%&
            || (42 <= character && character <= 44)    //  3 characters *+,
@@ -1666,7 +1666,7 @@ bool is_a_word_separator(char character) {
 // @return number of character of the resulting sequence.
 int brief_text_colorize(char *src, int instance) {
     Assert(src);
-    Assert(0 <= instance && instance < (sizeof(Colored_stream) / sizeof(*Colored_stream)));
+    Assert(0 <= instance && instance < (int)(sizeof(Colored_stream) / sizeof(*Colored_stream)));
 
     briefing_line dest_line; //the resulting vector of colored character
     ubyte active_color_index = BRIEF_TEXT_WHITE; //the current drawing color

@@ -753,36 +753,36 @@ void model_set_detail_level(int n);
 
 // Flags you can pass to model_render
 #define MR_NORMAL                    (0)            // Draw a normal object
-#define MR_SHOW_OUTLINE                (1<<0)        // Draw the object in outline mode. Color specified by model_set_outline_color
-#define MR_SHOW_PIVOTS                (1<<1)        // Show the pivot points
+#define MR_SHOW_OUTLINE              (1<<0)        // Draw the object in outline mode. Color specified by model_set_outline_color
+#define MR_SHOW_PIVOTS               (1<<1)        // Show the pivot points
 #define MR_SHOW_PATHS                (1<<2)        // Show the paths associated with a model
-#define MR_SHOW_RADIUS                (1<<3)        // Show the radius around the object
-#define MR_SHOW_SHIELDS                (1<<4)        // Show the shield mesh
+#define MR_SHOW_RADIUS               (1<<3)        // Show the radius around the object
+#define MR_SHOW_SHIELDS              (1<<4)        // Show the shield mesh
 #define MR_SHOW_THRUSTERS            (1<<5)        // Show the engine thrusters. See model_set_thrust for how long it draws.
-#define MR_LOCK_DETAIL                (1<<6)        // Only draw the detail level defined in model_set_detail_level
-#define MR_NO_POLYS                    (1<<7)        // Don't draw the polygons.
-#define MR_NO_LIGHTING                (1<<8)        // Don't perform any lighting on the model.
-#define MR_NO_TEXTURING                (1<<9)        // Draw textures as flat-shaded polygons.
+#define MR_LOCK_DETAIL               (1<<6)        // Only draw the detail level defined in model_set_detail_level
+#define MR_NO_POLYS                  (1<<7)        // Don't draw the polygons.
+#define MR_NO_LIGHTING               (1<<8)        // Don't perform any lighting on the model.
+#define MR_NO_TEXTURING              (1<<9)        // Draw textures as flat-shaded polygons.
 #define MR_NO_CORRECT                (1<<10)        // Don't to correct texture mapping
-#define MR_NO_SMOOTHING                (1<<11)        // Don't perform smoothing on vertices.
-#define MR_IS_ASTEROID                (1<<12)        // When set, treat this as an asteroid.
+#define MR_NO_SMOOTHING              (1<<11)        // Don't perform smoothing on vertices.
+#define MR_IS_ASTEROID               (1<<12)        // When set, treat this as an asteroid.
 #define MR_IS_MISSILE                (1<<13)        // When set, treat this as a missilie.  No lighting, small thrusters.
-#define MR_SHOW_OUTLINE_PRESET        (1<<14)        // Draw the object in outline mode. Color assumed to be set already.
-#define MR_SHOW_INVISIBLE_FACES        (1<<15)        // Show invisible faces as green...
+#define MR_SHOW_OUTLINE_PRESET       (1<<14)        // Draw the object in outline mode. Color assumed to be set already.
+#define MR_SHOW_INVISIBLE_FACES      (1<<15)        // Show invisible faces as green...
 #define MR_AUTOCENTER                (1<<16)        // Always use the center of the hull bounding box as the center, instead of the pivot point
-#define MR_BAY_PATHS                (1<<17)        // draw bay paths
-#define MR_ALL_XPARENT                (1<<18)        // render it fully transparent
+#define MR_BAY_PATHS                 (1<<17)        // draw bay paths
+#define MR_ALL_XPARENT               (1<<18)        // render it fully transparent
 #define MR_NO_ZBUFFER                (1<<19)        // switch z-buffering off completely
-#define MR_NO_CULL                    (1<<20)        // don't cull backfacing poly's
-#define MR_FORCE_TEXTURE            (1<<21)        // force a given texture to always be used
+#define MR_NO_CULL                   (1<<20)        // don't cull backfacing poly's
+#define MR_FORCE_TEXTURE             (1<<21)        // force a given texture to always be used
 #define MR_FORCE_LOWER_DETAIL        (1<<22)        // force the model to draw 1 LOD lower, if possible
 #define MR_EDGE_ALPHA                (1<<23)        // makes norms that are faceing away from you render more transparent -Bobboau
-#define MR_CENTER_ALPHA                (1<<24)        // oposite of above -Bobboau
+#define MR_CENTER_ALPHA              (1<<24)        // oposite of above -Bobboau
 #define MR_NO_FOGGING                (1<<25)        // Don't fog - taylor
-#define MR_SHOW_OUTLINE_HTL            (1<<26)        // Show outlines (wireframe view) using HTL method
-#define MR_NO_GLOWMAPS                (1<<27)        // disable rendering of glowmaps - taylor
-#define MR_FULL_DETAIL                (1<<28)        // render all valid objects, particularly ones that are otherwise in/out of render boxes - taylor
-#define MR_FORCE_CLAMP                (1<<29)        // force clamp - Hery
+#define MR_SHOW_OUTLINE_HTL          (1<<26)        // Show outlines (wireframe view) using HTL method
+#define MR_NO_GLOWMAPS               (1<<27)        // disable rendering of glowmaps - taylor
+#define MR_FULL_DETAIL               (1<<28)        // render all valid objects, particularly ones that are otherwise in/out of render boxes - taylor
+#define MR_FORCE_CLAMP               (1<<29)        // force clamp - Hery
 
 // old/obsolete flags
 //#define MR_SHOW_DAMAGE			(1<<4)		// Show the "destroyed" subobjects

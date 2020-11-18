@@ -39,14 +39,14 @@ errno_t scp_strcpy_s(const char* file, int line, char* strDest, size_t sizeInByt
 	if (!strDest || !strSource)
 	{
 		if (strDest)
-			*strDest = NULL;
+			*strDest = 0;
 		__safe_strings_error_handler(EINVAL);
 		return EINVAL;
 	}
 
 	if (sizeInBytes == 0)
 	{
-		*strDest = NULL;
+		*strDest = 0;
 		__safe_strings_error_handler(ERANGE);
 		return ERANGE;
 	}
@@ -58,7 +58,7 @@ errno_t scp_strcpy_s(const char* file, int line, char* strDest, size_t sizeInByt
 
 	if (bufferLeft == 0)
 	{
-		*strDest = NULL;
+		*strDest = 0;
 		__safe_strings_error_handler(ERANGE);
 		return ERANGE;
 	}
@@ -75,14 +75,14 @@ errno_t scp_strcat_s(const char* file, int line, char* strDest, size_t sizeInByt
 	if (!strDest || !strSource)
 	{
 		if (strDest)
-			*strDest = NULL;
+			*strDest = 0;
 		__safe_strings_error_handler(EINVAL);
 		return EINVAL;
 	}
 
 	if (bufferLeft == 0)
 	{
-		*strDest = NULL;
+		*strDest = 0;
 		__safe_strings_error_handler(ERANGE);
 		return ERANGE;
 	}
@@ -98,7 +98,7 @@ errno_t scp_strcat_s(const char* file, int line, char* strDest, size_t sizeInByt
 
 	if (bufferLeft == 0)
 	{
-		*strDest = NULL;
+		*strDest = 0;
 		__safe_strings_error_handler(ERANGE);
 		return ERANGE;
 	}
@@ -108,7 +108,7 @@ errno_t scp_strcat_s(const char* file, int line, char* strDest, size_t sizeInByt
 
 	if (bufferLeft == 0)
 	{
-		*strDest = NULL;
+		*strDest = 0;
 		__safe_strings_error_handler(ERANGE);
 		return ERANGE;
 	}
