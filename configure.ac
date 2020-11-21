@@ -62,13 +62,6 @@ AC_ARG_ENABLE(demo,
 		[fs2_demo=no],
 )
 
-AC_ARG_ENABLE(wxfred2,
-	AC_HELP_STRING([--enable-wxfred2],
-		[Build wxFRED2 rather than the normal game (default = no)]),
-		[fs2_fred=$enableval],
-		[fs2_fred=no],
-)
-
 AC_ARG_ENABLE(speech,
 	AC_HELP_STRING([--enable-speech],
 		[Enable text-to-speech]),
@@ -188,61 +181,25 @@ if test "$fs2_speech" = "yes" ; then
 	AC_DEFINE([FS2_SPEECH])
 fi
 
-if test "$fs2_fred" = "yes" ; then
-	AM_OPTIONS_WXCONFIG
-	AM_PATH_WXCONFIG(2.4.2, wxWin=1)
-
-	if test "$wxWin" != 1; then
-		AC_MSG_ERROR([
-			wxWindows must be installed on your system
-			but wx-config script couldn't be found.
-
-			Please check that wx-config is in path, the directory
-			where wxWindows libraries are installed (returned by
-			'wx-config --libs' command) is in LD_LIBRARY_PATH or
-			equivalent variable and wxWindows version is 2.3.4 or above.
-		])
-	fi
-
-	FS2_CXXFLAGS="$FS2_CXXFLAGS $WX_CXXFLAGS_ONLY"
-	FS2_LIBS="$FS2_LIBS $WX_LIBS"
-fi
-
 if test "$fs2_debug" = "yes" ; then
 	AC_DEFINE([_DEBUG])
 	D_CFLAGS="$D_CFLAGS -O0 -g -Wall -Wextra -Wno-unused-parameter -Wno-write-strings -Wshadow -funroll-loops -DLUA_USE_APICHECK"
 	D_LDFLAGS="$D_LDFLAGS -g"
 
-	if test "$fs2_fred" = "yes" ; then
-		if test "$fs2_inferno" = "yes" ; then
-			AC_SUBST(FS2_BINARY, ["wxFRED2_INF_d"])
-		else
-			AC_SUBST(FS2_BINARY, ["wxFRED2_d"])
-		fi
+    if test "$fs2_inferno" = "yes" ; then
+		AC_SUBST(FS2_BINARY, ["fs2_open_INF_d"])
 	else
-		if test "$fs2_inferno" = "yes" ; then
-			AC_SUBST(FS2_BINARY, ["fs2_open_INF_d"])
-		else
-			AC_SUBST(FS2_BINARY, ["fs2_open_d"])
-		fi
+		AC_SUBST(FS2_BINARY, ["fs2_open_d"])
 	fi
 else
 	AC_DEFINE([NDEBUG])
 	D_CFLAGS="$D_CFLAGS -O2 -Wall -Wno-write-strings -funroll-loops"
 	D_LDFLAGS="$D_LDFLAGS "
 
-	if test "$fs2_fred" = "yes" ; then
-		if test "$fs2_inferno" = "yes" ; then
-			AC_SUBST(FS2_BINARY, ["wxFRED2_INF_r"])
-		else
-			AC_SUBST(FS2_BINARY, ["wxFRED2_r"])
-		fi
+	if test "$fs2_inferno" = "yes" ; then
+		AC_SUBST(FS2_BINARY, ["fs2_open_INF_r"])
 	else
-		if test "$fs2_inferno" = "yes" ; then
-			AC_SUBST(FS2_BINARY, ["fs2_open_INF_r"])
-		else
-			AC_SUBST(FS2_BINARY, ["fs2_open_r"])
-		fi
+		AC_SUBST(FS2_BINARY, ["fs2_open_r"])
 	fi
 fi
 

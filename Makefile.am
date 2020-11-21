@@ -10,35 +10,19 @@ EXTRA_DIST = FS2OpenSCPReadMe.doc
 AM_CXXFLAGS = -I./code @D_CFLAGS@
 AM_LDFLAGS = @D_LDFLAGS@
 
-EXTRA_PROGRAMS = cfilearchiver cfileextractor cryptstring scramble
+EXTRA_PROGRAMS = cryptstring
 
 ###############################################################################
 ##
 ## Begin utilitites
 ##
 
-# cfilearchiver -- to create VPs
-cfilearchiver_SOURCES =	\
-	code/cfilearchiver/cfilearchiver.cpp
-
-# cfileextractor -- to extract files from VPs
-cfileextractor_SOURCES = \
-	code/cfileextractor/cfileextractor.cpp
-
 # cryptstring -- to encrypt strings that are used as cheat codes
 cryptstring_SOURCES =	\
 	code/cryptstring/cryptstring.cpp
 
-# scramble -- to encrypt tables
-scramble_SOURCES =	\
-	code/parse/encrypt.cpp	\
-	code/scramble/scramble.cpp	\
-	code/scramble/scramble.h
-
-
 # catch all to build utilitites
-tools: cfilearchiver cfileextractor cryptstring scramble
-
+tools: cryptstring
 
 # cleaning
 clean-tools:
