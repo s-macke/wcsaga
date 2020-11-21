@@ -92,255 +92,251 @@ extern float do_subobj_hit_stuff(object *ship_obj, object *other_obj, vec3d *hit
 
 extern void mission_goal_mark_all_true(int type);
 
-int Normal_key_set[] =
-        {
-                TARGET_NEXT,
-                TARGET_PREV,
-                TARGET_NEXT_CLOSEST_HOSTILE,
-                TARGET_PREV_CLOSEST_HOSTILE,
-                TARGET_NEXT_CLOSEST_FRIENDLY,
-                TARGET_PREV_CLOSEST_FRIENDLY,
-                TARGET_TARGETS_TARGET,
-                TARGET_SHIP_IN_RETICLE,
-                TARGET_LAST_TRANMISSION_SENDER,
-                TARGET_CLOSEST_SHIP_ATTACKING_TARGET,
-                TARGET_CLOSEST_SHIP_ATTACKING_SELF,
-                STOP_TARGETING_SHIP,
-                TOGGLE_AUTO_TARGETING,
-                TARGET_SUBOBJECT_IN_RETICLE,
-                TARGET_PREV_SUBOBJECT,
-                TARGET_NEXT_SUBOBJECT,
-                STOP_TARGETING_SUBSYSTEM,
+int Normal_key_set[] = {
+        TARGET_NEXT,
+        TARGET_PREV,
+        TARGET_NEXT_CLOSEST_HOSTILE,
+        TARGET_PREV_CLOSEST_HOSTILE,
+        TARGET_NEXT_CLOSEST_FRIENDLY,
+        TARGET_PREV_CLOSEST_FRIENDLY,
+        TARGET_TARGETS_TARGET,
+        TARGET_SHIP_IN_RETICLE,
+        TARGET_LAST_TRANMISSION_SENDER,
+        TARGET_CLOSEST_SHIP_ATTACKING_TARGET,
+        TARGET_CLOSEST_SHIP_ATTACKING_SELF,
+        STOP_TARGETING_SHIP,
+        TOGGLE_AUTO_TARGETING,
+        TARGET_SUBOBJECT_IN_RETICLE,
+        TARGET_PREV_SUBOBJECT,
+        TARGET_NEXT_SUBOBJECT,
+        STOP_TARGETING_SUBSYSTEM,
 
-                TARGET_NEXT_UNINSPECTED_CARGO,
-                TARGET_PREV_UNINSPECTED_CARGO,
-                TARGET_NEWEST_SHIP,
-                TARGET_NEXT_LIVE_TURRET,
-                TARGET_PREV_LIVE_TURRET,
-                TARGET_NEXT_BOMB,
-                TARGET_PREV_BOMB,
+        TARGET_NEXT_UNINSPECTED_CARGO,
+        TARGET_PREV_UNINSPECTED_CARGO,
+        TARGET_NEWEST_SHIP,
+        TARGET_NEXT_LIVE_TURRET,
+        TARGET_PREV_LIVE_TURRET,
+        TARGET_NEXT_BOMB,
+        TARGET_PREV_BOMB,
 
-                ATTACK_MESSAGE,
-                DISARM_MESSAGE,
-                DISABLE_MESSAGE,
-                ATTACK_SUBSYSTEM_MESSAGE,
-                CAPTURE_MESSAGE,
-                ENGAGE_MESSAGE,
-                FORM_MESSAGE,
-                PROTECT_MESSAGE,
-                COVER_MESSAGE,
-                WARP_MESSAGE,
-                REARM_MESSAGE,
-                IGNORE_MESSAGE,
-                SQUADMSG_MENU,
+        ATTACK_MESSAGE,
+        DISARM_MESSAGE,
+        DISABLE_MESSAGE,
+        ATTACK_SUBSYSTEM_MESSAGE,
+        CAPTURE_MESSAGE,
+        ENGAGE_MESSAGE,
+        FORM_MESSAGE,
+        PROTECT_MESSAGE,
+        COVER_MESSAGE,
+        WARP_MESSAGE,
+        REARM_MESSAGE,
+        IGNORE_MESSAGE,
+        SQUADMSG_MENU,
 
-                VIEW_CHASE,
-                VIEW_OTHER_SHIP,
-                VIEW_TOPDOWN,
-                VIEW_TRACK_TARGET,
+        VIEW_CHASE,
+        VIEW_OTHER_SHIP,
+        VIEW_TOPDOWN,
+        VIEW_TRACK_TARGET,
 
-                SHOW_GOALS,
-                END_MISSION,
+        SHOW_GOALS,
+        END_MISSION,
 
-                ADD_REMOVE_ESCORT,
-                ESCORT_CLEAR,
-                TARGET_NEXT_ESCORT_SHIP,
+        ADD_REMOVE_ESCORT,
+        ESCORT_CLEAR,
+        TARGET_NEXT_ESCORT_SHIP,
 
-                XFER_SHIELD,
-                XFER_LASER,
-                INCREASE_SHIELD,
-                INCREASE_WEAPON,
-                INCREASE_ENGINE,
-                DECREASE_SHIELD,
-                DECREASE_WEAPON,
-                DECREASE_ENGINE,
-                ETS_EQUALIZE,
-                SHIELD_EQUALIZE,
-                SHIELD_XFER_TOP,
-                SHIELD_XFER_BOTTOM,
-                SHIELD_XFER_RIGHT,
-                SHIELD_XFER_LEFT,
+        XFER_SHIELD,
+        XFER_LASER,
+        INCREASE_SHIELD,
+        INCREASE_WEAPON,
+        INCREASE_ENGINE,
+        DECREASE_SHIELD,
+        DECREASE_WEAPON,
+        DECREASE_ENGINE,
+        ETS_EQUALIZE,
+        SHIELD_EQUALIZE,
+        SHIELD_XFER_TOP,
+        SHIELD_XFER_BOTTOM,
+        SHIELD_XFER_RIGHT,
+        SHIELD_XFER_LEFT,
 
-                CYCLE_NEXT_PRIMARY,
-                CYCLE_PREV_PRIMARY,
-                CYCLE_SECONDARY,
-                CYCLE_NUM_MISSLES,
-                RADAR_RANGE_CYCLE,
+        CYCLE_NEXT_PRIMARY,
+        CYCLE_PREV_PRIMARY,
+        CYCLE_SECONDARY,
+        CYCLE_NUM_MISSLES,
+        RADAR_RANGE_CYCLE,
 
-                MATCH_TARGET_SPEED,
-                TOGGLE_AUTO_MATCH_TARGET_SPEED,
+        MATCH_TARGET_SPEED,
+        TOGGLE_AUTO_MATCH_TARGET_SPEED,
 
-                VIEW_EXTERNAL,
-                VIEW_EXTERNAL_TOGGLE_CAMERA_LOCK,
-                LAUNCH_COUNTERMEASURE,
-                ONE_THIRD_THROTTLE,
-                TWO_THIRDS_THROTTLE,
-                PLUS_5_PERCENT_THROTTLE,
-                MINUS_5_PERCENT_THROTTLE,
-                ZERO_THROTTLE,
-                MAX_THROTTLE,
+        VIEW_EXTERNAL,
+        VIEW_EXTERNAL_TOGGLE_CAMERA_LOCK,
+        LAUNCH_COUNTERMEASURE,
+        ONE_THIRD_THROTTLE,
+        TWO_THIRDS_THROTTLE,
+        PLUS_5_PERCENT_THROTTLE,
+        MINUS_5_PERCENT_THROTTLE,
+        ZERO_THROTTLE,
+        MAX_THROTTLE,
 
-                TARGET_CLOSEST_REPAIR_SHIP,
+        TARGET_CLOSEST_REPAIR_SHIP,
 
-                MULTI_MESSAGE_ALL,
-                MULTI_MESSAGE_FRIENDLY,
-                MULTI_MESSAGE_HOSTILE,
-                MULTI_MESSAGE_TARGET,
-                MULTI_OBSERVER_ZOOM_TO,
+        MULTI_MESSAGE_ALL,
+        MULTI_MESSAGE_FRIENDLY,
+        MULTI_MESSAGE_HOSTILE,
+        MULTI_MESSAGE_TARGET,
+        MULTI_OBSERVER_ZOOM_TO,
 
-                TIME_SPEED_UP,
-                TIME_SLOW_DOWN,
+        TIME_SPEED_UP,
+        TIME_SLOW_DOWN,
 
-                TOGGLE_HUD_CONTRAST,
+        TOGGLE_HUD_CONTRAST,
 
-                MULTI_TOGGLE_NETINFO,
-                MULTI_SELF_DESTRUCT,
+        MULTI_TOGGLE_NETINFO,
+        MULTI_SELF_DESTRUCT,
 
-                TOGGLE_HUD,
+        TOGGLE_HUD,
 
-                HUD_TARGETBOX_TOGGLE_WIREFRAME,
-                AUTO_PILOT_TOGGLE,
-                NAV_CYCLE,
+        HUD_TARGETBOX_TOGGLE_WIREFRAME,
+        AUTO_PILOT_TOGGLE,
+        NAV_CYCLE,
 
-                TOGGLE_GLIDING
-        };
+        TOGGLE_GLIDING
+};
 
-int Dead_key_set[] =
-        {
-                TARGET_NEXT,
-                TARGET_PREV,
-                TARGET_NEXT_CLOSEST_HOSTILE,
-                TARGET_PREV_CLOSEST_HOSTILE,
-                TARGET_NEXT_CLOSEST_FRIENDLY,
-                TARGET_PREV_CLOSEST_FRIENDLY,
-                TARGET_TARGETS_TARGET,
-                TARGET_CLOSEST_SHIP_ATTACKING_TARGET,
-                STOP_TARGETING_SHIP,
-                TOGGLE_AUTO_TARGETING,
-                TARGET_SUBOBJECT_IN_RETICLE,
-                TARGET_PREV_SUBOBJECT,
-                TARGET_NEXT_SUBOBJECT,
-                STOP_TARGETING_SUBSYSTEM,
-                TARGET_NEWEST_SHIP,
-                TARGET_NEXT_LIVE_TURRET,
-                TARGET_PREV_LIVE_TURRET,
-                TARGET_NEXT_BOMB,
-                TARGET_PREV_BOMB,
+int Dead_key_set[] = {
+        TARGET_NEXT,
+        TARGET_PREV,
+        TARGET_NEXT_CLOSEST_HOSTILE,
+        TARGET_PREV_CLOSEST_HOSTILE,
+        TARGET_NEXT_CLOSEST_FRIENDLY,
+        TARGET_PREV_CLOSEST_FRIENDLY,
+        TARGET_TARGETS_TARGET,
+        TARGET_CLOSEST_SHIP_ATTACKING_TARGET,
+        STOP_TARGETING_SHIP,
+        TOGGLE_AUTO_TARGETING,
+        TARGET_SUBOBJECT_IN_RETICLE,
+        TARGET_PREV_SUBOBJECT,
+        TARGET_NEXT_SUBOBJECT,
+        STOP_TARGETING_SUBSYSTEM,
+        TARGET_NEWEST_SHIP,
+        TARGET_NEXT_LIVE_TURRET,
+        TARGET_PREV_LIVE_TURRET,
+        TARGET_NEXT_BOMB,
+        TARGET_PREV_BOMB,
 
-                VIEW_CHASE,
-                VIEW_OTHER_SHIP,
-                VIEW_TOPDOWN,
+        VIEW_CHASE,
+        VIEW_OTHER_SHIP,
+        VIEW_TOPDOWN,
 
-                SHOW_GOALS,
+        SHOW_GOALS,
 
-                ADD_REMOVE_ESCORT,
-                ESCORT_CLEAR,
-                TARGET_NEXT_ESCORT_SHIP,
-                TARGET_CLOSEST_REPAIR_SHIP,
+        ADD_REMOVE_ESCORT,
+        ESCORT_CLEAR,
+        TARGET_NEXT_ESCORT_SHIP,
+        TARGET_CLOSEST_REPAIR_SHIP,
 
-                MULTI_MESSAGE_ALL,
-                MULTI_MESSAGE_FRIENDLY,
-                MULTI_MESSAGE_HOSTILE,
-                MULTI_MESSAGE_TARGET,
-                MULTI_OBSERVER_ZOOM_TO,
+        MULTI_MESSAGE_ALL,
+        MULTI_MESSAGE_FRIENDLY,
+        MULTI_MESSAGE_HOSTILE,
+        MULTI_MESSAGE_TARGET,
+        MULTI_OBSERVER_ZOOM_TO,
 
-                TIME_SPEED_UP,
-                TIME_SLOW_DOWN
-        };
+        TIME_SPEED_UP,
+        TIME_SLOW_DOWN
+};
 
-int Critical_key_set[] =
-        {
-                CYCLE_NEXT_PRIMARY,
-                CYCLE_PREV_PRIMARY,
-                CYCLE_SECONDARY,
-                CYCLE_NUM_MISSLES,
-                INCREASE_WEAPON,
-                DECREASE_WEAPON,
-                INCREASE_SHIELD,
-                DECREASE_SHIELD,
-                INCREASE_ENGINE,
-                DECREASE_ENGINE,
-                ETS_EQUALIZE,
-                SHIELD_EQUALIZE,
-                SHIELD_XFER_TOP,
-                SHIELD_XFER_BOTTOM,
-                SHIELD_XFER_LEFT,
-                SHIELD_XFER_RIGHT,
-                XFER_SHIELD,
-                XFER_LASER,
-        };
+int Critical_key_set[] = {
+        CYCLE_NEXT_PRIMARY,
+        CYCLE_PREV_PRIMARY,
+        CYCLE_SECONDARY,
+        CYCLE_NUM_MISSLES,
+        INCREASE_WEAPON,
+        DECREASE_WEAPON,
+        INCREASE_SHIELD,
+        DECREASE_SHIELD,
+        INCREASE_ENGINE,
+        DECREASE_ENGINE,
+        ETS_EQUALIZE,
+        SHIELD_EQUALIZE,
+        SHIELD_XFER_TOP,
+        SHIELD_XFER_BOTTOM,
+        SHIELD_XFER_LEFT,
+        SHIELD_XFER_RIGHT,
+        XFER_SHIELD,
+        XFER_LASER,
+};
 
-int Non_critical_key_set[] =
-        {
-                MATCH_TARGET_SPEED,
-                TOGGLE_AUTO_MATCH_TARGET_SPEED,
-                TARGET_NEXT,
-                TARGET_PREV,
-                TARGET_NEXT_CLOSEST_HOSTILE,
-                TARGET_PREV_CLOSEST_HOSTILE,
-                TOGGLE_AUTO_TARGETING,
-                TARGET_NEXT_CLOSEST_FRIENDLY,
-                TARGET_PREV_CLOSEST_FRIENDLY,
-                TARGET_SHIP_IN_RETICLE,
-                TARGET_LAST_TRANMISSION_SENDER,
-                TARGET_CLOSEST_REPAIR_SHIP,
-                TARGET_CLOSEST_SHIP_ATTACKING_TARGET,
-                STOP_TARGETING_SHIP,
-                TARGET_CLOSEST_SHIP_ATTACKING_SELF,
-                TARGET_TARGETS_TARGET,
-                TARGET_SUBOBJECT_IN_RETICLE,
-                TARGET_PREV_SUBOBJECT,
-                TARGET_NEXT_SUBOBJECT,
-                STOP_TARGETING_SUBSYSTEM,
-                TARGET_NEXT_BOMB,
-                TARGET_PREV_BOMB,
-                TARGET_NEXT_UNINSPECTED_CARGO,
-                TARGET_PREV_UNINSPECTED_CARGO,
-                TARGET_NEWEST_SHIP,
-                TARGET_NEXT_LIVE_TURRET,
-                TARGET_PREV_LIVE_TURRET,
-                ATTACK_MESSAGE,
-                DISARM_MESSAGE,
-                DISABLE_MESSAGE,
-                ATTACK_SUBSYSTEM_MESSAGE,
-                CAPTURE_MESSAGE,
-                ENGAGE_MESSAGE,
-                FORM_MESSAGE,
-                PROTECT_MESSAGE,
-                COVER_MESSAGE,
-                WARP_MESSAGE,
-                IGNORE_MESSAGE,
-                REARM_MESSAGE,
-                VIEW_CHASE,
-                VIEW_EXTERNAL,
-                VIEW_EXTERNAL_TOGGLE_CAMERA_LOCK,
-                VIEW_OTHER_SHIP,
-                VIEW_TOPDOWN,
-                VIEW_TRACK_TARGET,
-                RADAR_RANGE_CYCLE,
-                SQUADMSG_MENU,
-                SHOW_GOALS,
-                END_MISSION,
-                ADD_REMOVE_ESCORT,
-                ESCORT_CLEAR,
-                TARGET_NEXT_ESCORT_SHIP,
-                MULTI_MESSAGE_ALL,
-                MULTI_MESSAGE_FRIENDLY,
-                MULTI_MESSAGE_HOSTILE,
-                MULTI_MESSAGE_TARGET,
-                MULTI_OBSERVER_ZOOM_TO,
-                TOGGLE_HUD_CONTRAST,
+int Non_critical_key_set[] = {
+        MATCH_TARGET_SPEED,
+        TOGGLE_AUTO_MATCH_TARGET_SPEED,
+        TARGET_NEXT,
+        TARGET_PREV,
+        TARGET_NEXT_CLOSEST_HOSTILE,
+        TARGET_PREV_CLOSEST_HOSTILE,
+        TOGGLE_AUTO_TARGETING,
+        TARGET_NEXT_CLOSEST_FRIENDLY,
+        TARGET_PREV_CLOSEST_FRIENDLY,
+        TARGET_SHIP_IN_RETICLE,
+        TARGET_LAST_TRANMISSION_SENDER,
+        TARGET_CLOSEST_REPAIR_SHIP,
+        TARGET_CLOSEST_SHIP_ATTACKING_TARGET,
+        STOP_TARGETING_SHIP,
+        TARGET_CLOSEST_SHIP_ATTACKING_SELF,
+        TARGET_TARGETS_TARGET,
+        TARGET_SUBOBJECT_IN_RETICLE,
+        TARGET_PREV_SUBOBJECT,
+        TARGET_NEXT_SUBOBJECT,
+        STOP_TARGETING_SUBSYSTEM,
+        TARGET_NEXT_BOMB,
+        TARGET_PREV_BOMB,
+        TARGET_NEXT_UNINSPECTED_CARGO,
+        TARGET_PREV_UNINSPECTED_CARGO,
+        TARGET_NEWEST_SHIP,
+        TARGET_NEXT_LIVE_TURRET,
+        TARGET_PREV_LIVE_TURRET,
+        ATTACK_MESSAGE,
+        DISARM_MESSAGE,
+        DISABLE_MESSAGE,
+        ATTACK_SUBSYSTEM_MESSAGE,
+        CAPTURE_MESSAGE,
+        ENGAGE_MESSAGE,
+        FORM_MESSAGE,
+        PROTECT_MESSAGE,
+        COVER_MESSAGE,
+        WARP_MESSAGE,
+        IGNORE_MESSAGE,
+        REARM_MESSAGE,
+        VIEW_CHASE,
+        VIEW_EXTERNAL,
+        VIEW_EXTERNAL_TOGGLE_CAMERA_LOCK,
+        VIEW_OTHER_SHIP,
+        VIEW_TOPDOWN,
+        VIEW_TRACK_TARGET,
+        RADAR_RANGE_CYCLE,
+        SQUADMSG_MENU,
+        SHOW_GOALS,
+        END_MISSION,
+        ADD_REMOVE_ESCORT,
+        ESCORT_CLEAR,
+        TARGET_NEXT_ESCORT_SHIP,
+        MULTI_MESSAGE_ALL,
+        MULTI_MESSAGE_FRIENDLY,
+        MULTI_MESSAGE_HOSTILE,
+        MULTI_MESSAGE_TARGET,
+        MULTI_OBSERVER_ZOOM_TO,
+        TOGGLE_HUD_CONTRAST,
 
-                MULTI_TOGGLE_NETINFO,
-                MULTI_SELF_DESTRUCT,
+        MULTI_TOGGLE_NETINFO,
+        MULTI_SELF_DESTRUCT,
 
-                TOGGLE_HUD,
+        TOGGLE_HUD,
 
-                HUD_TARGETBOX_TOGGLE_WIREFRAME,
-                AUTO_PILOT_TOGGLE,
-                NAV_CYCLE,
-                TOGGLE_GLIDING
-        };
+        HUD_TARGETBOX_TOGGLE_WIREFRAME,
+        AUTO_PILOT_TOGGLE,
+        NAV_CYCLE,
+        TOGGLE_GLIDING
+};
 
 
 // set sizes of the key sets automatically
@@ -445,8 +441,7 @@ void debug_max_secondary_weapons(object *objp) {
     }
 }
 
-void debug_max_primary_weapons(object *objp)    // Goober5000
-{
+void debug_max_primary_weapons(object *objp) {  // Goober5000
     Assert(objp);    // Goober5000
 
     int index;
@@ -773,389 +768,389 @@ void process_debug_keys(int k) {
             break;
 
 #ifndef NDEBUG
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_I:
-        case KEY_DEBUGGED1 + KEY_SHIFTED + KEY_I:
-            if (Player_ai->target_objnum != -1) {
-                object *objp = &Objects[Player_ai->target_objnum];
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_I:
+            case KEY_DEBUGGED1 + KEY_SHIFTED + KEY_I:
+                if (Player_ai->target_objnum != -1) {
+                    object *objp = &Objects[Player_ai->target_objnum];
 
-                objp->flags ^= OF_INVULNERABLE;
-                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Player's target [%s] is %s", 13),
-                                   Ships[objp->instance].ship_name,
-                                   objp->flags & OF_INVULNERABLE ? XSTR("now INVULNERABLE!",
-                                                                        11) : XSTR("no longer invulnerable...", 12));
-            }
-            break;
-            /*
-                    case KEY_DEBUGGED + KEY_ALTED + KEY_I:
-                        if (Player_ai->target_objnum != -1)
-                            set_global_ignore_object(Player_ai->target_objnum);
-                        break;
-            */
-
-        case KEY_DEBUGGED + KEY_N:
-            AI_watch_object++;
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Spewing debug info about object #%d", 14), AI_watch_object);
-            break;
-
-        case KEY_DEBUGGED + KEY_O:
-        case KEY_DEBUGGED1 + KEY_O:
-            toggle_player_object();
-            break;
-
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_O:
-            extern int Debug_octant;
-            if (Debug_octant == 7) {
-                Debug_octant = -1;
-            } else {
-                Debug_octant++;
-            }
-            nprintf(("General", "Debug_octant == %d\n", Debug_octant));
-            break;
-
-        case KEY_DEBUGGED + KEY_P:
-            supernova_start(20);
-            break;
-
-        case KEY_DEBUGGED + KEY_W:
-        case KEY_DEBUGGED1 + KEY_W:
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_W:
-        case KEY_DEBUGGED1 + KEY_SHIFTED + KEY_W:
-            // temp code for testing purposes, toggles weapon energy cheat
-            Weapon_energy_cheat = !Weapon_energy_cheat;
-            if (Weapon_energy_cheat) {
-                if (k & KEY_SHIFTED)
-                    HUD_sourced_printf(HUD_SOURCE_HIDDEN,
-                                       XSTR("Weapon energy and missile count will always be at full ALL SHIPS!", 15));
-                else
-                    HUD_sourced_printf(HUD_SOURCE_HIDDEN,
-                                       XSTR("Weapon energy and missile count will always be at full for player", 16));
-
-                debug_max_secondary_weapons(Player_obj);
-                debug_max_primary_weapons(Player_obj);
-                if (k & KEY_SHIFTED) {
-                    object *objp;
-
-                    for (objp = GET_FIRST(&obj_used_list); objp != END_OF_LIST(&obj_used_list); objp = GET_NEXT(objp))
-                        if (objp->type == OBJ_SHIP)
-                            debug_max_secondary_weapons(objp);
-                    debug_max_primary_weapons(objp);
+                    objp->flags ^= OF_INVULNERABLE;
+                    HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Player's target [%s] is %s", 13),
+                                       Ships[objp->instance].ship_name,
+                                       objp->flags & OF_INVULNERABLE ? XSTR("now INVULNERABLE!",
+                                                                            11) : XSTR("no longer invulnerable...", 12));
                 }
+                break;
+                /*
+                        case KEY_DEBUGGED + KEY_ALTED + KEY_I:
+                            if (Player_ai->target_objnum != -1)
+                                set_global_ignore_object(Player_ai->target_objnum);
+                            break;
+                */
 
-            } else
-                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Normal weapon energy system / missile count restored", 17));
+            case KEY_DEBUGGED + KEY_N:
+                AI_watch_object++;
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Spewing debug info about object #%d", 14), AI_watch_object);
+                break;
 
-            break;
+            case KEY_DEBUGGED + KEY_O:
+            case KEY_DEBUGGED1 + KEY_O:
+                toggle_player_object();
+                break;
 
-        case KEY_DEBUGGED + KEY_G:
-        case KEY_DEBUGGED1 + KEY_G:
-            mission_goal_mark_all_true(PRIMARY_GOAL);
-            break;
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_O:
+                extern int Debug_octant;
+                if (Debug_octant == 7) {
+                    Debug_octant = -1;
+                } else {
+                    Debug_octant++;
+                }
+                nprintf(("General", "Debug_octant == %d\n", Debug_octant));
+                break;
 
-        case KEY_DEBUGGED + KEY_G + KEY_SHIFTED:
-        case KEY_DEBUGGED1 + KEY_G + KEY_SHIFTED:
-            mission_goal_mark_all_true(SECONDARY_GOAL);
-            break;
+            case KEY_DEBUGGED + KEY_P:
+                supernova_start(20);
+                break;
 
-        case KEY_DEBUGGED + KEY_G + KEY_ALTED:
-        case KEY_DEBUGGED1 + KEY_G + KEY_ALTED:
-            mission_goal_mark_all_true(BONUS_GOAL);
-            break;
+            case KEY_DEBUGGED + KEY_W:
+            case KEY_DEBUGGED1 + KEY_W:
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_W:
+            case KEY_DEBUGGED1 + KEY_SHIFTED + KEY_W:
+                // temp code for testing purposes, toggles weapon energy cheat
+                Weapon_energy_cheat = !Weapon_energy_cheat;
+                if (Weapon_energy_cheat) {
+                    if (k & KEY_SHIFTED)
+                        HUD_sourced_printf(HUD_SOURCE_HIDDEN,
+                                           XSTR("Weapon energy and missile count will always be at full ALL SHIPS!", 15));
+                    else
+                        HUD_sourced_printf(HUD_SOURCE_HIDDEN,
+                                           XSTR("Weapon energy and missile count will always be at full for player", 16));
 
-        case KEY_DEBUGGED + KEY_9: {
-            case KEY_DEBUGGED1 + KEY_9:
-                ship *shipp;
+                    debug_max_secondary_weapons(Player_obj);
+                    debug_max_primary_weapons(Player_obj);
+                    if (k & KEY_SHIFTED) {
+                        object *objp;
 
-            shipp = &Ships[Player_obj->instance];
-            int *weap = &shipp->weapons.secondary_bank_weapons[shipp->weapons.current_secondary_bank];
-            *weap = get_next_weapon_looped(*weap, WP_MISSILE);
+                        for (objp = GET_FIRST(&obj_used_list); objp != END_OF_LIST(&obj_used_list); objp = GET_NEXT(objp))
+                            if (objp->type == OBJ_SHIP)
+                                debug_max_secondary_weapons(objp);
+                        debug_max_primary_weapons(objp);
+                    }
 
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Secondary Weapon forced to %s", 18), Weapon_info[*weap].name);
-            break;
-        }
+                } else
+                    HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Normal weapon energy system / missile count restored", 17));
+
+                break;
+
+            case KEY_DEBUGGED + KEY_G:
+            case KEY_DEBUGGED1 + KEY_G:
+                mission_goal_mark_all_true(PRIMARY_GOAL);
+                break;
+
+            case KEY_DEBUGGED + KEY_G + KEY_SHIFTED:
+            case KEY_DEBUGGED1 + KEY_G + KEY_SHIFTED:
+                mission_goal_mark_all_true(SECONDARY_GOAL);
+                break;
+
+            case KEY_DEBUGGED + KEY_G + KEY_ALTED:
+            case KEY_DEBUGGED1 + KEY_G + KEY_ALTED:
+                mission_goal_mark_all_true(BONUS_GOAL);
+                break;
+
+            case KEY_DEBUGGED + KEY_9: {
+                case KEY_DEBUGGED1 + KEY_9:
+                    ship *shipp;
+
+                shipp = &Ships[Player_obj->instance];
+                int *weap = &shipp->weapons.secondary_bank_weapons[shipp->weapons.current_secondary_bank];
+                *weap = get_next_weapon_looped(*weap, WP_MISSILE);
+
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Secondary Weapon forced to %s", 18), Weapon_info[*weap].name);
+                break;
+            }
 
 
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_9: {
-            case KEY_DEBUGGED1 + KEY_SHIFTED + KEY_9:
-                ship *shipp;
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_9: {
+                case KEY_DEBUGGED1 + KEY_SHIFTED + KEY_9:
+                    ship *shipp;
 
-            shipp = &Ships[Player_obj->instance];
-            int *weap = &shipp->weapons.secondary_bank_weapons[shipp->weapons.current_secondary_bank];
-            *weap = get_prev_weapon_looped(*weap, WP_MISSILE);
+                shipp = &Ships[Player_obj->instance];
+                int *weap = &shipp->weapons.secondary_bank_weapons[shipp->weapons.current_secondary_bank];
+                *weap = get_prev_weapon_looped(*weap, WP_MISSILE);
 
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Secondary Weapon forced to %s", 18), Weapon_info[*weap].name);
-            break;
-        }
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Secondary Weapon forced to %s", 18), Weapon_info[*weap].name);
+                break;
+            }
 
 
 #ifndef FS2_DEMO
-        case KEY_DEBUGGED + KEY_U: {
-            case KEY_DEBUGGED1 + KEY_U:
-                // launch asteroid
-                object *asteroid_create(asteroid_field *asfieldp, int asteroid_type, int subtype);
-            object *objp = asteroid_create(&Asteroid_field, 0, 0);
-            vec3d vel;
-            vm_vec_copy_scale(&vel, &Player_obj->orient.vec.fvec, 50.0f);
-            objp->phys_info.vel = vel;
-            objp->phys_info.desired_vel = vel;
-            objp->pos = Player_obj->pos;
-            //mission_goal_mark_all_true( PRIMARY_GOAL );
-            break;
-        }
+            case KEY_DEBUGGED + KEY_U: {
+                case KEY_DEBUGGED1 + KEY_U:
+                    // launch asteroid
+                    object *asteroid_create(asteroid_field *asfieldp, int asteroid_type, int subtype);
+                object *objp = asteroid_create(&Asteroid_field, 0, 0);
+                vec3d vel;
+                vm_vec_copy_scale(&vel, &Player_obj->orient.vec.fvec, 50.0f);
+                objp->phys_info.vel = vel;
+                objp->phys_info.desired_vel = vel;
+                objp->pos = Player_obj->pos;
+                //mission_goal_mark_all_true( PRIMARY_GOAL );
+                break;
+            }
 #endif
 
-        case KEY_DEBUGGED + KEY_0: {
-            case KEY_DEBUGGED1 + KEY_0:
-                ship *shipp;
+            case KEY_DEBUGGED + KEY_0: {
+                case KEY_DEBUGGED1 + KEY_0:
+                    ship *shipp;
 
-            shipp = &Ships[Player_obj->instance];
-            int *weap = &shipp->weapons.primary_bank_weapons[shipp->weapons.current_primary_bank];
-            *weap = get_next_weapon_looped(*weap, WP_LASER);
+                shipp = &Ships[Player_obj->instance];
+                int *weap = &shipp->weapons.primary_bank_weapons[shipp->weapons.current_primary_bank];
+                *weap = get_next_weapon_looped(*weap, WP_LASER);
 
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Primary Weapon forced to %s", 19), Weapon_info[*weap].name);
-            break;
-        }
-
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_0: {
-            case KEY_DEBUGGED1 + KEY_SHIFTED + KEY_0:
-                ship *shipp;
-
-            shipp = &Ships[Player_obj->instance];
-            int *weap = &shipp->weapons.primary_bank_weapons[shipp->weapons.current_primary_bank];
-            *weap = get_prev_weapon_looped(*weap, WP_LASER);
-
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Primary Weapon forced to %s", 19), Weapon_info[*weap].name);
-            break;
-        }
-
-        case KEY_DEBUGGED + KEY_J: {
-            int new_pattern = event_music_return_current_pattern();
-
-            new_pattern++;
-            if (new_pattern >= MAX_PATTERNS)
-                new_pattern = 0;
-
-            event_music_change_pattern(new_pattern);
-            break;
-        }
-
-        case KEY_DEBUGGED + KEY_M: {
-            if (Event_music_enabled) {
-                event_music_disable();
-                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Event music disabled", 20));
-
-            } else {
-                event_music_enable();
-                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Event music enabled", 21));
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Primary Weapon forced to %s", 19), Weapon_info[*weap].name);
+                break;
             }
 
-            break;
-        }
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_0: {
+                case KEY_DEBUGGED1 + KEY_SHIFTED + KEY_0:
+                    ship *shipp;
 
-        case KEY_DEBUGGED + KEY_R: {
-            case KEY_DEBUGGED1 + KEY_R:
-                if (Player_ai->target_objnum != -1)
-                    ai_issue_rearm_request(&Objects[Player_ai->target_objnum]);
-                else
-                    ai_issue_rearm_request(Player_obj);
+                shipp = &Ships[Player_obj->instance];
+                int *weap = &shipp->weapons.primary_bank_weapons[shipp->weapons.current_primary_bank];
+                *weap = get_prev_weapon_looped(*weap, WP_LASER);
 
-            break;
-        }
-
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_UP:
-            Game_detail_level++;
-            HUD_printf(XSTR("Detail level set to %+d\n", 22), Game_detail_level);
-            break;
-
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_DOWN:
-            Game_detail_level--;
-            HUD_printf(XSTR("Detail level set to %+d\n", 22), Game_detail_level);
-            break;
-
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_T: {
-            extern int Test_begin;
-
-            if (Test_begin == 1)
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Primary Weapon forced to %s", 19), Weapon_info[*weap].name);
                 break;
+            }
 
-            Test_begin = 1;
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Frame Rate test started", 23));
+            case KEY_DEBUGGED + KEY_J: {
+                int new_pattern = event_music_return_current_pattern();
 
-            break;
-        }
+                new_pattern++;
+                if (new_pattern >= MAX_PATTERNS)
+                    new_pattern = 0;
 
-        case KEY_DEBUGGED + KEY_A: {
+                event_music_change_pattern(new_pattern);
+                break;
+            }
 
-            HUD_printf("frame rate currently is %0.2 FPS", 1 / flFrametime);
+            case KEY_DEBUGGED + KEY_M: {
+                if (Event_music_enabled) {
+                    event_music_disable();
+                    HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Event music disabled", 20));
 
-            break;
-        }
-
-
-        case KEY_DEBUGGED + KEY_D:
-            extern int OO_update_index;
-
-            if (MULTIPLAYER_MASTER) {
-                do {
-                    OO_update_index++;
-                } while ((OO_update_index < (MAX_PLAYERS - 1)) && !MULTI_CONNECTED(Net_players[OO_update_index]));
-                if (OO_update_index >= MAX_PLAYERS - 1) {
-                    OO_update_index = -1;
-                }
-            } else {
-                if (OO_update_index < 0) {
-                    OO_update_index = MY_NET_PLAYER_NUM;
                 } else {
-                    OO_update_index = -1;
+                    event_music_enable();
+                    HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Event music enabled", 21));
                 }
-            }
-            break;
 
-            // change player ship to next flyable type
-        case KEY_DEBUGGED + KEY_RIGHT:
-            debug_cycle_player_ship(1);
-            break;
-
-            // change player ship to previous flyable ship
-        case KEY_DEBUGGED + KEY_LEFT:
-            debug_cycle_player_ship(-1);
-            break;
-
-            // cycle target to ship
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_RIGHT:
-            debug_cycle_targeted_ship(1);
-            break;
-
-            // cycle target to previous ship
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_LEFT:
-            debug_cycle_targeted_ship(-1);
-            break;
-
-            // change species of the targeted ship
-        case KEY_DEBUGGED + KEY_S: {
-            if (Player_ai->target_objnum < 0)
-                break;
-
-            object *objp;
-            ship_info *sip;
-
-            objp = &Objects[Player_ai->target_objnum];
-            if (objp->type != OBJ_SHIP)
-                return;
-
-            sip = &Ship_info[Ships[objp->instance].ship_info_index];
-            sip->species++;
-
-            if (sip->species >= (int) Species_info.size())
-                sip->species = 0;
-
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Species of target changed to: %s", 24),
-                               Species_info[sip->species].species_name);
-            break;
-        }
-
-        case KEY_DEBUGGED + KEY_SHIFTED + KEY_S:
-            game_increase_skill_level();
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Skill level set to %s.", 25),
-                               Skill_level_names(Game_skill_level));
-            break;
-
-        case KEY_DEBUGGED + KEY_T: {
-            char buf[256];
-            event_music_get_info(buf);
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, buf);
-            break;
-        }
-
-        case KEY_DEBUGGED + KEY_UP:
-        case KEY_DEBUGGED1 + KEY_UP:
-            debug_change_song(1);
-            break;
-
-        case KEY_DEBUGGED + KEY_DOWN:
-        case KEY_DEBUGGED1 + KEY_DOWN:
-            debug_change_song(-1);
-            break;
-
-        case KEY_PADMINUS: {
-            int init_flag = 0;
-
-            if (keyd_pressed[KEY_1]) {
-                init_flag = 1;
-                HUD_color_red -= 4;
-            }
-
-            if (keyd_pressed[KEY_2]) {
-                init_flag = 1;
-                HUD_color_green -= 4;
-            }
-
-            if (keyd_pressed[KEY_3]) {
-                init_flag = 1;
-                HUD_color_blue -= 4;
-            }
-
-            if (init_flag)
-                HUD_init_colors();
-
-            break;
-        }
-
-        case KEY_DEBUGGED + KEY_Y:
-            extern int tst;
-            tst = 2;
-            break;
-
-        case KEY_PADPLUS: {
-            int init_flag = 0;
-
-            if (keyd_pressed[KEY_1]) {
-                init_flag = 1;
-                HUD_color_red += 4;
-            }
-
-            if (keyd_pressed[KEY_2]) {
-                init_flag = 1;
-                HUD_color_green += 4;
-            }
-
-            if (keyd_pressed[KEY_3]) {
-                init_flag = 1;
-                HUD_color_blue += 4;
-            }
-
-            if (init_flag)
-                HUD_init_colors();
-
-            break;
-        }
-        case KEY_DEBUGGED + KEY_ALTED + KEY_EQUAL:
-        case KEY_DEBUGGED1 + KEY_ALTED + KEY_EQUAL: {
-            camera *cam = Main_camera.getCamera();
-            if (cam == NULL) {
-                HUD_sourced_printf(HUD_SOURCE_HIDDEN, "Couldn't get camera FOV");
                 break;
             }
-            cam->set_zoom(cam->get_zoom() + 0.1f);
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, "Camera fov raised to %0.2f", cam->get_zoom());
-        }
-            break;
 
-        case KEY_DEBUGGED + KEY_ALTED + KEY_MINUS:
-        case KEY_DEBUGGED1 + KEY_ALTED + KEY_MINUS: {
-            camera *cam = Main_camera.getCamera();
-            if (cam == NULL) {
-                HUD_sourced_printf(HUD_SOURCE_HIDDEN, "Couldn't get camera FOV");
+            case KEY_DEBUGGED + KEY_R: {
+                case KEY_DEBUGGED1 + KEY_R:
+                    if (Player_ai->target_objnum != -1)
+                        ai_issue_rearm_request(&Objects[Player_ai->target_objnum]);
+                    else
+                        ai_issue_rearm_request(Player_obj);
+
                 break;
             }
-            cam->set_zoom(cam->get_zoom() - 0.1f);
-            HUD_sourced_printf(HUD_SOURCE_HIDDEN, "Camera fov lowered to %0.2f", cam->get_zoom());
-        }
-            break;
-        case KEY_DEBUGGED + KEY_Z:
-        case KEY_DEBUGGED1 + KEY_Z: {
-            Show_cpu = !Show_cpu;
-        }
-            break;
+
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_UP:
+                Game_detail_level++;
+                HUD_printf(XSTR("Detail level set to %+d\n", 22), Game_detail_level);
+                break;
+
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_DOWN:
+                Game_detail_level--;
+                HUD_printf(XSTR("Detail level set to %+d\n", 22), Game_detail_level);
+                break;
+
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_T: {
+                extern int Test_begin;
+
+                if (Test_begin == 1)
+                    break;
+
+                Test_begin = 1;
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Frame Rate test started", 23));
+
+                break;
+            }
+
+            case KEY_DEBUGGED + KEY_A: {
+
+                HUD_printf("frame rate currently is %0.2 FPS", 1 / flFrametime);
+
+                break;
+            }
+
+
+            case KEY_DEBUGGED + KEY_D:
+                extern int OO_update_index;
+
+                if (MULTIPLAYER_MASTER) {
+                    do {
+                        OO_update_index++;
+                    } while ((OO_update_index < (MAX_PLAYERS - 1)) && !MULTI_CONNECTED(Net_players[OO_update_index]));
+                    if (OO_update_index >= MAX_PLAYERS - 1) {
+                        OO_update_index = -1;
+                    }
+                } else {
+                    if (OO_update_index < 0) {
+                        OO_update_index = MY_NET_PLAYER_NUM;
+                    } else {
+                        OO_update_index = -1;
+                    }
+                }
+                break;
+
+                // change player ship to next flyable type
+            case KEY_DEBUGGED + KEY_RIGHT:
+                debug_cycle_player_ship(1);
+                break;
+
+                // change player ship to previous flyable ship
+            case KEY_DEBUGGED + KEY_LEFT:
+                debug_cycle_player_ship(-1);
+                break;
+
+                // cycle target to ship
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_RIGHT:
+                debug_cycle_targeted_ship(1);
+                break;
+
+                // cycle target to previous ship
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_LEFT:
+                debug_cycle_targeted_ship(-1);
+                break;
+
+                // change species of the targeted ship
+            case KEY_DEBUGGED + KEY_S: {
+                if (Player_ai->target_objnum < 0)
+                    break;
+
+                object *objp;
+                ship_info *sip;
+
+                objp = &Objects[Player_ai->target_objnum];
+                if (objp->type != OBJ_SHIP)
+                    return;
+
+                sip = &Ship_info[Ships[objp->instance].ship_info_index];
+                sip->species++;
+
+                if (sip->species >= (int) Species_info.size())
+                    sip->species = 0;
+
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Species of target changed to: %s", 24),
+                                   Species_info[sip->species].species_name);
+                break;
+            }
+
+            case KEY_DEBUGGED + KEY_SHIFTED + KEY_S:
+                game_increase_skill_level();
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, XSTR("Skill level set to %s.", 25),
+                                   Skill_level_names(Game_skill_level));
+                break;
+
+            case KEY_DEBUGGED + KEY_T: {
+                char buf[256];
+                event_music_get_info(buf);
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, buf);
+                break;
+            }
+
+            case KEY_DEBUGGED + KEY_UP:
+            case KEY_DEBUGGED1 + KEY_UP:
+                debug_change_song(1);
+                break;
+
+            case KEY_DEBUGGED + KEY_DOWN:
+            case KEY_DEBUGGED1 + KEY_DOWN:
+                debug_change_song(-1);
+                break;
+
+            case KEY_PADMINUS: {
+                int init_flag = 0;
+
+                if (keyd_pressed[KEY_1]) {
+                    init_flag = 1;
+                    HUD_color_red -= 4;
+                }
+
+                if (keyd_pressed[KEY_2]) {
+                    init_flag = 1;
+                    HUD_color_green -= 4;
+                }
+
+                if (keyd_pressed[KEY_3]) {
+                    init_flag = 1;
+                    HUD_color_blue -= 4;
+                }
+
+                if (init_flag)
+                    HUD_init_colors();
+
+                break;
+            }
+
+            case KEY_DEBUGGED + KEY_Y:
+                extern int tst;
+                tst = 2;
+                break;
+
+            case KEY_PADPLUS: {
+                int init_flag = 0;
+
+                if (keyd_pressed[KEY_1]) {
+                    init_flag = 1;
+                    HUD_color_red += 4;
+                }
+
+                if (keyd_pressed[KEY_2]) {
+                    init_flag = 1;
+                    HUD_color_green += 4;
+                }
+
+                if (keyd_pressed[KEY_3]) {
+                    init_flag = 1;
+                    HUD_color_blue += 4;
+                }
+
+                if (init_flag)
+                    HUD_init_colors();
+
+                break;
+            }
+            case KEY_DEBUGGED + KEY_ALTED + KEY_EQUAL:
+            case KEY_DEBUGGED1 + KEY_ALTED + KEY_EQUAL: {
+                camera *cam = Main_camera.getCamera();
+                if (cam == NULL) {
+                    HUD_sourced_printf(HUD_SOURCE_HIDDEN, "Couldn't get camera FOV");
+                    break;
+                }
+                cam->set_zoom(cam->get_zoom() + 0.1f);
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, "Camera fov raised to %0.2f", cam->get_zoom());
+            }
+                break;
+
+            case KEY_DEBUGGED + KEY_ALTED + KEY_MINUS:
+            case KEY_DEBUGGED1 + KEY_ALTED + KEY_MINUS: {
+                camera *cam = Main_camera.getCamera();
+                if (cam == NULL) {
+                    HUD_sourced_printf(HUD_SOURCE_HIDDEN, "Couldn't get camera FOV");
+                    break;
+                }
+                cam->set_zoom(cam->get_zoom() - 0.1f);
+                HUD_sourced_printf(HUD_SOURCE_HIDDEN, "Camera fov lowered to %0.2f", cam->get_zoom());
+            }
+                break;
+            case KEY_DEBUGGED + KEY_Z:
+            case KEY_DEBUGGED1 + KEY_Z: {
+                Show_cpu = !Show_cpu;
+            }
+                break;
 #endif
 
     }    // end switch

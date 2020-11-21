@@ -8,13 +8,11 @@
 */
 
 
-
 #include "math/vecmat.h"
 #include "io/sw_force.h"
 #include "osapi/osregistry.h"
 #include "io/joy_ff.h"
 #include "osapi/osapi.h"
-
 
 typedef struct {
     DIEFFECT effect;
@@ -59,8 +57,8 @@ di_condition_effect_struct Spring_cond_effect;
 
 void joy_ff_afterburn_off();
 
-void init_periodic_effect_struct(di_periodic_effect_struct *effect, int type, int dur, int per, int ang = 0, int mag =
-10000, int att = 0, int fade = 0);
+void init_periodic_effect_struct(di_periodic_effect_struct *effect, int type, int dur, int per, int ang = 0, int mag = 10000,
+                            int att = 0, int fade = 0);
 
 int joy_ff_init() {
     int ff_enabled;
