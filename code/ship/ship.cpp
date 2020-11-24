@@ -140,7 +140,7 @@ char Starting_wing_names[MAX_STARTING_WINGS][NAME_LENGTH];
 char Squadron_wing_names[MAX_SQUADRON_WINGS][NAME_LENGTH];
 char TVT_wing_names[MAX_TVT_WINGS][NAME_LENGTH];
 
-SCP_vector <engine_wash_info> Engine_wash_info;
+SCP_vector<engine_wash_info> Engine_wash_info;
 
 //char get_engine_wash_index(char *engine_wash_name);
 engine_wash_info *get_engine_wash_pointer(char *engine_wash_name);
@@ -149,7 +149,7 @@ void ship_reset_disabled_physics(object *objp, int ship_class);
 
 
 // information for ships which have exited the game
-SCP_vector <exited_ship> Ships_exited;
+SCP_vector<exited_ship> Ships_exited;
 
 int Num_engine_wash_types;
 int Num_ship_classes;
@@ -164,13 +164,13 @@ ship_obj Ship_obj_list;                            // head of linked list of shi
 
 ship_info Ship_info[MAX_SHIP_CLASSES];
 reinforcements Reinforcements[MAX_REINFORCEMENTS];
-SCP_vector <ship_info> Ship_templates;
+SCP_vector<ship_info> Ship_templates;
 
 static char **tspecies_names = NULL;
 
-SCP_vector <ship_type_info> Ship_types;
+SCP_vector<ship_type_info> Ship_types;
 
-SCP_vector <ArmorType> Armor_types;
+SCP_vector<ArmorType> Armor_types;
 
 flag_def_list Armor_flags[] =
         {
@@ -748,7 +748,7 @@ flag_def_list ai_tgt_weapon_flags[] =
 
 int num_ai_tgt_weapon_flags = sizeof(ai_tgt_weapon_flags) / sizeof(flag_def_list);
 
-SCP_vector <ai_target_priority> Ai_tp_list;
+SCP_vector<ai_target_priority> Ai_tp_list;
 
 /*
 int Num_player_ship_precedence;				// Number of ship types in Player_ship_precedence
@@ -761,7 +761,7 @@ static int Missile_out_snd_timer;    // timer so we play out of laser sound effe
 // since the goal code relies on this placement to find the array index in the Ship_counts array
 //WMC - This should be fixed with new system.
 
-SCP_vector <ship_counts> Ship_type_counts;
+SCP_vector<ship_counts> Ship_type_counts;
 
 // I don't want to do an AI cargo check every frame, so I made a global timer to limit check to
 // every SHIP_CARGO_CHECK_INTERVAL ms.  Didn't want to make a timer in each ship struct.  Ensure
@@ -776,7 +776,7 @@ bool warning_too_many_ship_classes = false;
 void ship_obj_list_reset_slot(int index) {
     Ship_objs[index].flags = 0;
     Ship_objs[index].next = NULL;
-    Ship_objs[index].prev = (ship_obj * ) - 1;
+    Ship_objs[index].prev = (ship_obj *) -1;
 }
 
 // if the given ship is in my squadron wings
@@ -1006,7 +1006,7 @@ void init_ship_entry(ship_info *sip) {
 
     sip->name[0] = '\0';
     sip->alt_name[0] = '\0';
-    sprintf(sip->short_name, "ShipClass%d", (int)(sip - Ship_info));
+    sprintf(sip->short_name, "ShipClass%d", (int) (sip - Ship_info));
     sip->species = 0;
     sip->class_type = -1;
 
@@ -1292,8 +1292,8 @@ int parse_ship(char *filename, bool replace) {
     strcat_s(parse_error_text, buf);
 
 #ifdef NDEBUG
-                                                                                                                            if (get_pointer_to_first_hash_symbol(buf) && Fred_running)
-		rtn = 1;
+    if (get_pointer_to_first_hash_symbol(buf) && Fred_running)
+        rtn = 1;
 #endif
 
     //Remove @ symbol
@@ -2981,7 +2981,7 @@ int parse_ship_values(ship_info *sip, bool isTemplate, bool first_time, bool rep
     }
 
     if (optional_string("$Target Priority Groups:")) {
-        SCP_vector <SCP_string> target_group_strings;
+        SCP_vector<SCP_string> target_group_strings;
         int num_strings = stuff_string_list(target_group_strings);
         int num_groups = Ai_tp_list.size();
         int k;
@@ -3246,7 +3246,7 @@ int parse_ship_values(ship_info *sip, bool isTemplate, bool first_time, bool rep
                 }
 
                 if (optional_string("$Target Priority:")) {
-                    SCP_vector <SCP_string> tgt_priorities;
+                    SCP_vector<SCP_string> tgt_priorities;
                     int num_strings = stuff_string_list(tgt_priorities);
                     sp->num_target_priorities = 0;
 
@@ -3324,8 +3324,8 @@ int parse_ship_values(ship_info *sip, bool isTemplate, bool first_time, bool rep
                     if (!stricmp(name_tmp, "triggered")) {
                         queued_animation *current_trigger;
 
-                        sp->triggers = (queued_animation *) vm_realloc(sp->triggers, sizeof(queued_animation) * (sp->
-                                n_triggers + 1));
+                        sp->triggers = (queued_animation *) vm_realloc(sp->triggers,
+                                                                       sizeof(queued_animation) * (sp->n_triggers + 1));
                         current_trigger = &sp->triggers[sp->n_triggers];
                         memset(current_trigger, 0, sizeof(queued_animation));
                         sp->n_triggers++;
@@ -3578,7 +3578,7 @@ void parse_ship_type() {
 
     //AI turret targeting priority setup
     if (optional_string("$Target Priority Groups:")) {
-        SCP_vector <SCP_string> target_group_strings;
+        SCP_vector<SCP_string> target_group_strings;
         int num_strings = stuff_string_list(target_group_strings);
         int num_groups = Ai_tp_list.size();
         int i, j;
@@ -5335,18 +5335,22 @@ DCF_BOOL(ship_shadows, Ship_shadows
 MONITOR(NumShipsRend)
 
 int Show_shield_hits = 0;
+
 DCF_BOOL(show_shield_hits, Show_shield_hits
 )
 
 int Show_tnorms = 0;
+
 DCF_BOOL(show_tnorms, Show_tnorms
 )
 
 int Show_paths = 0;
+
 DCF_BOOL(show_paths, Show_paths
 )
 
 int Show_fpaths = 0;
+
 DCF_BOOL(show_fpaths, Show_fpaths
 )
 
@@ -5370,13 +5374,13 @@ void ship_find_warping_ship_helper(object *objp, dock_function_info *infop) {
         infop->maintained_variables.objp_value = objp;
 
 #ifdef NDEBUG
-                                                                                                                                // return early in release builds
-		infop->early_return_condition = true;
+        // return early in release builds
+        infop->early_return_condition = true;
 #endif
     }
 }
 
-SCP_vector <man_thruster_renderer> Man_thrusters;
+SCP_vector<man_thruster_renderer> Man_thrusters;
 
 //This batch renders all maneuvering thrusters in the array.
 //It also clears the array every 10 seconds to keep mem usage down.
@@ -7635,11 +7639,11 @@ int ship_subsys_disrupted(ship *sp, int type) {
 }
 
 float Decay_rate = 1.0f / 120.0f;
+
 DCF(lethality_decay,
-"time in sec to return from 100 to 0")
-{
-dc_get_arg(ARG_FLOAT);
-Decay_rate = Dc_arg_float;
+    "time in sec to return from 100 to 0") {
+    dc_get_arg(ARG_FLOAT);
+    Decay_rate = Dc_arg_float;
 }
 
 float min_lethality = 0.0f;
@@ -8934,35 +8938,35 @@ float t_len = 10.0f;
 float t_vel = 0.2f;
 float t_min = 150.0f;
 float t_max = 300.0f;
+
 DCF(t_rad,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-t_rad = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    t_rad = Dc_arg_float;
 }
+
 DCF(t_len,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-t_len = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    t_len = Dc_arg_float;
 }
+
 DCF(t_vel,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-t_vel = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    t_vel = Dc_arg_float;
 }
+
 DCF(t_min,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-t_min = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    t_min = Dc_arg_float;
 }
+
 DCF(t_max,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-t_max = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    t_max = Dc_arg_float;
 }
 
 void ship_fire_tracer(int weapon_objnum) {
@@ -10237,7 +10241,7 @@ int ship_fire_secondary(object *obj, int allow_swarm) {
     if ((wip->wi_flags & WIF_CORKSCREW) && !allow_swarm) {
         //phreak 11-9-02
         //changed this from 4 to custom number defined in tables
-        shipp->num_corkscrew_to_fire = (ubyte)(shipp->num_corkscrew_to_fire + (ubyte) wip->cs_num_fired);
+        shipp->num_corkscrew_to_fire = (ubyte) (shipp->num_corkscrew_to_fire + (ubyte) wip->cs_num_fired);
         return 1;        //	Note: Missiles didn't get fired, but the frame interval code will fire them.
     }
 
@@ -12304,42 +12308,41 @@ void ship_assign_sound_all() {
 // Debug console function to set the shield for the player ship
 //
 DCF(set_shield,
-"Change player ship shield strength")
-{
-ship_info *sip;
+    "Change player ship shield strength") {
+    ship_info *sip;
 
-sip = &Ship_info[Ships[Player_obj->instance].ship_info_index];
-if (Dc_command)    {
-dc_get_arg(ARG_FLOAT
-|ARG_NONE);
+    sip = &Ship_info[Ships[Player_obj->instance].ship_info_index];
+    if (Dc_command) {
+        dc_get_arg(ARG_FLOAT
+                   | ARG_NONE);
 
-if (
-Dc_arg_type &ARG_FLOAT
-) {
-if (Dc_arg_float < 0)
-Dc_arg_float = 0.0f;
-if (Dc_arg_float > 1.0)
-Dc_arg_float = 1.0f;
-shield_set_strength(Player_obj, Dc_arg_float
-* Player_ship->ship_max_shield_strength);
-dc_printf("Shields set to %.2f\n",
-shield_get_strength(Player_obj)
-);
-}
-}
+        if (
+                Dc_arg_type & ARG_FLOAT
+                ) {
+            if (Dc_arg_float < 0)
+                Dc_arg_float = 0.0f;
+            if (Dc_arg_float > 1.0)
+                Dc_arg_float = 1.0f;
+            shield_set_strength(Player_obj, Dc_arg_float
+                                            * Player_ship->ship_max_shield_strength);
+            dc_printf("Shields set to %.2f\n",
+                      shield_get_strength(Player_obj)
+            );
+        }
+    }
 
-if (Dc_help) {
-dc_printf ("Usage: set_shield [num]\n");
-dc_printf ("[num] --  shield percentage 0.0 -> 1.0 of max\n");
-dc_printf ("with no parameters, displays shield strength\n");
-Dc_status = 0;
-}
+    if (Dc_help) {
+        dc_printf("Usage: set_shield [num]\n");
+        dc_printf("[num] --  shield percentage 0.0 -> 1.0 of max\n");
+        dc_printf("with no parameters, displays shield strength\n");
+        Dc_status = 0;
+    }
 
-if (Dc_status)    {
-dc_printf("Shields are currently %.2f",
-shield_get_strength(Player_obj)
-);
-}
+    if (Dc_status) {
+        dc_printf("Shields are currently %.2f",
+                  shield_get_strength(Player_obj)
+        );
+    }
 }
 
 // ---------------------------------------------------------------------------------------
@@ -12348,38 +12351,37 @@ shield_get_strength(Player_obj)
 // Debug console function to set the hull for the player ship
 //
 DCF(set_hull,
-"Change player ship hull strength")
-{
-ship_info *sip;
+    "Change player ship hull strength") {
+    ship_info *sip;
 
-sip = &Ship_info[Ships[Player_obj->instance].ship_info_index];
-if (Dc_command)    {
-dc_get_arg(ARG_FLOAT
-|ARG_NONE);
+    sip = &Ship_info[Ships[Player_obj->instance].ship_info_index];
+    if (Dc_command) {
+        dc_get_arg(ARG_FLOAT
+                   | ARG_NONE);
 
-if (
-Dc_arg_type &ARG_FLOAT
-) {
-if (Dc_arg_float < 0)
-Dc_arg_float = 0.0f;
-if (Dc_arg_float > 1.0)
-Dc_arg_float = 1.0f;
-Player_obj->
-hull_strength = Dc_arg_float * Player_ship->ship_max_hull_strength;
-dc_printf("Hull set to %.2f\n", Player_obj->hull_strength);
-}
-}
+        if (
+                Dc_arg_type & ARG_FLOAT
+                ) {
+            if (Dc_arg_float < 0)
+                Dc_arg_float = 0.0f;
+            if (Dc_arg_float > 1.0)
+                Dc_arg_float = 1.0f;
+            Player_obj->
+                    hull_strength = Dc_arg_float * Player_ship->ship_max_hull_strength;
+            dc_printf("Hull set to %.2f\n", Player_obj->hull_strength);
+        }
+    }
 
-if (Dc_help) {
-dc_printf ("Usage: set_hull [num]\n");
-dc_printf ("[num] --  hull percentage 0.0 -> 1.0 of max\n");
-dc_printf ("with no parameters, displays hull strength\n");
-Dc_status = 0;
-}
+    if (Dc_help) {
+        dc_printf("Usage: set_hull [num]\n");
+        dc_printf("[num] --  hull percentage 0.0 -> 1.0 of max\n");
+        dc_printf("with no parameters, displays hull strength\n");
+        Dc_status = 0;
+    }
 
-if (Dc_status)    {
-dc_printf("Hull is currently %.2f", Player_obj->hull_strength);
-}
+    if (Dc_status) {
+        dc_printf("Hull is currently %.2f", Player_obj->hull_strength);
+    }
 }
 
 // ---------------------------------------------------------------------------------------
@@ -12389,92 +12391,91 @@ dc_printf("Hull is currently %.2f", Player_obj->hull_strength);
 //
 //XSTR:OFF
 DCF(set_subsys,
-"Set the strength of a particular subsystem on player ship")
-{
-if (Dc_command)    {
-dc_get_arg(ARG_STRING);
-if (!
-stricmp(Dc_arg,
-"weapons"))    {
-dc_get_arg(ARG_FLOAT);
-if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f))    {
-Dc_help = 1;
-} else {
-ship_set_subsystem_strength(Player_ship, SUBSYSTEM_WEAPONS, Dc_arg_float
-);
-}
-} else if (!
-stricmp(Dc_arg,
-"engine"))    {
-dc_get_arg(ARG_FLOAT);
-if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f))    {
-Dc_help = 1;
-} else {
-ship_set_subsystem_strength(Player_ship, SUBSYSTEM_ENGINE, Dc_arg_float
-);
-if (Dc_arg_float<ENGINE_MIN_STR)    {
-Player_ship->flags |=
-SF_DISABLED;                // add the disabled flag
-} else {
-Player_ship->flags &= (~SF_DISABLED);                // add the disabled flag
-}
-}
-} else if (!
-stricmp(Dc_arg,
-"sensors"))    {
-dc_get_arg(ARG_FLOAT);
-if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f))    {
-Dc_help = 1;
-} else {
-ship_set_subsystem_strength(Player_ship, SUBSYSTEM_SENSORS, Dc_arg_float
-);
-}
-} else if (!
-stricmp(Dc_arg,
-"communication"))    {
-dc_get_arg(ARG_FLOAT);
-if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f))    {
-Dc_help = 1;
-} else {
-ship_set_subsystem_strength(Player_ship, SUBSYSTEM_COMMUNICATION, Dc_arg_float
-);
-}
-} else if (!
-stricmp(Dc_arg,
-"navigation"))    {
-dc_get_arg(ARG_FLOAT);
-if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f))    {
-Dc_help = 1;
-} else {
-ship_set_subsystem_strength(Player_ship, SUBSYSTEM_NAVIGATION, Dc_arg_float
-);
-}
-} else if (!
-stricmp(Dc_arg,
-"radar"))    {
-dc_get_arg(ARG_FLOAT);
-if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f))    {
-Dc_help = 1;
-} else {
-ship_set_subsystem_strength(Player_ship, SUBSYSTEM_RADAR, Dc_arg_float
-);
-}
-} else {
+    "Set the strength of a particular subsystem on player ship") {
+    if (Dc_command) {
+        dc_get_arg(ARG_STRING);
+        if (!
+                stricmp(Dc_arg,
+                        "weapons")) {
+            dc_get_arg(ARG_FLOAT);
+            if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f)) {
+                Dc_help = 1;
+            } else {
+                ship_set_subsystem_strength(Player_ship, SUBSYSTEM_WEAPONS, Dc_arg_float
+                );
+            }
+        } else if (!
+                stricmp(Dc_arg,
+                        "engine")) {
+            dc_get_arg(ARG_FLOAT);
+            if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f)) {
+                Dc_help = 1;
+            } else {
+                ship_set_subsystem_strength(Player_ship, SUBSYSTEM_ENGINE, Dc_arg_float
+                );
+                if (Dc_arg_float < ENGINE_MIN_STR) {
+                    Player_ship->flags |=
+                            SF_DISABLED;                // add the disabled flag
+                } else {
+                    Player_ship->flags &= (~SF_DISABLED);                // add the disabled flag
+                }
+            }
+        } else if (!
+                stricmp(Dc_arg,
+                        "sensors")) {
+            dc_get_arg(ARG_FLOAT);
+            if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f)) {
+                Dc_help = 1;
+            } else {
+                ship_set_subsystem_strength(Player_ship, SUBSYSTEM_SENSORS, Dc_arg_float
+                );
+            }
+        } else if (!
+                stricmp(Dc_arg,
+                        "communication")) {
+            dc_get_arg(ARG_FLOAT);
+            if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f)) {
+                Dc_help = 1;
+            } else {
+                ship_set_subsystem_strength(Player_ship, SUBSYSTEM_COMMUNICATION, Dc_arg_float
+                );
+            }
+        } else if (!
+                stricmp(Dc_arg,
+                        "navigation")) {
+            dc_get_arg(ARG_FLOAT);
+            if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f)) {
+                Dc_help = 1;
+            } else {
+                ship_set_subsystem_strength(Player_ship, SUBSYSTEM_NAVIGATION, Dc_arg_float
+                );
+            }
+        } else if (!
+                stricmp(Dc_arg,
+                        "radar")) {
+            dc_get_arg(ARG_FLOAT);
+            if ((Dc_arg_float < 0.0f) || (Dc_arg_float > 1.0f)) {
+                Dc_help = 1;
+            } else {
+                ship_set_subsystem_strength(Player_ship, SUBSYSTEM_RADAR, Dc_arg_float
+                );
+            }
+        } else {
 // print usage
-Dc_help = 1;
-}
-}
+            Dc_help = 1;
+        }
+    }
 
-if (Dc_help)    {
-dc_printf("Usage: set_subsys type X\nWhere X is value between 0 and 1.0, and type can be:\n");
-dc_printf("weapons\n");
-dc_printf("engine\n");
-dc_printf("sensors\n");
-dc_printf("communication\n");
-dc_printf("navigation\n");
-dc_printf("radar\n");
-Dc_status = 0;    // don't print status if help is printed.  Too messy.
-}
+    if (Dc_help) {
+        dc_printf("Usage: set_subsys type X\nWhere X is value between 0 and 1.0, and type can be:\n");
+        dc_printf("weapons\n");
+        dc_printf("engine\n");
+        dc_printf("sensors\n");
+        dc_printf("communication\n");
+        dc_printf("navigation\n");
+        dc_printf("radar\n");
+        Dc_status = 0;    // don't print status if help is printed.  Too messy.
+    }
 }
 //XSTR:ON
 
@@ -13039,11 +13040,11 @@ ship_subsys *ship_get_closest_subsys_in_sight(ship *sp, int subsys_type, vec3d *
 
 char *ship_subsys_get_name(ship_subsys *ss) {
 #if NDEBUG
-                                                                                                                            if (strlen(ss->sub_name) > 0)
-		return ss->sub_name;
-	else
+    if (strlen(ss->sub_name) > 0)
+        return ss->sub_name;
+    else
 #endif
-    return ss->system_info->name;
+        return ss->system_info->name;
 }
 
 bool ship_subsys_has_instance_name(ship_subsys *ss) {
@@ -13101,8 +13102,8 @@ float ship_quadrant_shield_strength(object *hit_objp, vec3d *hitpos) {
 
     //Assert(hit_objp->shield_quadrant[quadrant_num] <= max_quadrant);
     if (hit_objp->shield_quadrant[quadrant_num] > max_quadrant)
-        mprintf((LOCATION, "Warning: \"%s\" has shield quadrant strength of %f out of %f\n",
-                Ships[hit_objp->instance].ship_name, hit_objp->shield_quadrant[quadrant_num], max_quadrant));
+            mprintf((LOCATION, "Warning: \"%s\" has shield quadrant strength of %f out of %f\n",
+                    Ships[hit_objp->instance].ship_name, hit_objp->shield_quadrant[quadrant_num], max_quadrant));
 
     return hit_objp->shield_quadrant[quadrant_num] / max_quadrant;
 }
@@ -14940,7 +14941,7 @@ ship_subsys *ship_get_subsys(ship *shipp, char *subsys_name) {
         return NULL;
     }
 
-    boost::unordered_map < std::string, ship_subsys * > *map = &ship_subsys_map[Objects[shipp->objnum].instance];
+    boost::unordered_map<std::string, ship_subsys *> *map = &ship_subsys_map[Objects[shipp->objnum].instance];
     boost::unordered_map<std::string, ship_subsys *>::iterator subsys_iter = map->find(subsys_name);
 
     if (subsys_iter != map->end())
@@ -15038,11 +15039,11 @@ int ship_get_texture(int bitmap) {
 // update artillery lock info
 #define CLEAR_ARTILLERY_AND_CONTINUE()    { if(aip != NULL){ aip->artillery_objnum = -1; aip->artillery_sig = -1;    aip->artillery_lock_time = 0.0f;} continue; }
 float artillery_dist = 10.0f;
+
 DCF(art,
-"")
-{
-dc_get_arg(ARG_FLOAT);
-artillery_dist = Dc_arg_float;
+    "") {
+    dc_get_arg(ARG_FLOAT);
+    artillery_dist = Dc_arg_float;
 }
 
 void ship_update_artillery_lock() {
@@ -15542,7 +15543,7 @@ typedef struct DamageTypeStruct {
     char name[NAME_LENGTH];
 } DamageTypeStruct;
 
-SCP_vector <DamageTypeStruct> Damage_types;
+SCP_vector<DamageTypeStruct> Damage_types;
 
 //Gives the index into the Damage_types[] vector of a
 //specified damage type name
@@ -15994,7 +15995,7 @@ void armor_init() {
 void parse_ai_target_priorities() {
     int i, j, num_strings;
     int n_entries = Ai_tp_list.size();
-    SCP_vector <SCP_string> temp_strings;
+    SCP_vector<SCP_string> temp_strings;
 
     bool first_time = false;
     int already_exists = -1;
@@ -16132,7 +16133,7 @@ void parse_weapon_targeting_priorities() {
                 wip->num_targeting_priorities = 0;
 
                 if (optional_string("+Target Priority:")) {
-                    SCP_vector <SCP_string> tgt_priorities;
+                    SCP_vector<SCP_string> tgt_priorities;
                     int num_strings = stuff_string_list(tgt_priorities);
 
                     if (num_strings > 32)
