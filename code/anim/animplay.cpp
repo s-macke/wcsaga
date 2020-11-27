@@ -49,6 +49,8 @@ void anim_init() {
     list_init(&anim_free_list);
     list_init(&anim_render_list);
 
+    memset(anim_render_instance, 0, sizeof(anim_instance) * MAX_ANIM_INSTANCES);
+
     // Link all anim render slots into the free list
     for (i = 1; i < MAX_ANIM_INSTANCES; i++) {
         list_append(&anim_free_list, &anim_render_instance[i]);

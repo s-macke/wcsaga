@@ -24,10 +24,9 @@
 
 // Goober5000
 void generic_anim_init(generic_anim *ga, char *filename) {
-    //memset(ga, 0, sizeof(ga));	//this makes the mission load screen crash :(
     if (filename == NULL) {
-        ga->filename[0] = '\0';
-    } else {
+        memset(ga->filename, 0, MAX_FILENAME_LEN);
+    } else if (ga->filename != filename) {
         strncpy(ga->filename, filename, MAX_FILENAME_LEN - 1);
     }
 
@@ -57,8 +56,8 @@ void generic_anim_init(generic_anim *ga, char *filename) {
 // Goober5000
 void generic_bitmap_init(generic_bitmap *gb, char *filename) {
     if (filename == NULL) {
-        gb->filename[0] = '\0';
-    } else {
+        memset(gb->filename, 0, MAX_FILENAME_LEN);
+    } else if (gb->filename != filename) {
         strncpy(gb->filename, filename, MAX_FILENAME_LEN - 1);
     }
 
@@ -304,17 +303,20 @@ void generic_render_ani_stream(generic_anim *ga) {
             ga->ani.instance->data = ga->ani.animation->data + ga->ani.animation->keys[ga->current_frame].offset;
         }
         if (ga->ani.animation->flags & ANF_STREAMED) {
-            ga->ani.instance->file_offset = unpack_frame_from_file(ga->ani.instance, ga->buffer,
-                                                                   ga->width * ga->height, (ga->ani.instance->xlate_pal)
-                                                                                           ? ga->ani.animation->palette_translation
-                                                                                           : NULL,
-                                                                   0, bpp);
+            ga->ani.instance->file_offset =
+                    unpack_frame_from_file(ga->ani.instance, ga->buffer,
+                                           ga->width * ga->height,
+                                           (ga->ani.instance->xlate_pal)
+                                           ? ga->ani.animation->palette_translation
+                                           : NULL,
+                                           0, bpp);
         } else {
-            ga->ani.instance->data = unpack_frame(ga->ani.instance, ga->ani.instance->data, ga->buffer,
-                                                  ga->width * ga->height,
-                                                  (ga->ani.instance->xlate_pal) ? ga->ani.animation->palette_translation
-                                                                                : NULL,
-                                                  0, bpp);
+            ga->ani.instance->data =
+                    unpack_frame(ga->ani.instance, ga->ani.instance->data, ga->buffer,
+                                 ga->width * ga->height,
+                                 (ga->ani.instance->xlate_pal) ? ga->ani.animation->palette_translation
+                                                               : NULL,
+                                 0, bpp);
         }
     } else {
         //looping back

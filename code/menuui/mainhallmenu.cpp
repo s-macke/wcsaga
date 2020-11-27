@@ -669,6 +669,8 @@ void main_hall_init(int main_hall_num) {
         Main_hall->misc_anim_delay[idx][0] = -1;
     }
 
+    memset(Main_hall_door_anim, 0, sizeof(generic_anim) * MAX_DOOR_ANIMATIONS);
+
     // load up the door animations
     for (idx = 0; idx < Main_hall->num_door_animations; idx++) {
         generic_anim_init(&Main_hall_door_anim[idx], Main_hall->door_anim_name[idx]);
