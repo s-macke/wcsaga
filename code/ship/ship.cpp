@@ -10818,7 +10818,6 @@ int wing_lookup(char *name) {
 int ship_info_lookup_sub(char *token) {
     int i;
     for (i = 0; i < Num_ship_classes; i++) {
-        printf("compare %i '%s' against '%s'\n", i, token, Ship_info[i].name);
         if (!stricmp(token, Ship_info[i].name))
             return i;
     }
