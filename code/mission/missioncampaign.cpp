@@ -1503,7 +1503,11 @@ int mission_campaign_savefile_load(char *cfilename, player *pl) {
             shp_tmp = cfread_int(fp);
             // don't set this again and again (for WMC)
             if (set_defaults) {
-                slot->ship_class = ship_info_lookup(s_name[shp_tmp]); // -1 should be ok here
+                if (shp_tmp == -1) {
+                    slot->ship_class = ship_info_lookup("");
+                } else {
+                    slot->ship_class = ship_info_lookup(s_name[shp_tmp]);
+                }
             }
 
             for (j = 0; j < MAX_SHIP_WEAPONS; j++) {
@@ -1511,7 +1515,11 @@ int mission_campaign_savefile_load(char *cfilename, player *pl) {
                 // don't set this again and again (for WMC)
                 if (set_defaults) {
                     slot->wep_count[j] = cfread_int(fp);
-                    slot->wep[j] = weapon_info_lookup(w_name[wep_tmp]); // -1 should be ok here
+                    if (shp_tmp == -1) {
+                        slot->wep[j] = weapon_info_lookup("");
+                    } else {
+                        slot->wep[j] = weapon_info_lookup(w_name[wep_tmp]);
+                    }
                 } else {
                     // we need to read some dummy info for the wep_counts
                     wep_tmp = cfread_int(fp);

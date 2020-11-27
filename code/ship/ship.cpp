@@ -1278,6 +1278,9 @@ int parse_ship(char *filename, bool replace) {
     int rtn = 0;
     char name_tmp[NAME_LENGTH];
 
+    memset(buf, 0, SHIP_MULTITEXT_LENGTH);
+    memset(name_tmp, 0, NAME_LENGTH);
+
     required_string("$Name:");
     stuff_string(buf, F_NAME, SHIP_MULTITEXT_LENGTH);
 
@@ -10814,11 +10817,11 @@ int wing_lookup(char *name) {
 //	Return the index of Ship_info[].name that is *token.
 int ship_info_lookup_sub(char *token) {
     int i;
-
-    for (i = 0; i < Num_ship_classes; i++)
+    for (i = 0; i < Num_ship_classes; i++) {
+        printf("compare %i '%s' against '%s'\n", i, token, Ship_info[i].name);
         if (!stricmp(token, Ship_info[i].name))
             return i;
-
+    }
     return -1;
 }
 
