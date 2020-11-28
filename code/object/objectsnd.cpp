@@ -95,92 +95,78 @@ void obj_snd_source_pos(vec3d *sound_pos, obj_snd *osp) {
 // Debug console function for object linked persistant sounds
 //
 //XSTR:OFF
-DCF(objsnd,
-"Persistant sound stuff")
-{
-char buf1[16], buf2[64];
-obj_snd *osp;
+DCF(objsnd, "Persistant sound stuff") {
+    char buf1[16], buf2[64];
+    obj_snd *osp;
 
-if (Dc_command)    {
-dc_get_arg(ARG_STRING
-|ARG_NONE);
+    if (Dc_command) {
+        dc_get_arg(ARG_STRING | ARG_NONE);
 
-if (
-Dc_arg_type &ARG_NONE
-) {
-if (Obj_snd_enabled == TRUE) {
-obj_snd_stop_all();
+        if (Dc_arg_type & ARG_NONE) {
+            if (Obj_snd_enabled == TRUE) {
+                obj_snd_stop_all();
 
-Obj_snd_enabled = FALSE;
-}
-else {
-Obj_snd_enabled = TRUE;
-}
-}
-if (!
-stricmp(Dc_arg,
-"list"))    {
-for (
-osp = GET_FIRST(&obj_snd_list);
-osp !=
-END_OF_LIST(&obj_snd_list);
-osp = GET_NEXT(osp)
-) {
-Assert(osp
-!= NULL);
-if (osp->instance == -1) {
-continue;
+                Obj_snd_enabled = FALSE;
+            } else {
+                Obj_snd_enabled = TRUE;
+            }
+        }
+        if (!stricmp(Dc_arg, "list")) {
+            for (
+                    osp = GET_FIRST(&obj_snd_list);
+                    osp !=
+                    END_OF_LIST(&obj_snd_list);
+                    osp = GET_NEXT(osp)
+                    ) {
+                Assert(osp
+                       != NULL);
+                if (osp->instance == -1) {
+                    continue;
 //sprintf(buf1,"OFF");
-} else {
-sprintf(buf1,
-"ON");
-}
+                } else {
+                    sprintf(buf1, "ON");
+                }
 
-if (Objects[osp->objnum].type == OBJ_SHIP) {
-sprintf(buf2, Ships[Objects[osp->objnum].instance]
-.ship_name);
-}
-else if (Objects[osp->objnum].type == OBJ_DEBRIS) {
-sprintf(buf2,
-"Debris");
-}
-else {
-sprintf(buf2,
-"Unknown");
-}
+                if (Objects[osp->objnum].type == OBJ_SHIP) {
+                    sprintf(buf2, Ships[Objects[osp->objnum].instance]
+                            .ship_name);
+                } else if (Objects[osp->objnum].type == OBJ_DEBRIS) {
+                    sprintf(buf2, "Debris");
+                } else {
+                    sprintf(buf2, "Unknown");
+                }
 
-vec3d source_pos;
-float distance;
+                vec3d source_pos;
+                float distance;
 
-obj_snd_source_pos(&source_pos, osp
-);
-distance = vm_vec_dist_quick(&source_pos, &View_position);
+                obj_snd_source_pos(&source_pos, osp);
+                distance = vm_vec_dist_quick(&source_pos, &View_position);
 
-dc_printf("Object %d => name: %s vol: %.2f pan: %.2f dist: %.2f status: %s\n", osp->objnum, buf2, osp->vol, osp->pan, distance, buf1);
-} // end for
-dc_printf("Number object-linked sounds playing: %d\n", Num_obj_sounds_playing);
-}
-}
+                dc_printf("Object %d => name: %s vol: %.2f pan: %.2f dist: %.2f status: %s\n",
+                          osp->objnum, buf2,
+                          osp->vol, osp->pan, distance, buf1);
+            } // end for
+            dc_printf("Number object-linked sounds playing: %d\n", Num_obj_sounds_playing);
+        }
+    }
 
-if (Dc_help) {
-dc_printf ("Usage: objsnd [list]\n");
-dc_printf ("[list] --  displays status of all objects with linked sounds\n");
-dc_printf ("with no parameters, object sounds are toggled on/off\n");
-Dc_status = 0;
-}
+    if (Dc_help) {
+        dc_printf("Usage: objsnd [list]\n");
+        dc_printf("[list] --  displays status of all objects with linked sounds\n");
+        dc_printf("with no parameters, object sounds are toggled on/off\n");
+        Dc_status = 0;
+    }
 
-if (Dc_status)    {
-dc_printf("Object sounds are: %s\n", (Obj_snd_enabled?"ON":"OFF"));
-}
+    if (Dc_status) {
+        dc_printf("Object sounds are: %s\n", (Obj_snd_enabled ? "ON" : "OFF"));
+    }
 }
 //XSTR:ON
 
 // ---------------------------------------------------------------------------------------
 // Debug console function for toggling doppler effection on/off
 //
-DCF_BOOL(doppler, Doppler_enabled
-)
-
+DCF_BOOL(doppler, Doppler_enabled)
 
 // ---------------------------------------------------------------------------------------
 // obj_snd_get_slot()
@@ -210,6 +196,9 @@ void obj_snd_level_init() {
     if (observer_num == -1) {
         observer_num = observer_create(&vmd_identity_matrix, &vmd_zero_vector);
     }
+
+    memset(Objsnds, 0, sizeof(obj_snd) * MAX_OBJ_SNDS);
+    memset(&obj_snd_list, 0, sizeof(obj_snd));
 
     list_init(&obj_snd_list);
     for (i = 0; i < MAX_OBJ_SNDS; i++) {
