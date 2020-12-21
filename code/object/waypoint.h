@@ -6,7 +6,7 @@
 
 //********************DEFINES********************
 #define    MAX_WAYPOINTS_PER_LIST    20
-#define    MAX_WAYPOINT_LISTS        32
+#define    MAX_WAYPOINT_LISTS        64
 
 #define WAYPOINTLIST_INDEX(wlp) (wlp - &Waypoint_lists[0])
 
